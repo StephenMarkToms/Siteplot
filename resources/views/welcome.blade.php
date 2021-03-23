@@ -5,9 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Siteplot</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
@@ -27,8 +30,8 @@
                 </div>
             @endif
 
-            <div id="v-app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <example-component />
+            <div id="app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <example-component foo="Stephen" />
             </div>
         </div>
     </body>
