@@ -8,7 +8,6 @@ export default {
     props: ['foo'],
     setup() {
         const greeting = ref('hello there')
-
         return {
             greeting
         }
