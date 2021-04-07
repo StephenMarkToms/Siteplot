@@ -4,20 +4,22 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
 /**
  * We will also mount in our Vue component if needed
  */
 
- import { createApp } from  'vue'
- import ExampleComponent from './components/ExampleComponent.vue'
- 
- createApp({
-     components:{
-         ExampleComponent,
-     }
- }).mount('#v-app')
+import { createApp } from 'vue'
+import ExampleComponent from './components/ExampleComponent.vue'
+import Debugger from './components/Debugger.vue'
+
+createApp({
+    components: {
+        Debugger,
+        ExampleComponent,
+    },
+}).mount('#v-app')
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -25,4 +27,4 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
+require('./components/Example')

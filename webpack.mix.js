@@ -1,4 +1,7 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
+
+require('laravel-mix-eslint')
 
 /*
  |--------------------------------------------------------------------------
@@ -14,5 +17,11 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .react()
     .vue()
-    .postCss('resources/css/app.css', 'public/css')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+    ])
+    .eslint({
+      fix: true,
+      extensions: ['js', 'vue']
+    })
     .browserSync('http://localhost:8000');
