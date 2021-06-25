@@ -20,6 +20,8 @@
                 <example-component foo="Stephen"></example-component>
                 <debugger ref="block"></debugger>
             </div>
+            <div id="r-app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            </div>
         </div>
     </body>
 </html>

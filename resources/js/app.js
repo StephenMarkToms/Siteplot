@@ -11,8 +11,8 @@ require('./bootstrap')
  */
 
 import { createApp } from 'vue'
-import ExampleComponent from './components/ExampleComponent.vue'
-import Debugger from './components/Debugger.vue'
+import ExampleComponent from './components/vue/ExampleComponent.vue'
+import Debugger from './components/vue/Debugger.vue'
 
 createApp({
     components: {
