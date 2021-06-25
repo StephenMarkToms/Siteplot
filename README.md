@@ -1,4 +1,4 @@
-![Well](documentation\logo.jpg)
+![Well](documentation/logo.jpg)
 
 ## Project Setup
 
