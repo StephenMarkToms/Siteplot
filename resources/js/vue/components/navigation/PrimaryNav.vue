@@ -17,9 +17,6 @@
                                 fill="currentColor"
                             />
                         </svg>
-                        <div class="font-light ml-2 text-2xl text-white">
-                            SitePlot
-                        </div>
                     </div>
                     <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
