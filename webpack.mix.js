@@ -1,5 +1,5 @@
-const mix = require('laravel-mix');
-const tailwindcss = require('tailwindcss');
+const mix = require('laravel-mix')
+const tailwindcss = require('tailwindcss')
 
 require('laravel-mix-eslint')
 
@@ -18,10 +18,17 @@ mix.js('resources/js/app.js', 'public/js')
     .react()
     .vue()
     .postCss('resources/css/app.css', 'public/css', [
+        require('postcss-import'),
         require('tailwindcss'),
     ])
+    .webpackConfig(require('./webpack.config'))
+    .sourceMaps()
     .eslint({
-      fix: true,
-      extensions: ['js', 'vue']
+        fix: true,
+        extensions: ['js', 'vue'],
     })
-    .browserSync('http://localhost:8000');
+    .browserSync('http://localhost:8000')
+
+if (mix.inProduction()) {
+    mix.version()
+}
