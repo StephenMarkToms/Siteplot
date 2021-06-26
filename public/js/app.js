@@ -21403,7 +21403,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-primary-500 shadow"
+  "class": "bg-primary-100 shadow"
 };
 var _hoisted_2 = {
   "class": "max-w-7xl mx-auto px-2 sm:px-4 lg:px-8"
@@ -21584,23 +21584,66 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "w-full bg-white shadow p-5 rounded-lg"
 };
+var _hoisted_4 = {
+  "class": "border-b pb-2 mb-3"
+};
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "w-56 bg-white shadow p-5 rounded-lg"
-}, " asdfads ", -1
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "mt-2 flex space-x-2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "\n                                    w-1/4\n                                    rounded-lg\n                                    bg-gray-50\n                                    py-2\n                                    px-3\n                                    text-primary-500\n                                "
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-sm"
+}, "Bandwidth used"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-2xl"
+}, "7 GB/400 GB")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "\n                                    w-1/4\n                                    rounded-lg\n                                    bg-gray-50\n                                    py-2\n                                    px-3\n                                    text-primary-500\n                                "
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-sm"
+}, "Bandwidth used"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-2xl"
+}, "7 GB/400 GB")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "\n                                    w-1/4\n                                    rounded-lg\n                                    bg-gray-50\n                                    py-2\n                                    px-3\n                                    text-primary-500\n                                "
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-sm"
+}, "Bandwidth used"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-2xl"
+}, "7 GB/400 GB")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "\n                                    w-1/4\n                                    rounded-lg\n                                    bg-gray-50\n                                    py-2\n                                    px-3\n                                    text-primary-500\n                                "
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-sm"
+}, "Bandwidth used"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "text-2xl"
+}, "7 GB/400 GB")])], -1
 /* HOISTED */
 );
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "w-56 bg-primary-100 shadow p-5 rounded-lg flex"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  "class": "text-white mx-auto my-auto",
+  width: "83",
+  height: "88",
+  viewBox: "0 0 83 88",
+  fill: "none",
+  xmlns: "http://www.w3.org/2000/svg"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  d: "M23.3361 39.617L11.7142 30.975L41.5 8.75818L71.2858 30.975L65.5595 35.2496L71.4166 39.617L82.9615 30.975L41.5 0L0 30.975L41.5 61.95L59.6639 48.3984L71.2858 57.0714L41.5 79.2805L11.7142 57.025L17.8715 52.4562L11.9836 48.0887L0 57.025L41.5 88L83 57.025L41.5 26.05L23.3361 39.617ZM41.5 53.1686L29.1855 43.9845L41.5 34.8469L53.8145 44.0232L41.5 53.1686Z",
+  fill: "currentColor"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex space-x-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "w-2/3 bg-white shadow p-5 rounded-lg"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "text-2xl font-medium border-b pb-2 mb-4"
+  "class": "\n                                text-2xl\n                                font-medium\n                                border-b\n                                secondary-600\n                                4\n                                -2\n                                pb-2\n                                mb-4\n                            "
 }, " Sites "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Site 1 here")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "w-1/3 bg-white shadow p-5 rounded-lg"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "text-2xl font-medium border-b pb-2 mb-4"
+  "class": "\n                                text-2xl\n                                font-medium\n                                border-b\n                                secondary-600\n                                4\n                                -2\n                                pb-2\n                                mb-4\n                            "
 }, " Deployments "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Site 1 here")])], -1
 /* HOISTED */
 );
@@ -21615,9 +21658,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PrimaryNav)];
     }),
     content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, "Welcome back " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, " Welcome back " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.name) + " 🧙 ", 1
       /* TEXT */
-      )]), _hoisted_4]), _hoisted_5])];
+      ), _hoisted_5]), _hoisted_6]), _hoisted_7])];
     }),
     _: 1
     /* STABLE */
