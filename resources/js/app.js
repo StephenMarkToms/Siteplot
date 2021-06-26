@@ -11,15 +11,14 @@ require('./bootstrap')
  */
 
 import { createApp } from 'vue'
-import ExampleComponent from './components/vue/ExampleComponent.vue'
-import Debugger from './components/vue/Debugger.vue'
+import axios from 'axios'
+import router from './vue/router'
+import App from './vue/App.vue'
 
-createApp({
-    components: {
-        Debugger,
-        ExampleComponent,
-    },
-}).mount('#v-app')
+const app = createApp(App)
+app.config.globalProperties.$axios = axios
+app.use(router)
+app.mount('#v-app')
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -27,4 +26,4 @@ createApp({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example')
+require('./react/components/Example')

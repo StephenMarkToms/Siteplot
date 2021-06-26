@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('{any}', function () {
+    return view('app');
+})->where('any', '.*');
 
-Route::get('/hybrid', function () {
-    return view('hybrid');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// })->middleware('auth:sanctum');
+
+// Route::get('/hybrid', function () {
+//     return view('hybrid');
+// });
