@@ -1,11 +1,11 @@
 <template>
-    <nav class="bg-white shadow">
+    <nav class="bg-primary-500 shadow">
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex px-2 lg:px-0">
                     <div class="flex-shrink-0 flex items-center">
                         <svg
-                            class="w-8 text-primary-200"
+                            class="w-8 text-white"
                             width="83"
                             height="88"
                             viewBox="0 0 83 88"
@@ -22,8 +22,8 @@
                         <router-link
                             to="/dashboard"
                             class="
-                                border-primary-300
-                                text-primary-200
+                                border-gray-300
+                                text-gray-200
                                 inline-flex
                                 items-center
                                 px-1

@@ -21403,7 +21403,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "bg-white shadow"
+  "class": "bg-primary-500 shadow"
 };
 var _hoisted_2 = {
   "class": "max-w-7xl mx-auto px-2 sm:px-4 lg:px-8"
@@ -21418,7 +21418,7 @@ var _hoisted_4 = {
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "flex-shrink-0 flex items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
-  "class": "w-8 text-primary-200",
+  "class": "w-8 text-white",
   width: "83",
   height: "88",
   viewBox: "0 0 83 88",
@@ -21473,7 +21473,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("nav", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/dashboard",
-    "class": "\n                                border-primary-300\n                                text-primary-200\n                                inline-flex\n                                items-center\n                                px-1\n                                pt-1\n                                border-b-2\n                                text-sm\n                                font-medium\n                            "
+    "class": "\n                                border-gray-300\n                                text-gray-200\n                                inline-flex\n                                items-center\n                                px-1\n                                pt-1\n                                border-b-2\n                                text-sm\n                                font-medium\n                            "
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_7];
