@@ -8,7 +8,8 @@
                 <div class="flex space-x-2">
                     <div class="w-full bg-white shadow p-5 rounded-lg">
                         <div class="border-b pb-2 mb-3">
-                            Welcome back {{ name }} 🧙
+                            Welcome back
+                            <span class="font-bold">{{ name }}</span> 🧙
                         </div>
                         <div class="mt-2 flex space-x-2">
                             <div
