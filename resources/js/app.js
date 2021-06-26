@@ -14,11 +14,15 @@ import { createApp } from 'vue'
 import axios from 'axios'
 import router from './vue/router'
 import App from './vue/App.vue'
+import Alert from './vue/components/feedback/Alert.vue'
+import PrimaryNav from './vue/components/navigation/PrimaryNav.vue'
 
 const app = createApp(App)
 app.config.globalProperties.$axios = axios
+app.component('PrimaryNav', PrimaryNav)
 app.use(router)
 app.mount('#v-app')
+app.component('Alert', Alert)
 
 /**
  * Next, we will create a fresh React component instance and attach it to

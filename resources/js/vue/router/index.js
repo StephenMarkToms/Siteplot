@@ -8,11 +8,6 @@ import Dashboard from '../pages/Dashboard'
 
 export const routes = [
     {
-        name: 'home',
-        path: '/',
-        component: Home,
-    },
-    {
         name: 'about',
         path: '/about',
         component: About,
@@ -25,6 +20,7 @@ export const routes = [
     {
         name: 'login',
         path: '/login',
+        alias: '/',
         component: Login,
     },
     {
