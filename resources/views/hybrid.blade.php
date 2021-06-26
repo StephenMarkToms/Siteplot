@@ -15,10 +15,22 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="antialiased">
+        @if (Auth::check())
+            <script>
+                window.Laravel = {!!json_encode([
+                    'isLoggedin' => true,
+                    'user' => Auth::user()
+                ])!!}
+            </script>
+        @else
+            <script>
+                window.Laravel = {!!json_encode([
+                        'isLoggedin' => false
+                    ])!!}
+            </script>
+        @endif
         <div>
             <div id="v-app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <example-component foo="Stephen"></example-component>
-                <debugger ref="block"></debugger>
             </div>
             <div id="r-app" class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             </div>

@@ -17,10 +17,6 @@ Route::get('{any}', function () {
     return view('app');
 })->where('any', '.*');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->middleware('auth:sanctum');
-
-// Route::get('/hybrid', function () {
-//     return view('hybrid');
-// });
+Route::get('/hybrid', function () {
+    return view('hybrid');
+});
