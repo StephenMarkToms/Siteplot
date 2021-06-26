@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <PrimaryNav v-if="isLoggedIn" />
+    <div class="h-screen bg-gray-100">
         <router-view />
     </div>
 </template>

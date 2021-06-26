@@ -1,15 +1,20 @@
 <template>
-    <div>Welcome {{ name }}</div>
+    <ContainedLayout>
+        <template #header>
+            <PrimaryNav />
+        </template>
+        <template #content>
+            <div>Welcome {{ name }}</div>
+        </template>
+    </ContainedLayout>
 </template>
 
 <script>
+import ContainedLayout from '../layouts/ContainedLayout.vue'
 export default {
     name: 'Dashboard',
-    beforeRouteEnter(to, from, next) {
-        if (!window.Laravel.isLoggedin) {
-            window.location.href = '/'
-        }
-        next()
+    components: {
+        ContainedLayout,
     },
     data() {
         return {

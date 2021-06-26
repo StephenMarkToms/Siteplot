@@ -1,6 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-import Home from '../pages/Home'
 import About from '../pages/About'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
@@ -33,6 +32,12 @@ export const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes: routes,
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.name !== 'login' && !window.Laravel.isLoggedin)
+        next({ name: 'login' })
+    else next()
 })
 
 export default router
