@@ -65,7 +65,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-56 bg-primary-100 shadow p-5 rounded-lg flex">
+                    <div
+                        class="w-1/3 bg-primary-100 shadow p-5 rounded-lg flex"
+                    >
                         <svg
                             class="text-white mx-auto my-auto"
                             width="83"

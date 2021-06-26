@@ -14,21 +14,19 @@
     >
         <div class="max-w-md w-full space-y-8">
             <div>
-                <img
-                    class="mx-auto h-12 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Workflow"
-                />
-                <h2
-                    class="
-                        mt-6
-                        text-center text-3xl
-                        font-extrabold
-                        text-gray-900
-                    "
+                <svg
+                    class="text-primary-200 mx-auto my-auto"
+                    width="83"
+                    height="88"
+                    viewBox="0 0 83 88"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
-                    SitePlot Login
-                </h2>
+                    <path
+                        d="M23.3361 39.617L11.7142 30.975L41.5 8.75818L71.2858 30.975L65.5595 35.2496L71.4166 39.617L82.9615 30.975L41.5 0L0 30.975L41.5 61.95L59.6639 48.3984L71.2858 57.0714L41.5 79.2805L11.7142 57.025L17.8715 52.4562L11.9836 48.0887L0 57.025L41.5 88L83 57.025L41.5 26.05L23.3361 39.617ZM41.5 53.1686L29.1855 43.9845L41.5 34.8469L53.8145 44.0232L41.5 53.1686Z"
+                        fill="currentColor"
+                    />
+                </svg>
             </div>
             <form class="mt-8 space-y-6" action="#">
                 <input type="hidden" name="remember" value="true" />
@@ -104,8 +102,8 @@
                             href="#"
                             class="
                                 font-medium
-                                text-indigo-600
-                                hover:text-indigo-500
+                                text-primary-200
+                                hover:text-primary-100
                             "
                         >
                             Forgot your password?
@@ -129,45 +127,15 @@
                             font-medium
                             rounded-md
                             text-white
-                            bg-indigo-600
-                            hover:bg-indigo-700
+                            bg-primary-200
+                            hover:bg-primary-300
                             focus:outline-none
                             focus:ring-2
                             focus:ring-offset-2
-                            focus:ring-indigo-500
+                            focus:ring-primary-200
                         "
                         @click="handleSubmit"
                     >
-                        <span
-                            class="
-                                absolute
-                                left-0
-                                inset-y-0
-                                flex
-                                items-center
-                                pl-3
-                            "
-                        >
-                            <!-- Heroicon name: solid/lock-closed -->
-                            <svg
-                                class="
-                                    h-5
-                                    w-5
-                                    text-indigo-500
-                                    group-hover:text-indigo-400
-                                "
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                    clip-rule="evenodd"
-                                />
-                            </svg>
-                        </span>
                         Login
                     </button>
                 </div>
