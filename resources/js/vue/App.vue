@@ -16,9 +16,6 @@
                     <router-link to="/dashboard" class="nav-item nav-link"
                         >Dashboard</router-link
                     >
-                    <router-link to="/books" class="nav-item nav-link"
-                        >Books</router-link
-                    >
                     <a
                         class="nav-item nav-link"
                         style="cursor: pointer"
