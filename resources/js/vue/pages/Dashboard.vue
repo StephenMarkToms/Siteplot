@@ -86,19 +86,11 @@
                 </div>
                 <div class="flex space-x-2">
                     <div class="w-2/3 bg-white shadow p-5 rounded-lg">
-                        <div
-                            class="
-                                text-2xl
-                                font-medium
-                                border-b
-                                secondary-600
-                                4
-                                -2
-                                pb-2
-                                mb-4
-                            "
-                        >
-                            Sites
+                        <div class="flex justify-between border-b -2 pb-2 mb-4">
+                            <div class="text-2xl font-medium secondary-600">
+                                Sites
+                            </div>
+                            <div>Create new</div>
                         </div>
                         <div>Site 1 here</div>
                     </div>
