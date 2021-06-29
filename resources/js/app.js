@@ -17,6 +17,7 @@ import App from './vue/App.vue'
 import Alert from './vue/components/feedback/Alert.vue'
 import Popover from './vue/components/feedback/Popover.vue'
 import PrimaryNav from './vue/components/navigation/PrimaryNav.vue'
+import Wind from './vue/plugins/wind-components'
 
 const app = createApp(App)
 app.config.globalProperties.$axios = axios
@@ -24,6 +25,9 @@ app.component('PrimaryNav', PrimaryNav)
 app.component('Popover', Popover)
 app.component('Alert', Alert)
 app.use(router)
+app.use(Wind)
+// app.config.globalProperties.$wind = Wind
+// app.config.globalProperties.$wind = 'Wind'
 app.mount('#v-app')
 
 /**

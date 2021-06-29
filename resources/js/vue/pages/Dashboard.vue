@@ -90,7 +90,7 @@
                             <div class="text-2xl font-medium secondary-600">
                                 Sites
                             </div>
-                            <div>Create new</div>
+                            <WButtonsBase icon="plus">Create new</WButtonsBase>
                         </div>
                         <div>Site 1 here</div>
                     </div>
@@ -119,10 +119,12 @@
 
 <script>
 import ContainedLayout from '../layouts/ContainedLayout.vue'
+import WButtonsBase from '../components/buttons/Base.vue'
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
+        WButtonsBase,
     },
     data() {
         return {
