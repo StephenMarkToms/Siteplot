@@ -92,7 +92,24 @@
                             </div>
                             <WButtonsBase icon="plus">Create new</WButtonsBase>
                         </div>
-                        <div>Site 1 here</div>
+                        <div
+                            class="
+                                flex
+                                space-x-6
+                                rounded-lg
+                                cursor-pointer
+                                hover:bg-gray-100
+                                p-2
+                            "
+                        >
+                            <div class="w-24 h-20 rounded-lg bg-gray-200"></div>
+                            <div class="my-auto">
+                                <div class="font-bold">www.google.com</div>
+                                <div class="text-sm text-gray-500">
+                                    Deploys to Netlify
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="w-1/3 bg-white shadow p-5 rounded-lg">
                         <div
