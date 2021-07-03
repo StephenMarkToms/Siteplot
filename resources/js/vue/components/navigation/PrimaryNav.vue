@@ -19,8 +19,19 @@
                         </svg>
                     </div>
                     <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
-                        <router-link to="/dashboard" class="nav-link">
+                        <router-link
+                            to="/dashboard"
+                            class="nav-link border-gray-300"
+                        >
                             Dashboard
+                        </router-link>
+                    </div>
+                    <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
+                        <router-link
+                            to="/dashboard"
+                            class="nav-link border-transparent"
+                        >
+                            Blocks
                         </router-link>
                     </div>
                 </div>
@@ -122,6 +133,6 @@ export default {
 </script>
 <style lang="postcss" scoped>
 .nav-link {
-    @apply border-gray-300 text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium;
+    @apply text-gray-200 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium;
 }
 </style>
