@@ -237,6 +237,29 @@ export default {
             error: null,
         }
     },
+    created() {
+        this.$axios
+            .post('/graphql', {
+                query: `
+                    {
+                        websites(first: 10) {
+                            data {
+                            id
+                            name
+                            domain
+                            }
+                            paginatorInfo {
+                            currentPage
+                            lastPage
+                            }
+                        }
+                    }
+                    `,
+            })
+            .then((result) => {
+                console.log(result.data.data.websites.data)
+            })
+    },
     methods: {
         handleSubmit(e) {
             e.preventDefault()
