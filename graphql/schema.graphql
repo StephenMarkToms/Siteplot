@@ -73,7 +73,7 @@ type Query {
 }
 
 type Mutation {
-  createWebsite(name: String!, domain: String!, netlify_build_hook: String): Website! @create
+  createWebsite(name: String!, domain: String!, netlify_build_hook: String): Website! @create @guard
   createUser(name: String!, email: String!, password: String!): User! @create
   updateUser(id: ID!, name: String, email: String): User @update
 }
