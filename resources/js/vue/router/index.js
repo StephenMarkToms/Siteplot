@@ -4,6 +4,8 @@ import About from '../pages/About'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
+import Sites from '../pages/Sites/Index'
+import CreateSite from '../pages/Sites/Create'
 
 export const routes = [
     {
@@ -37,6 +39,22 @@ export const routes = [
         component: Dashboard,
         meta: {
             title: 'Dashboard',
+        },
+    },
+    {
+        name: 'sites',
+        path: '/sites',
+        component: Sites,
+        meta: {
+            title: 'Sites',
+        },
+    },
+    {
+        name: 'create-sites',
+        path: '/sites/create',
+        component: CreateSite,
+        meta: {
+            title: 'Create Site',
         },
     },
 ]
