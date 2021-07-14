@@ -32,7 +32,6 @@
             headers: {
               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
             },
-            subscriptionEndpoint: "{{config('graphql-playground.subscriptionEndpoint')}}",
         })
     })
 </script>
