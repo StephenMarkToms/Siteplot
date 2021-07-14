@@ -90,9 +90,13 @@
                             <div class="text-2xl font-medium secondary-600">
                                 Sites
                             </div>
-                            <WButtonsBase icon="plus">Create new</WButtonsBase>
+                            <WButtonsBase icon="plus" @click="getWebsites()">
+                                Create new
+                            </WButtonsBase>
                         </div>
                         <div
+                            v-for="(website, index) in websites"
+                            :key="index"
                             class="
                                 flex
                                 space-x-6
@@ -104,9 +108,11 @@
                         >
                             <div class="w-24 h-20 rounded-lg bg-gray-200"></div>
                             <div class="my-auto">
-                                <div class="font-bold">www.google.com</div>
+                                <div class="font-bold">
+                                    {{ website.name }}
+                                </div>
                                 <div class="text-sm text-gray-500">
-                                    Deploys to Netlify
+                                    {{ website.domain }}
                                 </div>
                             </div>
                         </div>
@@ -146,12 +152,39 @@ export default {
     data() {
         return {
             name: null,
+            websites: [],
         }
     },
     created() {
         if (window.Laravel.user) {
             this.name = window.Laravel.user.name
         }
+        this.getWebsites()
+    },
+    methods: {
+        getWebsites() {
+            this.$axios
+                .post('graphql', {
+                    query: `
+                    {
+                        websites(first: 10) {
+                            data {
+                            id
+                            name
+                            domain
+                            }
+                            paginatorInfo {
+                            currentPage
+                            lastPage
+                            }
+                        }
+                    }
+                    `,
+                })
+                .then((result) => {
+                    this.websites = result.data.data.websites.data
+                })
+        },
     },
 }
 </script>
