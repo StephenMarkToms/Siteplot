@@ -126,7 +126,8 @@
                                     </div>
                                 </div>
                                 <WButtonsBase icon="plus" class="w-36 ml-auto">
-                                    Create
+                                    <div v-if="!submitting">Create</div>
+                                    <div v-else>Creating...</div>
                                 </WButtonsBase>
                             </Form>
                         </div>
@@ -152,11 +153,7 @@ export default {
     data() {
         return {
             name: null,
-            formData: {
-                name: null,
-                domain: null,
-                netlify_build_hook: null,
-            },
+            submitting: false,
         }
     },
     created() {
@@ -168,11 +165,12 @@ export default {
         isRequired(value) {
             return value ? true : 'This field is required'
         },
-        onSubmit(values) {
+        async onSubmit(values) {
             let query = JSON.stringify(values)
                 .replace(/[{}]/g, '')
                 .replace(/"([^"]+)":/g, '$1:')
-            this.$axios
+            this.submitting = true
+            await this.$axios
                 .post('/graphql', {
                     query: `
                     mutation {
@@ -183,9 +181,10 @@ export default {
                     }
                     `,
                 })
-                .then((result) => {
-                    this.websites = result.data.data.websites.data
+                .then((res) => {
+                    console.log(res)
                 })
+            this.submitting = false
         },
     },
 }
