@@ -4,30 +4,6 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-type Query {
-    users: [User!]! @paginate(defaultCount: 10)
-    user(id: ID @eq): User @find
-}
-
-type Query {
-    websites: [Website!]! @paginate(defaultCount: 10)
-    website(id: ID @eq): Website @find
-}
-
-type Query {
-    block_types: [BlockType!]! @all
-    block_type(id: Int! @eq): BlockType @find
-}
-
-type Query {
-    data_types: [DataType!]! @all
-    data_type(id: Int! @eq): DataType @find
-}
-
-type Query {
-    widget_types: [WidgetType!]! @all
-    widget_type(id: Int! @eq): WidgetType @find
-}
 
 type User {
     id: ID!
@@ -80,4 +56,21 @@ type WidgetType {
     usage: String!
     order: Number!
     data_type: DataType! @belongsTo
+}
+
+type Query {
+    users: [User!]! @all
+    user(id: ID @eq): User @find
+    websites: [Website!]! @all
+    website(id: ID @eq): Website @find
+    block_types: [BlockType!]! @all
+    block_type(id: Int! @eq): BlockType @find
+    data_types: [DataType!]! @all
+    data_type(id: Int! @eq): DataType @find
+    widget_types: [WidgetType!]! @all
+    widget_type(id: Int! @eq): WidgetType @find
+}
+
+type Mutation {
+  createUser(name: String!, email: String!, password: String!): User! @create
 }
