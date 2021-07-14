@@ -1,5 +1,5 @@
 <template>
-    <button type="button" :class="classes" @click="analytics()">
+    <button :class="classes" @click="analytics()">
         <slot name="icon"
             ><component
                 :is="svgComponent"

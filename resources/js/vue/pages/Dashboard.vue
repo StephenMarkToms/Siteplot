@@ -114,25 +114,29 @@
                                 Create new
                             </WButtonsBase>
                         </div>
-                        <div
-                            v-for="(website, index) in websites"
-                            :key="index"
-                            class="
-                                flex
-                                space-x-6
-                                rounded-lg
-                                cursor-pointer
-                                hover:bg-gray-100
-                                p-2
-                            "
-                        >
-                            <div class="w-24 h-20 rounded-lg bg-gray-200"></div>
-                            <div class="my-auto">
-                                <div class="font-bold">
-                                    {{ website.name }}
-                                </div>
-                                <div class="text-sm text-gray-500">
-                                    {{ website.domain }}
+                        <div class="h-96 overflow-auto">
+                            <div
+                                v-for="(website, index) in websites"
+                                :key="index"
+                                class="
+                                    flex
+                                    space-x-6
+                                    rounded-lg
+                                    cursor-pointer
+                                    hover:bg-gray-100
+                                    p-2
+                                "
+                            >
+                                <div
+                                    class="w-24 h-20 rounded-lg bg-gray-200"
+                                ></div>
+                                <div class="my-auto">
+                                    <div class="font-bold">
+                                        {{ website.name }}
+                                    </div>
+                                    <div class="text-sm text-gray-500">
+                                        {{ website.domain }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -162,12 +166,10 @@
 
 <script>
 import ContainedLayout from '../layouts/ContainedLayout.vue'
-import WButtonsBase from '../components/buttons/Base.vue'
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
-        WButtonsBase,
     },
     data() {
         return {

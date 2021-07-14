@@ -17,8 +17,8 @@ class CreateWebsitesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('domain');
-            $table->string('netlify_build_hook');
-            $table->foreignId('team_id');
+            $table->string('netlify_build_hook')->nullable();
+            $table->foreignId('team_id')->nullable();
             $table->timestamps();
         });
     }
