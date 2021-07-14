@@ -59,18 +59,19 @@ type WidgetType {
 }
 
 type Query {
-    users: [User!]! @all
+    users: [User!]! @paginate
     user(id: ID @eq): User @find
-    websites: [Website!]! @all
+    websites: [Website!]! @paginate
     website(id: ID @eq): Website @find
-    block_types: [BlockType!]! @all
+    block_types: [BlockType!]! @paginate
     block_type(id: Int! @eq): BlockType @find
-    data_types: [DataType!]! @all
+    data_types: [DataType!]! @paginate
     data_type(id: Int! @eq): DataType @find
-    widget_types: [WidgetType!]! @all
+    widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
 }
 
 type Mutation {
   createUser(name: String!, email: String!, password: String!): User! @create
+  updateUser(id: ID!, name: String, email: String): User @update
 }
