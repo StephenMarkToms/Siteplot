@@ -14,6 +14,21 @@ type Query {
     website(id: ID @eq): Website @find
 }
 
+type Query {
+    block_types: [BlockType!]! @all
+    block_type(id: Int! @eq): BlockType @find
+}
+
+type Query {
+    data_types: [DataType!]! @all
+    data_type(id: Int! @eq): DataType @find
+}
+
+type Query {
+    widget_types: [WidgetType!]! @all
+    widget_type(id: Int! @eq): WidgetType @find
+}
+
 type User {
     id: ID!
     name: String!
@@ -30,4 +45,39 @@ type Website {
     netlify_build_hook: String!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type BlockType {
+    id: ID!
+    name: String!
+    file_name: String!
+    component: String!
+    team_id: Number!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type BlockType {
+    id: ID!
+    name: String!
+    file_name: String!
+    component: String!
+    team_id: Number!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type DataType {
+    id: ID!
+    name: String!
+    data: String!
+}
+
+type WidgetType {
+    id: ID!
+    name: String!
+    label: String!
+    usage: String!
+    order: Number!
+    data_type: DataType! @belongsTo
 }
