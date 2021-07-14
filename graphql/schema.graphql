@@ -61,7 +61,7 @@ type WidgetType {
 type Query {
     users: [User!]! @paginate
     user(id: ID @eq): User @find
-    websites: [Website!]! @paginate
+    websites: [Website!]! @paginate @orderBy(column: "updated_at", direction: DESC)
     website(id: ID @eq): Website @find
     block_types: [BlockType!]! @paginate
     block_type(id: Int! @eq): BlockType @find
