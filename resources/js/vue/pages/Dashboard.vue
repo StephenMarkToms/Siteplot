@@ -114,7 +114,7 @@
                                 Create new
                             </WButtonsBase>
                         </div>
-                        <div class="h-96 overflow-auto">
+                        <div class="h-96 overflow-auto pr-2">
                             <div
                                 v-for="(website, index) in websites"
                                 :key="index"
@@ -125,6 +125,9 @@
                                     cursor-pointer
                                     hover:bg-gray-100
                                     p-2
+                                "
+                                @click="
+                                    $router.push(`/sites/view/${website.id}`)
                                 "
                             >
                                 <div

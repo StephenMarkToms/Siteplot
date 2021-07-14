@@ -175,16 +175,16 @@ export default {
                     query: `
                     mutation {
                         createWebsite(${query}) {
-                            name
-                            domain
+                            id
                         }
                     }
                     `,
                 })
                 .then((res) => {
-                    console.log(res)
+                    this.$router.push(
+                        `/sites/view/${res.data.data.createWebsite.id}`
+                    )
                 })
-            this.submitting = false
         },
     },
 }

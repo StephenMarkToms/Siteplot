@@ -75,8 +75,5 @@ export default {
             isActive: this.show,
         }
     },
-    mounted() {
-        console.log(this.$wind)
-    },
 }
 </script>
