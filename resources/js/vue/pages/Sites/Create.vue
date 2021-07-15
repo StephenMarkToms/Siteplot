@@ -140,15 +140,11 @@
 
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
-import { Field, Form, ErrorMessage } from 'vee-validate'
 
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
-        Field,
-        Form,
-        ErrorMessage,
     },
     data() {
         return {

@@ -19,6 +19,7 @@ import WButtonsBase from './vue/components/buttons/Base.vue'
 import Popover from './vue/components/feedback/Popover.vue'
 import PrimaryNav from './vue/components/navigation/PrimaryNav.vue'
 import Wind from './vue/plugins/wind-components'
+import { Field, Form, ErrorMessage } from 'vee-validate'
 
 const app = createApp(App)
 app.config.globalProperties.$axios = axios
@@ -26,6 +27,9 @@ app.component('WButtonsBase', WButtonsBase)
 app.component('PrimaryNav', PrimaryNav)
 app.component('Popover', Popover)
 app.component('Alert', Alert)
+app.component('Form', Form)
+app.component('Field', Field)
+app.component('ErrorMessage', ErrorMessage)
 app.use(router)
 app.use(Wind)
 // app.config.globalProperties.$wind = Wind

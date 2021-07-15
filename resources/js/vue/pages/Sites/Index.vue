@@ -5,14 +5,45 @@
         </template>
         <template #content>
             <div class="space-y-2">
-                <div
-                    class="flex h-24 bg-white bg-white shadow p-5 rounded-lg"
-                ></div>
                 <div class="flex space-x-2">
-                    <div class="w-2/3 bg-white shadow p-5 rounded-lg">
+                    <div class="w-full bg-white shadow p-5 rounded-lg">
                         <div class="flex justify-between border-b -2 pb-2 mb-4">
-                            <div class="text-2xl font-medium secondary-600">
-                                Sites
+                            <div class="flex space-x-2">
+                                <div class="w-56">
+                                    <Field
+                                        v-model="websiteName"
+                                        name="name"
+                                        placeholder="Search"
+                                        class="
+                                            h-10
+                                            text-primary-700
+                                            appearance-none
+                                            w-full
+                                            px-3
+                                            py-2
+                                            border border-gray-300
+                                            rounded-md
+                                            placeholder-primary-400
+                                            focus:outline-none
+                                            focus:shadow-outline-blue
+                                            focus:border-blue-300
+                                            transition
+                                            duration-150
+                                            ease-in-out
+                                            sm:text-sm sm:leading-5
+                                        "
+                                        @input="
+                                            websiteName === '' && getWebsites()
+                                        "
+                                    />
+                                </div>
+                                <WButtonsBase
+                                    v-if="websiteName !== ''"
+                                    icon="plus"
+                                    @click="getWebsites()"
+                                >
+                                    Search
+                                </WButtonsBase>
                             </div>
                             <WButtonsBase
                                 icon="plus"
@@ -48,23 +79,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-1/3 bg-white shadow p-5 rounded-lg">
-                        <div
-                            class="
-                                text-2xl
-                                font-medium
-                                border-b
-                                secondary-600
-                                4
-                                -2
-                                pb-2
-                                mb-4
-                            "
-                        >
-                            Deployments
-                        </div>
-                        <div>Site 1 here</div>
-                    </div>
                 </div>
             </div>
         </template>
@@ -82,7 +96,7 @@ export default {
     },
     data() {
         return {
-            name: null,
+            websiteName: '',
             websites: [],
         }
     },
@@ -98,11 +112,10 @@ export default {
                 .post('graphql', {
                     query: `
                     {
-                        websites(first: 10) {
-                            data {
-                                id
+                        websites(first: 6, where: { column: NAME, operator: LIKE, value: "%${this.websiteName}%" }) {
+                            data{
                                 name
-                                domain
+                                id
                             }
                             paginatorInfo {
                                 currentPage
