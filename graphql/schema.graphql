@@ -12,6 +12,17 @@ type AssetEntry {
     updated_at: DateTime!
 }
 
+type BlockEntry {
+    id: ID!
+    block_type_id: ID!
+    order: Number!
+    usage: String!
+    widget_entries: WidgetEntry! @belongsToMany
+    block_type: BlockType! @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type BlockType {
     id: ID!
     name: String!
@@ -46,6 +57,13 @@ type Website {
     updated_at: DateTime!
 }
 
+type WidgetEntry {
+    id: ID!
+    widget_type_id: ID!
+    value: String!
+    widget_type: WidgetType! @belongsTo
+}
+
 type WidgetType {
     id: ID!
     name: String!
@@ -57,16 +75,27 @@ type WidgetType {
 
 type Query {
     asset_entries: [AssetEntry!]! @paginate
-    block_types: [BlockType!]! @paginate
+
+    block_entries: [BlockEntry!]! @paginate
+    block_entry(id: Int! @eq): BlockEntry @find
+
     block_types: [BlockType!]! @paginate
     block_type(id: Int! @eq): BlockType @find
+
     data_types: [DataType!]! @paginate
     data_type(id: Int! @eq): DataType @find
+
     me: User @auth
+    
     users: [User!]! @paginate
     user(id: ID @eq, name: String @eq): User @find
+
     websites: [Website!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
     website(id: ID @eq): Website @find
+
+    widget_entries: [WidgetEntry!]! @paginate
+    widget_entry(id: Int! @eq): WidgetEntry @find
+
     widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
 }
