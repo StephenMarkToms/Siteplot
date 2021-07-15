@@ -4,6 +4,25 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
+"""
+Add a dynamically client-controlled WHERE condition to a fields query.
+"""
+directive @whereConditions(
+  """
+  Restrict the allowed column names to a well-defined list.
+  This improves introspection capabilities and security.
+  Mutually exclusive with the `columnsEnum` argument.
+  """
+  columns: [String!]
+
+  """
+  Use an existing enumeration type to restrict the allowed columns to a predefined list.
+  This allowes you to re-use the same enum for multiple fields.
+  Mutually exclusive with the `columns` argument.
+  """
+  columnsEnum: String
+) on ARGUMENT_DEFINITION
+
 type AssetEntry {
     id: ID!
     path: String!
@@ -113,9 +132,8 @@ type Query {
     users: [User!]! @paginate
     user(id: ID @eq, name: String @eq): User @find
 
-   # websitesByName(search: String @search): [Website!]! @first
-    websitesByName(name: String! @eq): Website @first
-    websites: [Website!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
+    websites(where: _ @whereConditions(columnsEnum: "WebsiteColumn")): [Website!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
+
     website(id: ID @eq): Website @find
 
     widget_entries: [WidgetEntry!]! @paginate
@@ -123,6 +141,12 @@ type Query {
 
     widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
+}
+
+"A custom description for this custom enum."
+enum WebsiteColumn {
+  NAME @enum(value: "name")
+  DOMAIN @enum(value: "domain")
 }
 
 type Mutation {
