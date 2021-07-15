@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-primary-100 shadow">
+    <nav class="bg-primary-100 shadow sticky top-0">
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex px-2 lg:px-0">
@@ -21,17 +21,25 @@
                     <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
                             to="/dashboard"
-                            class="nav-link border-gray-300"
+                            :class="
+                                $route.name === 'dashboard'
+                                    ? 'nav-link border-gray-300'
+                                    : 'nav-link border-transparent'
+                            "
                         >
                             Dashboard
                         </router-link>
                     </div>
                     <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
-                            to="/dashboard"
-                            class="nav-link border-transparent"
+                            to="/sites"
+                            :class="
+                                $route.name === 'sites'
+                                    ? 'nav-link border-gray-300'
+                                    : 'nav-link border-transparent'
+                            "
                         >
-                            Blocks
+                            Sites
                         </router-link>
                     </div>
                 </div>

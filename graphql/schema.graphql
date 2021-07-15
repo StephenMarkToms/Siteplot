@@ -4,31 +4,10 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-
-type User {
+type AssetEntry {
     id: ID!
-    name: String!
-    email: String!
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
-type Website {
-    id: ID!
-    name: String!
-    domain: String!
-    team_id: Number!
-    netlify_build_hook: String
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
-type BlockType {
-    id: ID!
-    name: String!
-    file_name: String!
-    component: String!
-    team_id: Number!
+    path: String!
+    website: Website! @belongsTo
     created_at: DateTime!
     updated_at: DateTime!
 }
@@ -49,6 +28,24 @@ type DataType {
     data: String!
 }
 
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Website {
+    id: ID!
+    name: String!
+    domain: String!
+    team_id: Number!
+    netlify_build_hook: String
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type WidgetType {
     id: ID!
     name: String!
@@ -59,21 +56,30 @@ type WidgetType {
 }
 
 type Query {
+    asset_entries: [AssetEntry!]! @paginate
+    block_types: [BlockType!]! @paginate
+    block_types: [BlockType!]! @paginate
+    block_type(id: Int! @eq): BlockType @find
+    data_types: [DataType!]! @paginate
+    data_type(id: Int! @eq): DataType @find
     me: User @auth
     users: [User!]! @paginate
     user(id: ID @eq, name: String @eq): User @find
     websites: [Website!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
     website(id: ID @eq): Website @find
-    block_types: [BlockType!]! @paginate
-    block_type(id: Int! @eq): BlockType @find
-    data_types: [DataType!]! @paginate
-    data_type(id: Int! @eq): DataType @find
     widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
 }
 
 type Mutation {
-  createWebsite(name: String!, domain: String!, netlify_build_hook: String): Website! @create @guard
+  createUser(name: String!, domain: String!, netlify_build_hook: String): User! @create @guard
+  updateUser(id: ID!, name: String, name: String, email: String): User! @update @guard
+  deleteUser(id: [ID!]!): [User!]! @delete
+  
   createUser(name: String!, email: String!, password: String!): User! @create
   updateUser(id: ID!, name: String, email: String): User @update
+
+  createWebsite(name: String!, domain: String!, netlify_build_hook: String): Website! @create @guard
+  updateWebsite(id: ID!, name: String, domain: String, netlify_build_hook: String): Website! @update @guard
+  deleteWebsite(id: [ID!]!): [Website!]! @delete
 }
