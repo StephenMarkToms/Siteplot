@@ -18,7 +18,7 @@
                             />
                         </svg>
                     </div>
-                    <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
+                    <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
                             to="/dashboard"
                             :class="
@@ -30,7 +30,7 @@
                             Dashboard
                         </router-link>
                     </div>
-                    <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
+                    <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
                             to="/sites"
                             :class="
@@ -43,7 +43,7 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="hidden lg:ml-4 lg:flex lg:items-center">
+                <div class="lg:ml-4 lg:flex lg:items-center">
                     <!-- Profile dropdown -->
                     <Popover>
                         <div class="ml-4 relative flex-shrink-0">

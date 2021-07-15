@@ -52,7 +52,7 @@
                                 Create new
                             </WButtonsBase>
                         </div>
-                        <div class="h-96 overflow-auto">
+                        <div class="h-96 overflow-auto pr-5">
                             <div
                                 v-for="(website, index) in websites"
                                 :key="index"
@@ -64,16 +64,31 @@
                                     hover:bg-gray-100
                                     p-2
                                 "
+                                @click="
+                                    $router.push(`/sites/view/${website.id}`)
+                                "
                             >
                                 <div
                                     class="w-24 h-20 rounded-lg bg-gray-200"
                                 ></div>
-                                <div class="my-auto">
-                                    <div class="font-bold">
-                                        {{ website.name }}
+                                <div
+                                    class="my-auto flex w-full justify-between"
+                                >
+                                    <div>
+                                        <div class="font-bold">
+                                            {{ website.name }}
+                                        </div>
+                                        <div class="text-sm text-gray-500">
+                                            {{ website.domain }}
+                                        </div>
                                     </div>
-                                    <div class="text-sm text-gray-500">
-                                        {{ website.domain }}
+                                    <div>
+                                        <div class="font-medium">
+                                            {{ website.created_at }}
+                                        </div>
+                                        <div class="text-sm text-gray-500">
+                                            {{ website.updated_at }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -114,8 +129,11 @@ export default {
                     {
                         websites(first: 6, where: { column: NAME, operator: LIKE, value: "%${this.websiteName}%" }) {
                             data{
+                                domain
                                 name
                                 id
+                                created_at
+                                updated_at
                             }
                             paginatorInfo {
                                 currentPage
