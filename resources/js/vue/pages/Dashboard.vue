@@ -192,15 +192,15 @@ export default {
                 .post('/graphql', {
                     query: `
                     {
-                        websites(first: 10) {
+                        websites(first: 4) {
                             data {
-                            id
-                            name
-                            domain
+                                id
+                                name
+                                domain
                             }
                             paginatorInfo {
-                            currentPage
-                            lastPage
+                                currentPage
+                                lastPage
                             }
                         }
                     }

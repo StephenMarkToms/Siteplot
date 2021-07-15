@@ -113,6 +113,8 @@ type Query {
     users: [User!]! @paginate
     user(id: ID @eq, name: String @eq): User @find
 
+   # websitesByName(search: String @search): [Website!]! @first
+    websitesByName(name: String! @eq): Website @first
     websites: [Website!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
     website(id: ID @eq): Website @find
 
