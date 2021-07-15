@@ -22,8 +22,10 @@
                                     text-primary-500
                                 "
                             >
-                                <div class="text-sm">Bandwidth used</div>
-                                <div class="text-2xl">7 GB/400 GB</div>
+                                <div class="text-sm">Total Sites</div>
+                                <div class="text-2xl">
+                                    {{ totalWebsites }}
+                                </div>
                             </div>
                             <div
                                 class="
@@ -177,6 +179,7 @@ export default {
     data() {
         return {
             name: null,
+            totalWebsites: null,
             websites: [],
         }
     },
@@ -199,8 +202,7 @@ export default {
                                 domain
                             }
                             paginatorInfo {
-                                currentPage
-                                lastPage
+                                total
                             }
                         }
                     }
@@ -208,6 +210,8 @@ export default {
                 })
                 .then((result) => {
                     this.websites = result.data.data.websites.data
+                    this.totalWebsites =
+                        result.data.data.websites.paginatorInfo.total
                 })
         },
     },
