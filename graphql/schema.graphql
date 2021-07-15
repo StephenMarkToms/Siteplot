@@ -33,6 +33,14 @@ type BlockType {
     updated_at: DateTime!
 }
 
+type Collection {
+    id: ID!
+    name: String!
+    website: Website! @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type DataType {
     id: ID!
     name: String!
@@ -90,6 +98,9 @@ type Query {
 
     block_types: [BlockType!]! @paginate
     block_type(id: Int! @eq): BlockType @find
+
+    collections: [Collection!]! @paginate
+    collection(id: Int! @eq): Collection @find
 
     data_types: [DataType!]! @paginate
     data_type(id: Int! @eq): DataType @find

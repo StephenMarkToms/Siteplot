@@ -12,4 +12,8 @@ class Collection extends Model
         'website_id',
     ];
 
+    public function website()
+    {
+        return $this->BelongsTo('App\Models\Website', 'website_id');
+    }
 }
