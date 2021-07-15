@@ -39,6 +39,15 @@ type DataType {
     data: String!
 }
 
+type LayoutEntry {
+    id: ID!
+    name: String!
+    block_entries: BlockEntry! @belongsToMany
+    website: Website! @belongsTo
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
 type User {
     id: ID!
     name: String!
@@ -84,6 +93,9 @@ type Query {
 
     data_types: [DataType!]! @paginate
     data_type(id: Int! @eq): DataType @find
+
+    layout_entries: [LayoutEntry!]! @paginate
+    layout_entry(id: Int! @eq): LayoutEntry @find
 
     me: User @auth
     
