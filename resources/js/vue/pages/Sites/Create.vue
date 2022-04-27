@@ -37,36 +37,14 @@
                                 <div class="grid grid-cols-2 gap-5">
                                     <div class="w-full">
                                         <label
-                                            class="
-                                                block
-                                                text-sm
-                                                font-medium
-                                                text-gray-700
-                                            "
+                                            class="block text-sm font-medium text-gray-700"
                                         >
                                             Name*
                                         </label>
                                         <Field
                                             name="name"
                                             :rules="isRequired"
-                                            class="
-                                                h-10
-                                                text-primary-700
-                                                appearance-none
-                                                w-full
-                                                px-3
-                                                py-2
-                                                border border-gray-300
-                                                rounded-md
-                                                placeholder-primary-400
-                                                focus:outline-none
-                                                focus:shadow-outline-blue
-                                                focus:border-blue-300
-                                                transition
-                                                duration-150
-                                                ease-in-out
-                                                sm:text-sm sm:leading-5
-                                            "
+                                            class="h-10 text-primary-700 appearance-none w-full px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                         />
                                         <ErrorMessage
                                             name="name"
@@ -75,36 +53,14 @@
                                     </div>
                                     <div class="w-full">
                                         <label
-                                            class="
-                                                block
-                                                text-sm
-                                                font-medium
-                                                text-gray-700
-                                            "
+                                            class="block text-sm font-medium text-gray-700"
                                         >
                                             Domain*
                                         </label>
                                         <Field
                                             name="domain"
                                             :rules="isRequired"
-                                            class="
-                                                h-10
-                                                text-primary-700
-                                                appearance-none
-                                                w-full
-                                                px-3
-                                                py-2
-                                                border border-gray-300
-                                                rounded-md
-                                                placeholder-primary-400
-                                                focus:outline-none
-                                                focus:shadow-outline-blue
-                                                focus:border-blue-300
-                                                transition
-                                                duration-150
-                                                ease-in-out
-                                                sm:text-sm sm:leading-5
-                                            "
+                                            class="h-10 text-primary-700 appearance-none w-full px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                         />
                                         <ErrorMessage
                                             name="domain"
@@ -113,35 +69,13 @@
                                     </div>
                                     <div class="w-full">
                                         <label
-                                            class="
-                                                block
-                                                text-sm
-                                                font-medium
-                                                text-gray-700
-                                            "
+                                            class="block text-sm font-medium text-gray-700"
                                         >
                                             Netlify Build Hook
                                         </label>
                                         <Field
                                             name="netlify_build_hook"
-                                            class="
-                                                h-10
-                                                text-primary-700
-                                                appearance-none
-                                                w-full
-                                                px-3
-                                                py-2
-                                                border border-gray-300
-                                                rounded-md
-                                                placeholder-primary-400
-                                                focus:outline-none
-                                                focus:shadow-outline-blue
-                                                focus:border-blue-300
-                                                transition
-                                                duration-150
-                                                ease-in-out
-                                                sm:text-sm sm:leading-5
-                                            "
+                                            class="h-10 text-primary-700 appearance-none w-full px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                         />
                                     </div>
                                 </div>

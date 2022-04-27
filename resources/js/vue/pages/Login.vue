@@ -1,16 +1,6 @@
 <template>
     <div
-        class="
-            min-h-screen
-            flex
-            items-center
-            justify-center
-            bg-gray-50
-            py-12
-            px-4
-            sm:px-6
-            lg:px-8
-        "
+        class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
     >
         <div class="max-w-md w-full space-y-8">
             <div>
@@ -43,24 +33,7 @@
                             autocomplete="email"
                             required
                             autofocus
-                            class="
-                                appearance-none
-                                rounded-none
-                                relative
-                                block
-                                w-full
-                                px-3
-                                py-2
-                                border border-gray-300
-                                placeholder-gray-500
-                                text-gray-900
-                                rounded-t-md
-                                focus:outline-none
-                                focus:ring-indigo-500
-                                focus:border-indigo-500
-                                focus:z-10
-                                sm:text-sm
-                            "
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Email address"
                         />
                     </div>
@@ -73,24 +46,7 @@
                             type="password"
                             autocomplete="current-password"
                             required
-                            class="
-                                appearance-none
-                                rounded-none
-                                relative
-                                block
-                                w-full
-                                px-3
-                                py-2
-                                border border-gray-300
-                                placeholder-gray-500
-                                text-gray-900
-                                rounded-b-md
-                                focus:outline-none
-                                focus:ring-indigo-500
-                                focus:border-indigo-500
-                                focus:z-10
-                                sm:text-sm
-                            "
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Password"
                         />
                     </div>
@@ -100,11 +56,7 @@
                     <div class="text-sm">
                         <a
                             href="#"
-                            class="
-                                font-medium
-                                text-primary-200
-                                hover:text-primary-100
-                            "
+                            class="font-medium text-primary-200 hover:text-primary-100"
                         >
                             Forgot your password?
                         </a>
@@ -114,26 +66,7 @@
                 <div>
                     <button
                         type="submit"
-                        class="
-                            group
-                            relative
-                            w-full
-                            flex
-                            justify-center
-                            py-2
-                            px-4
-                            border border-transparent
-                            text-sm
-                            font-medium
-                            rounded-md
-                            text-white
-                            bg-primary-200
-                            hover:bg-primary-300
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-offset-2
-                            focus:ring-primary-200
-                        "
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-200 hover:bg-primary-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-200"
                         @click="handleSubmit"
                     >
                         Login
@@ -163,10 +96,7 @@
                             <div class="form-group row">
                                 <label
                                     for="email"
-                                    class="
-                                        col-sm-4 col-form-label
-                                        text-md-right
-                                    "
+                                    class="col-sm-4 col-form-label text-md-right"
                                     >E-Mail Address</label
                                 >
                                 <div class="col-md-6">
@@ -185,10 +115,7 @@
                             <div class="form-group row">
                                 <label
                                     for="password"
-                                    class="
-                                        col-md-4 col-form-label
-                                        text-md-right
-                                    "
+                                    class="col-md-4 col-form-label text-md-right"
                                     >Password</label
                                 >
                                 <div class="col-md-6">

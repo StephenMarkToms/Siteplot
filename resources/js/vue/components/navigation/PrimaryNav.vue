@@ -63,16 +63,7 @@
                                 <button
                                     id="user-menu-button"
                                     type="button"
-                                    class="
-                                        bg-white
-                                        rounded-full
-                                        flex
-                                        text-sm
-                                        focus:outline-none
-                                        focus:ring-2
-                                        focus:ring-offset-2
-                                        focus:ring-indigo-500
-                                    "
+                                    class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     aria-expanded="false"
                                     aria-haspopup="true"
                                 >
@@ -87,19 +78,7 @@
                         </div>
                         <template #content>
                             <div
-                                class="
-                                    origin-top-right
-                                    absolute
-                                    right-0
-                                    mt-2
-                                    w-48
-                                    rounded-md
-                                    shadow-lg
-                                    py-1
-                                    bg-white
-                                    ring-1 ring-black ring-opacity-5
-                                    focus:outline-none
-                                "
+                                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 role="menu"
                                 aria-orientation="vertical"
                                 aria-labelledby="user-menu-button"
@@ -110,12 +89,7 @@
                                 <a
                                     id="user-menu-item-2"
                                     href="#"
-                                    class="
-                                        block
-                                        px-4
-                                        py-2
-                                        text-sm text-gray-700
-                                    "
+                                    class="block px-4 py-2 text-sm text-gray-700"
                                     role="menuitem"
                                     tabindex="-1"
                                     @click="logout()"

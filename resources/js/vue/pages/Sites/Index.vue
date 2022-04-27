@@ -14,24 +14,7 @@
                                         v-model="websiteName"
                                         name="name"
                                         placeholder="Search"
-                                        class="
-                                            h-10
-                                            text-primary-700
-                                            appearance-none
-                                            w-full
-                                            px-3
-                                            py-2
-                                            border border-gray-300
-                                            rounded-md
-                                            placeholder-primary-400
-                                            focus:outline-none
-                                            focus:shadow-outline-blue
-                                            focus:border-blue-300
-                                            transition
-                                            duration-150
-                                            ease-in-out
-                                            sm:text-sm sm:leading-5
-                                        "
+                                        class="h-10 text-primary-700 appearance-none w-full px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                                         @input="
                                             websiteName === '' && getWebsites()
                                         "
@@ -57,14 +40,7 @@
                                 <div
                                     v-for="(website, index) in websites"
                                     :key="index"
-                                    class="
-                                        flex
-                                        space-x-6
-                                        rounded-lg
-                                        cursor-pointer
-                                        hover:bg-gray-100
-                                        p-2
-                                    "
+                                    class="flex space-x-6 rounded-lg cursor-pointer hover:bg-gray-100 p-2"
                                     @click="
                                         $router.push(
                                             `/sites/view/${website.id}`
@@ -75,12 +51,7 @@
                                         class="w-24 h-20 rounded-lg bg-gray-200"
                                     ></div>
                                     <div
-                                        class="
-                                            my-auto
-                                            flex
-                                            w-full
-                                            justify-between
-                                        "
+                                        class="my-auto flex w-full justify-between"
                                     >
                                         <div>
                                             <div class="font-bold">
@@ -119,12 +90,7 @@
                                         />
                                     </svg>
                                     <h3
-                                        class="
-                                            mt-2
-                                            text-sm
-                                            font-medium
-                                            text-gray-900
-                                        "
+                                        class="mt-2 text-sm font-medium text-gray-900"
                                     >
                                         No websites
                                     </h3>
