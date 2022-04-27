@@ -61,12 +61,24 @@
                                                 {{ website.domain }}
                                             </div>
                                         </div>
-                                        <div>
-                                            <div class="font-medium">
-                                                {{ website.created_at }}
-                                            </div>
-                                            <div class="text-sm text-gray-500">
-                                                {{ website.updated_at }}
+                                        <div class="justify-end flex">
+                                            <div class="w-48 text-right">
+                                                <div class="font-medium">
+                                                    {{
+                                                        $dayjs(
+                                                            website.created_at
+                                                        ).format('MMM DD, YYYY')
+                                                    }}
+                                                </div>
+                                                <div
+                                                    class="text-sm text-gray-500"
+                                                >
+                                                    {{
+                                                        $dayjs(
+                                                            website.updated_at
+                                                        ).format('MMM DD, YYYY')
+                                                    }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

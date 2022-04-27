@@ -11,6 +11,7 @@ require('./bootstrap')
  */
 
 import { createApp } from 'vue'
+import dayjs from 'dayjs'
 import axios from 'axios'
 import router from './vue/router'
 import App from './vue/App.vue'
@@ -22,6 +23,7 @@ import Wind from './vue/plugins/wind-components'
 import { Field, Form, ErrorMessage } from 'vee-validate'
 
 const app = createApp(App)
+app.config.globalProperties.$dayjs = dayjs
 app.config.globalProperties.$axios = axios
 app.component('WButtonsBase', WButtonsBase)
 app.component('PrimaryNav', PrimaryNav)

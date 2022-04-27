@@ -35,7 +35,13 @@
                         <div class="bg-gray-200 p-3 px-5 flex">
                             <div class="w-1/2">Domain:</div>
                             <div class="w-1/2">
-                                {{ website.domain }}
+                                <a
+                                    :href="`${website.domain}`"
+                                    target="_blank"
+                                    class="text-primary-200 font-medium"
+                                >
+                                    {{ website.domain }}
+                                </a>
                             </div>
                         </div>
                         <div class="p-3 px-5 flex">
@@ -47,13 +53,21 @@
                         <div class="bg-gray-200 p-3 px-5 flex">
                             <div class="w-1/2">Created:</div>
                             <div class="w-1/2">
-                                {{ website.created_at }}
+                                {{
+                                    $dayjs(website.created_at).format(
+                                        'MMM DD, YYYY'
+                                    )
+                                }}
                             </div>
                         </div>
                         <div class="p-3 px-5 flex">
                             <div class="w-1/2">Last Updated:</div>
                             <div class="w-1/2">
-                                {{ website.updated_at }}
+                                {{
+                                    $dayjs(website.updated_at).format(
+                                        'MMM DD, YYYY'
+                                    )
+                                }}
                             </div>
                         </div>
                     </div>
