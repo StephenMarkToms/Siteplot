@@ -6,6 +6,7 @@ import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import Sites from '../pages/Sites/Index'
 import CreateSite from '../pages/Sites/Create'
+import EditSite from '../pages/Sites/Edit'
 import ViewSite from '../pages/Sites/View'
 
 export const routes = [
@@ -64,6 +65,14 @@ export const routes = [
         component: ViewSite,
         meta: {
             title: 'View Site',
+        },
+    },
+    {
+        name: 'edit-site',
+        path: '/sites/edit/:id',
+        component: EditSite,
+        meta: {
+            title: 'Edit Site',
         },
     },
 ]

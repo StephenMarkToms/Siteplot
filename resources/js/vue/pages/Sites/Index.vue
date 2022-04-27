@@ -29,7 +29,6 @@
                                 </WButtonsBase>
                             </div>
                             <WButtonsBase
-                                icon="plus"
                                 @click="$router.push('/sites/create')"
                             >
                                 Create new
@@ -37,52 +36,11 @@
                         </div>
                         <div class="h-96 overflow-auto pr-5">
                             <div v-if="websites && websites.length > 0">
-                                <div
+                                <TableRow
                                     v-for="(website, index) in websites"
                                     :key="index"
-                                    class="flex space-x-6 rounded-lg cursor-pointer hover:bg-gray-100 p-2"
-                                    @click="
-                                        $router.push(
-                                            `/sites/view/${website.id}`
-                                        )
-                                    "
-                                >
-                                    <div
-                                        class="w-24 h-20 rounded-lg bg-gray-200"
-                                    ></div>
-                                    <div
-                                        class="my-auto flex w-full justify-between"
-                                    >
-                                        <div>
-                                            <div class="font-bold">
-                                                {{ website.name }}
-                                            </div>
-                                            <div class="text-sm text-gray-500">
-                                                {{ website.domain }}
-                                            </div>
-                                        </div>
-                                        <div class="justify-end flex">
-                                            <div class="w-48 text-right">
-                                                <div class="font-medium">
-                                                    {{
-                                                        $dayjs(
-                                                            website.created_at
-                                                        ).format('MMM DD, YYYY')
-                                                    }}
-                                                </div>
-                                                <div
-                                                    class="text-sm text-gray-500"
-                                                >
-                                                    {{
-                                                        $dayjs(
-                                                            website.updated_at
-                                                        ).format('MMM DD, YYYY')
-                                                    }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    :website="website"
+                                />
                             </div>
                             <div v-else-if="websites" class="h-full flex">
                                 <div class="text-center mx-auto my-auto">
@@ -136,11 +94,14 @@
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import LoadingList from '../../components/loading/List.vue'
+import TableRow from '../../components/siteplot/sites/TableRow.vue'
+
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
         LoadingList,
+        TableRow,
     },
     data() {
         return {

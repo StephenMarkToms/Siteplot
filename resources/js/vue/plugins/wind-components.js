@@ -7,7 +7,7 @@ export default {
                     neutral: 'focus:outline-none',
                     blank: 'focus:outline-none mx-1 w-5 h-5 my-auto',
                     primary:
-                        'focus:outline-none text-primary-600 mx-1 w-5 h-5 my-auto',
+                        'focus:outline-none text-primary-200 mx-1 w-5 h-5 my-auto',
                     danger: 'focus:outline-none text-secondary-800 hover:text-secondary-900 transition duration-150 mx-1 w-5 h-5 my-auto',
                     secondary:
                         'focus:outline-none text-secondary-600 mx-1 w-5 h-5 my-auto',
