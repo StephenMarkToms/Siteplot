@@ -4,6 +4,9 @@
             <PrimaryNav />
         </template>
         <template #content>
+            <WFeedbackModal ref="modal">
+                <div class="w-64">Hi</div>
+            </WFeedbackModal>
             <div class="space-y-2">
                 <div class="flex space-x-2">
                     <div class="w-full bg-white shadow p-5 rounded-lg">

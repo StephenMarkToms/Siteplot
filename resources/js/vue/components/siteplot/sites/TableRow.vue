@@ -23,7 +23,7 @@
                         </div>
                         <div
                             class="text-gray-400 hover:text-primary-500"
-                            @click.stop="deleteSite()"
+                            @click.stop="$refs.modal.isHidden = false"
                         >
                             delete
                         </div>

@@ -18,6 +18,7 @@ import App from './vue/App.vue'
 import Alert from './vue/components/feedback/Alert.vue'
 import WButtonsBase from './vue/components/buttons/Base.vue'
 import WIconsBase from './vue/components/icons/Base.vue'
+import WFeedbackModal from './vue/components/feedback/Modal.vue'
 import Popover from './vue/components/feedback/Popover.vue'
 import PrimaryNav from './vue/components/navigation/PrimaryNav.vue'
 import Wind from './vue/plugins/wind-components'
@@ -28,6 +29,7 @@ app.config.globalProperties.$dayjs = dayjs
 app.config.globalProperties.$axios = axios
 app.component('WButtonsBase', WButtonsBase)
 app.component('WIconsBase', WIconsBase)
+app.component('WFeedbackModal', WFeedbackModal)
 app.component('PrimaryNav', PrimaryNav)
 app.component('Popover', Popover)
 app.component('Alert', Alert)
