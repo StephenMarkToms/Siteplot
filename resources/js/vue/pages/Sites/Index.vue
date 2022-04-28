@@ -26,7 +26,6 @@
                                 </div>
                                 <WButtonsBase
                                     v-if="websiteName !== ''"
-                                    icon="plus"
                                     @click="clearSearch()"
                                 >
                                     Clear
@@ -74,7 +73,6 @@
                                     </p>
                                     <div class="mt-6">
                                         <WButtonsBase
-                                            icon="plus"
                                             class="mx-auto"
                                             @click="
                                                 $router.push('/sites/create')
