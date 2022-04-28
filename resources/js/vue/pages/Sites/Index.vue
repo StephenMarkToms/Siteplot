@@ -12,6 +12,7 @@
                                 <div class="w-56">
                                     <Field
                                         v-model="websiteName"
+                                        autocomplete="off"
                                         name="name"
                                         placeholder="Search"
                                         class="h-10 text-primary-700 appearance-none w-full px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
@@ -23,9 +24,9 @@
                                 <WButtonsBase
                                     v-if="websiteName !== ''"
                                     icon="plus"
-                                    @click="getWebsites()"
+                                    @click="clearSearch()"
                                 >
-                                    Search
+                                    Clear
                                 </WButtonsBase>
                             </div>
                             <WButtonsBase
@@ -107,7 +108,20 @@ export default {
         return {
             websiteName: '',
             websites: null,
+            loading: false,
         }
+    },
+    watch: {
+        websiteName(newValue) {
+            console.log('new')
+            this.loading = true
+            let debounce = setTimeout(() => {
+                if (this.websiteName !== '') {
+                    this.getWebsites()
+                }
+                this.loading = false
+            }, 600)
+        },
     },
     async mounted() {
         if (window.Laravel.user) {
@@ -116,6 +130,10 @@ export default {
         await this.getWebsites()
     },
     methods: {
+        clearSearch() {
+            this.websiteName = ''
+            this.getWebsites()
+        },
         async getWebsites() {
             await this.$axios
                 .post('graphql', {
