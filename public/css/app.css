@@ -778,8 +778,16 @@ select {
   margin-top: 1.5rem;
 }
 
+.-ml-8 {
+  margin-left: -2rem;
+}
+
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -900,6 +908,10 @@ select {
 
 .w-12 {
   width: 3rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .max-w-6xl {
@@ -1054,6 +1066,10 @@ select {
   overflow: auto;
 }
 
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -1189,6 +1205,11 @@ select {
 .bg-gray-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
 .p-5 {
@@ -1438,6 +1459,10 @@ select {
   color: rgb(27 58 75 / var(--tw-placeholder-opacity));
 }
 
+.opacity-75 {
+  opacity: 0.75;
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -1459,6 +1484,12 @@ select {
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1487,6 +1518,12 @@ select {
 
 .transition-opacity {
   transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1628,8 +1665,29 @@ select {
 
 @media (min-width: 640px) {
 
+  .sm\:my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
+  }
+
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:inline-block {
+    display: inline-block;
+  }
+
+  .sm\:h-screen {
+    height: 100vh;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
   }
 
   .sm\:px-6 {
@@ -1642,6 +1700,10 @@ select {
     padding-right: 1rem;
   }
 
+  .sm\:align-middle {
+    vertical-align: middle;
+  }
+
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -1649,6 +1711,13 @@ select {
 
   .sm\:leading-5 {
     line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .md\:w-auto {
+    width: auto;
   }
 }
 

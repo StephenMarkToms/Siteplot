@@ -4,6 +4,9 @@
             <PrimaryNav />
         </template>
         <template #content>
+            <WFeedbackModal ref="modal">
+                <div class="w-64">Hi</div>
+            </WFeedbackModal>
             <div class="space-y-2">
                 <div class="flex space-x-2">
                     <div class="w-full bg-white shadow p-5 rounded-lg">
@@ -41,6 +44,7 @@
                                     v-for="(website, index) in websites"
                                     :key="index"
                                     :website="website"
+                                    @delete="deleteSite"
                                 />
                             </div>
                             <div v-else-if="websites" class="h-full flex">
@@ -133,6 +137,9 @@ export default {
         clearSearch() {
             this.websiteName = ''
             this.getWebsites()
+        },
+        deleteSite(value) {
+            console.log('delete ' + value)
         },
         async getWebsites() {
             await this.$axios
