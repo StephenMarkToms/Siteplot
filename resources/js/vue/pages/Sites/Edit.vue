@@ -165,15 +165,16 @@ export default {
                 .post('/graphql', {
                     query: `
                     mutation {
-                        createWebsite(${query}) {
+                        updateWebsite(id: ${this.website.id}, name: "${this.website.name}", domain: "${this.website.domain}", netlify_build_hook: "${this.website.netlify_build_hook}") {
                             id
                         }
                     }
                     `,
                 })
                 .then((res) => {
+                    console.log('here')
                     this.$router.push(
-                        `/sites/view/${res.data.data.createWebsite.id}`
+                        `/sites/view/${res.data.data.updateWebsite.id}`
                     )
                 })
         },
