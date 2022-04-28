@@ -79,7 +79,7 @@
                                         />
                                     </div>
                                 </div>
-                                <WButtonsBase icon="plus" class="w-36 ml-auto">
+                                <WButtonsBase class="w-36 ml-auto">
                                     <div v-if="!submitting">Create</div>
                                     <div v-else>Creating...</div>
                                 </WButtonsBase>

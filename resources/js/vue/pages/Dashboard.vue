@@ -82,7 +82,6 @@
                                 </svg>
                             </router-link>
                             <WButtonsBase
-                                icon="plus"
                                 @click="$router.push('/sites/create')"
                             >
                                 Create new
