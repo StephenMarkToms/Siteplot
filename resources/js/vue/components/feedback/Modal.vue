@@ -1,5 +1,5 @@
 <template>
-    <div :class="['fixed z-30 inset-0 overflow-y-auto', { hidden: isHidden }]">
+    <div :class="['fixed z-30 inset-0 overflow-y-auto', { hidden: show }]">
         <div
             :class="[
                 'flex items-center justify-center min-h-screen p-2 sm:p-6 text-center sm:block',
@@ -27,25 +27,20 @@
     </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
-    props: {
-        canManuallyClose: {
-            type: Boolean,
-            default: true,
-            required: false,
-        },
+    computed: {
+        ...mapState({
+            show: (state) => state.modal.show,
+            canClose: (state) => state.modal.canClose,
+        }),
     },
-    data() {
-        return {
-            isHidden: true,
-        }
-    },
-
     methods: {
         closeModal() {
-            if (this.canManuallyClose) {
-                this.isHidden = !this.isHidden
-            }
+            console.log('hi')
+            // if (this.canClose) {
+            //     this.isHidden = !this.isHidden
+            // }
         },
     },
 }

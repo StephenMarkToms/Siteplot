@@ -8,6 +8,7 @@ import Sites from '../pages/Sites/Index'
 import CreateSite from '../pages/Sites/Create'
 import EditSite from '../pages/Sites/Edit'
 import ViewSite from '../pages/Sites/View'
+import DeleteSite from '../pages/Sites/Delete'
 
 export const routes = [
     {
@@ -73,6 +74,14 @@ export const routes = [
         component: EditSite,
         meta: {
             title: 'Edit Site',
+        },
+    },
+    {
+        name: 'delete-site',
+        path: '/sites/delete/:id',
+        component: DeleteSite,
+        meta: {
+            title: 'Delete Site',
         },
     },
 ]

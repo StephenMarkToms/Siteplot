@@ -1,5 +1,8 @@
 <template>
     <div class="h-screen bg-gray-100 overflow-auto">
+        <WFeedbackModal ref="modal">
+            <slot name="modal" />
+        </WFeedbackModal>
         <slot name="header" />
         <div class="pb-16 pt-16"></div>
         <main class="-mt-32">

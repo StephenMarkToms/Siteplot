@@ -3,10 +3,10 @@
         <template #header>
             <PrimaryNav />
         </template>
+        <template #modal>
+            <div class="w-64">Are you sure you want to delete this site?</div>
+        </template>
         <template #content>
-            <WFeedbackModal ref="modal">
-                <div class="w-64">Hi</div>
-            </WFeedbackModal>
             <div class="space-y-2">
                 <div class="flex space-x-2">
                     <div class="w-full bg-white shadow p-5 rounded-lg">
@@ -137,6 +137,7 @@ export default {
             this.getWebsites()
         },
         deleteSite(value) {
+            this.$refs.modal.isHidden = false
             console.log('delete ' + value)
         },
         async getWebsites() {
