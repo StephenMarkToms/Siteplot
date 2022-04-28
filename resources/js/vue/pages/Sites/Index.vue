@@ -137,7 +137,7 @@ export default {
             this.getWebsites()
         },
         deleteSite(value) {
-            this.$refs.modal.isHidden = false
+            this.$store.dispatch('modal/toggleModal')
             console.log('delete ' + value)
         },
         async getWebsites() {

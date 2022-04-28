@@ -4,11 +4,15 @@ const state = {
 }
 const getters = {}
 const actions = {
-    test(context) {
-        console.log('test')
+    toggleModal({ commit, state }) {
+        commit('setShow', !state.show)
     },
 }
-const mutations = {}
+const mutations = {
+    setShow(state, payload) {
+        state.show = payload
+    },
+}
 
 export default {
     namespaced: true,

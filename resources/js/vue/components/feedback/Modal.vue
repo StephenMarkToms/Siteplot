@@ -1,5 +1,5 @@
 <template>
-    <div :class="['fixed z-30 inset-0 overflow-y-auto', { hidden: show }]">
+    <div :class="['fixed z-30 inset-0 overflow-y-auto', { hidden: !show }]">
         <div
             :class="[
                 'flex items-center justify-center min-h-screen p-2 sm:p-6 text-center sm:block',
@@ -28,6 +28,7 @@
 </template>
 <script>
 import { mapState } from 'vuex'
+
 export default {
     computed: {
         ...mapState({
@@ -38,9 +39,7 @@ export default {
     methods: {
         closeModal() {
             console.log('hi')
-            // if (this.canClose) {
-            //     this.isHidden = !this.isHidden
-            // }
+            this.$store.dispatch('modal/toggleModal')
         },
     },
 }
