@@ -41,6 +41,7 @@
                                     v-for="(website, index) in websites"
                                     :key="index"
                                     :website="website"
+                                    @delete="deleteSite"
                                 />
                             </div>
                             <div v-else-if="websites" class="h-full flex">
@@ -133,6 +134,9 @@ export default {
         clearSearch() {
             this.websiteName = ''
             this.getWebsites()
+        },
+        deleteSite(value) {
+            console.log('delete ' + value)
         },
         async getWebsites() {
             await this.$axios

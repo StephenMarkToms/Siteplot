@@ -12,7 +12,7 @@
                     <div class="font-bold mr-2">
                         {{ website.name }}
                     </div>
-                    <div v-if="showActions">
+                    <div v-if="showActions" class="flex space-x-2">
                         <div
                             class="text-gray-400 hover:text-primary-500"
                             @click.stop="
@@ -20,6 +20,12 @@
                             "
                         >
                             edit
+                        </div>
+                        <div
+                            class="text-gray-400 hover:text-primary-500"
+                            @click.stop="deleteSite()"
+                        >
+                            delete
                         </div>
                     </div>
                 </div>
@@ -50,10 +56,16 @@ export default {
             required: true,
         },
     },
+    emits: ['delete'],
     data: function () {
         return {
             showActions: false,
         }
+    },
+    methods: {
+        deleteSite(event) {
+            this.$emit('delete', this.website.id)
+        },
     },
 }
 </script>
