@@ -14,6 +14,7 @@ import { createApp } from 'vue'
 import dayjs from 'dayjs'
 import axios from 'axios'
 import router from './vue/router'
+import store from './vue/store'
 import App from './vue/App.vue'
 import Alert from './vue/components/feedback/Alert.vue'
 import WButtonsBase from './vue/components/buttons/Base.vue'
@@ -37,6 +38,7 @@ app.component('Form', Form)
 app.component('Field', Field)
 app.component('ErrorMessage', ErrorMessage)
 app.use(router)
+app.use(store)
 app.use(Wind)
 // app.config.globalProperties.$wind = Wind
 // app.config.globalProperties.$wind = 'Wind'
