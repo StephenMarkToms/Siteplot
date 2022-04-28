@@ -33,12 +33,11 @@ export default {
             if (Array.isArray(this.icon)) {
                 return (
                     this.icon[0] &&
-                    require(`../../../../../../../public/icons/${this.icon}.svg?inline`)
+                    require(`../../../icons/${this.icon}.svg?inline`)
                 )
             }
             return (
-                this.icon &&
-                require(`../../../../../../../public/icons/${this.icon}.svg?inline`)
+                this.icon && require(`../../../icons/${this.icon}.svg?inline`)
             )
         },
     },

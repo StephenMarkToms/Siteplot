@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         <div class="mt-4">
-                            <WButtonsBase icon="plus" class="w-36 ml-auto">
+                            <WButtonsBase class="w-36 ml-auto">
                                 <div v-if="!submitting">Update</div>
                                 <div v-else>Updating...</div>
                             </WButtonsBase>
