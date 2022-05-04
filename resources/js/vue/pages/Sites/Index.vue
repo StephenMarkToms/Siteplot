@@ -37,7 +37,7 @@
                                 Create new
                             </WButtonsBase>
                         </div>
-                        <div class="h-96 overflow-auto pr-5">
+                        <div class="h-96 overflow-auto pr-5 minimal-scrollbar">
                             <div v-if="websites && websites.length > 0">
                                 <TableRow
                                     v-for="(website, index) in websites"

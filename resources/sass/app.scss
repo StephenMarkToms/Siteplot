@@ -1,8 +1,67 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@tailwind base;
 
-// Variables
-@import 'variables';
+@tailwind components;
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@tailwind utilities;
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 100vh;
+    border: 3px solid #edf2f7;
+}
+
+.minimal-scrollbar {
+    scrollbar-color: #acbbca #edf2f7;
+    scrollbar-width: thin;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.minimal-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 100vh;
+    border: 3px solid #acbbca;
+}
+
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #edf2f7;
+}
+
+// Hide scrollbar but keep scroll
+.no-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-bar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
