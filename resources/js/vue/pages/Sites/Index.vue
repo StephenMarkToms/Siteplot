@@ -4,7 +4,26 @@
             <PrimaryNav />
         </template>
         <template #modal>
-            <div class="w-64">Are you sure you want to delete this site?</div>
+            <Alert>
+                <template #header> Delete Site </template>
+                Are you sure you want to delete the
+                <span class="font-bold"> {{ selectedSite.name }}</span
+                >?
+                <template #buttons>
+                    <div class="justify-between flex">
+                        <WButtonsBase
+                            type="grayInverted"
+                            class="max-w-max"
+                            @click="$store.dispatch('modal/toggleModal')"
+                        >
+                            Cancel
+                        </WButtonsBase>
+                        <WButtonsBase type="danger" class="max-w-max">
+                            Delete
+                        </WButtonsBase>
+                    </div>
+                </template>
+            </Alert>
         </template>
         <template #content>
             <div class="space-y-2">
@@ -98,6 +117,7 @@
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import LoadingList from '../../components/loading/List.vue'
 import TableRow from '../../components/siteplot/sites/TableRow.vue'
+import Alert from '../../components/alerts/Modal.vue'
 
 export default {
     name: 'Dashboard',
@@ -105,12 +125,14 @@ export default {
         ContainedLayout,
         LoadingList,
         TableRow,
+        Alert,
     },
     data() {
         return {
             websiteName: '',
             websites: null,
             loading: false,
+            selectedSite: null,
         }
     },
     watch: {
@@ -138,31 +160,16 @@ export default {
         },
         deleteSite(value) {
             this.$store.dispatch('modal/toggleModal')
-            console.log('delete ' + value)
+            this.selectedSite = value
         },
         async getWebsites() {
-            await this.$axios
-                .post('graphql', {
-                    query: `
-                    {
-                        websites(first: 6, where: { column: NAME, operator: LIKE, value: "%${this.websiteName}%" }) {
-                            data{
-                                domain
-                                name
-                                id
-                                created_at
-                                updated_at
-                            }
-                            paginatorInfo {
-                                currentPage
-                                lastPage
-                            }
-                        }
-                    }
-                    `,
+            await this.$store
+                .dispatch('sites/searchWebsites', {
+                    name: this.websiteName,
+                    amount: 6,
                 })
-                .then((result) => {
-                    this.websites = result.data.data.websites.data
+                .then((websites) => {
+                    this.websites = websites
                 })
         },
     },

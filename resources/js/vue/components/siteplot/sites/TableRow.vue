@@ -64,7 +64,7 @@ export default {
     },
     methods: {
         deleteSite(event) {
-            this.$emit('delete', this.website.id)
+            this.$emit('delete', this.website)
         },
     },
 }

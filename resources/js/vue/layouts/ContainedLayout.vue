@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen bg-gray-100 overflow-auto">
-        <WFeedbackModal ref="modal">
+        <WFeedbackModal v-if="show" ref="modal">
             <slot name="modal" />
         </WFeedbackModal>
         <slot name="header" />
@@ -14,3 +14,14 @@
         </main>
     </div>
 </template>
+<script>
+import { mapState } from 'vuex'
+
+export default {
+    computed: {
+        ...mapState({
+            show: (state) => state.modal.show,
+        }),
+    },
+}
+</script>
