@@ -4,20 +4,24 @@
             <PrimaryNav />
         </template>
         <template #content>
-            <div>
-                {{ block }}
-            </div>
+            <Viewer>
+                <div>
+                    {{ block }}
+                </div>
+            </Viewer>
         </template>
     </ContainedLayout>
 </template>
 
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
+import Viewer from '../../components/viewers/ResponsiveWeb.vue'
 
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
+        Viewer,
     },
     data() {
         return {
