@@ -17,9 +17,11 @@ import router from './vue/router'
 import store from './vue/store'
 import App from './vue/App.vue'
 import Alert from './vue/components/feedback/Alert.vue'
+import WTabsHorizontal from './vue/components/tabs/Horizontal.vue'
 import WButtonsBase from './vue/components/buttons/Base.vue'
 import WIconsBase from './vue/components/icons/Base.vue'
 import WFeedbackModal from './vue/components/feedback/Modal.vue'
+import WLoadingSpinner from './vue/components/loading/Spinner.vue'
 import Popover from './vue/components/feedback/Popover.vue'
 import PrimaryNav from './vue/components/navigation/PrimaryNav.vue'
 import Wind from './vue/plugins/wind-components'
@@ -28,9 +30,11 @@ import { Field, Form, ErrorMessage } from 'vee-validate'
 const app = createApp(App)
 app.config.globalProperties.$dayjs = dayjs
 app.config.globalProperties.$axios = axios
+app.component('WTabsHorizontal', WTabsHorizontal)
 app.component('WButtonsBase', WButtonsBase)
 app.component('WIconsBase', WIconsBase)
 app.component('WFeedbackModal', WFeedbackModal)
+app.component('WLoadingSpinner', WLoadingSpinner)
 app.component('PrimaryNav', PrimaryNav)
 app.component('Popover', Popover)
 app.component('Alert', Alert)

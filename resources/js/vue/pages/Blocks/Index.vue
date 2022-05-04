@@ -51,8 +51,12 @@
                                         @input="blockName === '' && getBlocks()"
                                     />
                                 </div>
+                                <WLoadingSpinner
+                                    v-if="loading"
+                                    class="my-auto"
+                                />
                                 <WButtonsBase
-                                    v-if="blockName !== ''"
+                                    v-else-if="blockName !== ''"
                                     @click="clearSearch()"
                                 >
                                     Clear

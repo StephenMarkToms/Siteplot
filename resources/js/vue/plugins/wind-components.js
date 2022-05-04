@@ -29,6 +29,9 @@ export default {
             buttons: {
                 base: {
                     blank: 'focus:outline-none',
+                    tab: 'flex items-center py-5 px-1 text-center border-b-2 font-medium text-sm leading-5 focus:outline-none text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300',
+                    tabSelected:
+                        'flex py-5 px-1 text-center border-b-2 font-medium text-sm leading-5 focus:outline-none text-primary-600 border-primary-400',
                     grayActiveRounded:
                         'shadow-inner transition duration-300 focus:outline-none text-primary-300 ring-1 ring-transparent p-1 rounded-full',
                     grayRounded:
@@ -43,6 +46,13 @@ export default {
                     danger: 'w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto sm:text-sm',
                     dangerInverted:
                         'shadow-md w-full my-auto flex justify-center py-2 px-2 border text-sm font-medium rounded-md transition duration-150 ease-in-out w-full inline-flex justify-center py-2 px-4 border border-danger-300 rounded-md bg-white text-sm font-medium text-danger-500 hover:text-danger-400 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition duration-150 ease-in-out',
+                },
+            },
+            loading: {
+                spinner: {
+                    primary:
+                        'loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5 border-t-gray-500',
+                    button: 'loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5',
                 },
             },
         }

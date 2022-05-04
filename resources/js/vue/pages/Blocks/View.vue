@@ -4,11 +4,32 @@
             <PrimaryNav />
         </template>
         <template #content>
-            <Viewer>
-                <div>
-                    {{ block }}
+            <div v-if="block">
+                <div
+                    class="py-3 px-5 ring-1 ring-gray-200 bg-gray-100 rounded-t-lg shadow-lg flex justify-between"
+                >
+                    <div>
+                        <div class="text-sm font-medium">{{ block.name }}</div>
+                        <div class="text-xs text-gray-400">1.0.0</div>
+                    </div>
+                    <WButtonsBase
+                        type="blank"
+                        @click="
+                            $router.push({
+                                name: 'blocks-edit',
+                                params: { id: block.id },
+                            })
+                        "
+                    >
+                        <div class="text-sm text-gray-600 my-auto">edit</div>
+                    </WButtonsBase>
                 </div>
-            </Viewer>
+                <Viewer class="rounded-b-lg shadow-lg">
+                    <div>
+                        {{ block }}
+                    </div>
+                </Viewer>
+            </div>
         </template>
     </ContainedLayout>
 </template>

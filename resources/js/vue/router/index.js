@@ -13,6 +13,7 @@ import SitesDelete from '../pages/Sites/Delete'
 import BlocksIndex from '../pages/Blocks/Index'
 import BlocksCreate from '../pages/Blocks/Create'
 import BlocksView from '../pages/Blocks/View'
+import BlocksEdit from '../pages/Blocks/Edit'
 
 export const routes = [
     {
@@ -128,6 +129,14 @@ export const routes = [
         component: BlocksView,
         meta: {
             title: 'View Block',
+        },
+    },
+    {
+        name: 'blocks-edit',
+        path: '/blocks/edit/:id',
+        component: BlocksEdit,
+        meta: {
+            title: 'Edit Block',
         },
     },
 ]

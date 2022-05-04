@@ -3,11 +3,6 @@
 </template>
 
 <script>
-const classes = {
-    primary:
-        'loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-20 w-20',
-    button: 'loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-5 w-5',
-}
 export default {
     props: {
         type: {
@@ -18,7 +13,33 @@ export default {
     },
     computed: {
         classes() {
-            return classes[this.type]
+            // Array is allowed to allow conditional type usage via array
+            // Example:
+            // <ButtonsBase
+            //   :type="[processingPayment ? 'primaryInverted' : 'primary']"
+            //   @click.native="createPayment"
+            // >
+            //   <WLoadingSpinner type="button" class="mx-auto" />
+            // </ButtonsBase>
+
+            if (Array.isArray(this.type)) {
+                return this.$wind.loading.spinner[this.type[0]]
+            }
+
+            // Object is allowed as a type choice so that we can conditionally render the styles on a button object
+            // Example:
+            // <ButtonsBase
+            //   :type="{ primaryInverted: processingPayment }"
+            //   @click.native="createPayment"
+            // >
+            //   <WLoadingSpinner type="button" class="mx-auto" />
+            // </ButtonsBase>
+
+            if (typeof this.type === 'object') {
+                return this.$wind.loading.spinner[Object.keys(this.type)[0]]
+            }
+
+            return this.$wind.loading.spinner[this.type]
         },
     },
 }
@@ -26,7 +47,6 @@ export default {
 
 <style>
 .loader {
-    border-top-color: #5eabc4;
     -webkit-animation: spinner 1.5s linear infinite;
     animation: spinner 1.5s linear infinite;
 }

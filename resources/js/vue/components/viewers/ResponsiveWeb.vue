@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-white p-4 rounded-lg shadow-lg">
-        <div class="w-32 ml-auto mb-8 flex space-x-3">
+    <div class="bg-white p-4">
+        <div class="w-32 mx-auto mb-5 flex space-x-3">
             <WButtonsBase
                 :type="mode === 'desktop' ? 'grayActiveRounded' : 'grayRounded'"
                 @click="mode = 'desktop'"
