@@ -69,7 +69,7 @@
                         >
                             <div
                                 v-if="blocks && blocks.length > 0"
-                                class="grid grid-cols-4 gap-6"
+                                class="grid grid-cols-4 gap-6 p-3"
                             >
                                 <BlockTile
                                     v-for="(block, index) in blocks"
@@ -77,7 +77,7 @@
                                     :block="block"
                                 />
                             </div>
-                            <div v-else-if="blocks" class="h-full flex">
+                            <div v-else-if="blocks" class="flex">
                                 <div class="text-center mx-auto my-auto">
                                     <svg
                                         class="mx-auto h-12 w-12 text-gray-400"
@@ -107,7 +107,9 @@
                                         <WButtonsBase
                                             class="mx-auto"
                                             @click="
-                                                $router.push('/sites/create')
+                                                $router.push({
+                                                    name: 'blocks-create',
+                                                })
                                             "
                                         >
                                             Get started
