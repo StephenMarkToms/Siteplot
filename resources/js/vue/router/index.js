@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import About from '../pages/About'
 import Register from '../pages/Register'
+import Error from '../pages/Error'
 import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import SitesIndex from '../pages/Sites/Index'
@@ -11,8 +12,27 @@ import SitesSettings from '../pages/Sites/Settings'
 import SitesDelete from '../pages/Sites/Delete'
 import BlocksIndex from '../pages/Blocks/Index'
 import BlocksCreate from '../pages/Blocks/Create'
+import BlocksView from '../pages/Blocks/View'
 
 export const routes = [
+    {
+        props: true,
+        name: 'known-error',
+        path: '/error',
+        component: Error,
+        meta: {
+            title: 'Error',
+        },
+    },
+    {
+        props: true,
+        name: 'error',
+        path: '/:catchAll(.*)',
+        component: Error,
+        meta: {
+            title: 'Error',
+        },
+    },
     {
         name: 'about',
         path: '/about',
@@ -100,6 +120,14 @@ export const routes = [
         component: BlocksCreate,
         meta: {
             title: 'Create Block',
+        },
+    },
+    {
+        name: 'blocks-view',
+        path: '/blocks/view/:id',
+        component: BlocksView,
+        meta: {
+            title: 'View Block',
         },
     },
 ]

@@ -1,3 +1,5 @@
+import router from '../../router'
+
 const state = {}
 const getters = {}
 const actions = {
@@ -46,6 +48,37 @@ const actions = {
             .then((result) => {
                 return result.data.data.search_block_types.data
             })
+    },
+    async getBlockTypeById({}, id) {
+        return await new Promise(function (resolve, reject) {
+            axios
+                .post('/graphql', {
+                    query: `
+                    {
+                        block_type(id: ${id}){
+                            name
+                            file_name
+                            id
+                            created_at
+                            updated_at
+                        }
+                    }
+                    `,
+                })
+                .then((res) => {
+                    if (res.data.data.block_type) {
+                        resolve(res.data.data.block_type)
+                    } else {
+                        reject()
+                        router.push({
+                            name: 'known-error',
+                            params: {
+                                error: "The block you're looking for cannot be found.",
+                            },
+                        })
+                    }
+                })
+        })
     },
 }
 const mutations = {}

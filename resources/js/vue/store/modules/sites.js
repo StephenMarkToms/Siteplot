@@ -1,3 +1,5 @@
+import router from '../../router'
+
 const state = {}
 const getters = {}
 const actions = {
@@ -61,9 +63,10 @@ const actions = {
             })
     },
     async getWebsiteById({}, id) {
-        return await axios
-            .post('/graphql', {
-                query: `
+        return await new Promise(function (resolve, reject) {
+            axios
+                .post('/graphql', {
+                    query: `
                     {
                         website(id: ${id}){
                             name
@@ -75,10 +78,21 @@ const actions = {
                         }
                     }
                     `,
-            })
-            .then((res) => {
-                return res.data.data.website
-            })
+                })
+                .then((res) => {
+                    if (res.data.data.website) {
+                        resolve(res.data.data.website)
+                    } else {
+                        reject()
+                        router.push({
+                            name: 'known-error',
+                            params: {
+                                error: "The website you're looking for cannot be found.",
+                            },
+                        })
+                    }
+                })
+        })
     },
 }
 const mutations = {}
