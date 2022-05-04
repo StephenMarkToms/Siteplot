@@ -2,7 +2,7 @@
     <div
         class="flex space-x-6 rounded-lg cursor-pointer hover:bg-gray-100 p-2"
         @click="
-            $router.push({ name: 'site-settings', params: { id: website.id } })
+            $router.push({ name: 'sites-settings', params: { id: website.id } })
         "
         @mouseenter="showActions = true"
         @mouseleave="showActions = false"
@@ -19,7 +19,7 @@
                             class="text-gray-400 hover:text-primary-500"
                             @click.stop="
                                 $router.push({
-                                    name: 'site-settings',
+                                    name: 'sites-settings',
                                     params: { id: website.id },
                                 })
                             "
@@ -30,7 +30,7 @@
                             class="text-gray-400 hover:text-primary-500"
                             @click.stop="
                                 $router.push({
-                                    name: 'edit-site',
+                                    name: 'sites-edit',
                                     params: { id: website.id },
                                 })
                             "

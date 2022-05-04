@@ -20,7 +20,7 @@
                     </div>
                     <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
-                            to="/dashboard"
+                            :to="{ name: 'dashboard' }"
                             :class="
                                 $route.name === 'dashboard'
                                     ? 'nav-link border-gray-300'
@@ -32,7 +32,7 @@
                     </div>
                     <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
-                            to="/sites"
+                            :to="{ name: 'sites' }"
                             :class="
                                 $route.name === 'sites'
                                     ? 'nav-link border-gray-300'
@@ -44,7 +44,7 @@
                     </div>
                     <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
-                            to="/blocks"
+                            :to="{ name: 'blocks' }"
                             :class="
                                 $route.name === 'blocks'
                                     ? 'nav-link border-gray-300'

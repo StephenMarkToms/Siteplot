@@ -116,25 +116,13 @@ export default {
             return value ? true : 'This field is required'
         },
         async onSubmit(values) {
-            let query = JSON.stringify(values)
-                .replace(/[{}]/g, '')
-                .replace(/"([^"]+)":/g, '$1:')
             this.submitting = true
-            await this.$axios
-                .post('/graphql', {
-                    query: `
-                    mutation {
-                        createWebsite(${query}) {
-                            id
-                        }
-                    }
-                    `,
+            this.$store.dispatch('sites/createWebsite', values).then((res) => {
+                this.$router.push({
+                    name: 'sites-settings',
+                    params: { id: res },
                 })
-                .then((res) => {
-                    this.$router.push(
-                        `/sites/view/${res.data.data.createWebsite.id}`
-                    )
-                })
+            })
         },
     },
 }

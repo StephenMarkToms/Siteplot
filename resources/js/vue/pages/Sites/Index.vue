@@ -61,7 +61,7 @@
                                 </WButtonsBase>
                             </div>
                             <WButtonsBase
-                                @click="$router.push('/sites/create')"
+                                @click="$router.push({ name: 'sites-create' })"
                             >
                                 Create new site
                             </WButtonsBase>
@@ -104,7 +104,9 @@
                                         <WButtonsBase
                                             class="mx-auto"
                                             @click="
-                                                $router.push('/sites/create')
+                                                $router.push({
+                                                    name: 'sites-create',
+                                                })
                                             "
                                         >
                                             Get started

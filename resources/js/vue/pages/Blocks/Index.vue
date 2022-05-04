@@ -61,7 +61,7 @@
                                 </WButtonsBase>
                             </div>
                             <WButtonsBase
-                                @click="$router.push('/sites/create')"
+                                @click="$router.push({ name: 'blocks-create' })"
                             >
                                 Create new block
                             </WButtonsBase>
@@ -492,7 +492,6 @@
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import LoadingList from '../../components/loading/List.vue'
-import TableRow from '../../components/siteplot/sites/TableRow.vue'
 import Alert from '../../components/alerts/Modal.vue'
 
 export default {
@@ -500,7 +499,6 @@ export default {
     components: {
         ContainedLayout,
         LoadingList,
-        TableRow,
         Alert,
     },
     data() {

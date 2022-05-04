@@ -41,6 +41,45 @@ const actions = {
                 return result.data
             })
     },
+    async createWebsite({}, values) {
+        let query = JSON.stringify(values)
+            .replace(/[{}]/g, '')
+            .replace(/"([^"]+)":/g, '$1:')
+        return await axios
+            .post('/graphql', {
+                query: `
+                    mutation {
+                        createWebsite(${query}) {
+                            id
+                        }
+                    }
+                    `,
+            })
+            .then((res) => {
+                console.log(res)
+                return res.data.data.createWebsite.id
+            })
+    },
+    async getWebsiteById({}, id) {
+        return await axios
+            .post('/graphql', {
+                query: `
+                    {
+                        website(id: ${id}){
+                            name
+                            domain
+                            netlify_build_hook
+                            id
+                            created_at
+                            updated_at
+                        }
+                    }
+                    `,
+            })
+            .then((res) => {
+                return res.data.data.website
+            })
+    },
 }
 const mutations = {}
 

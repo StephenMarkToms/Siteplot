@@ -95,23 +95,10 @@ export default {
         if (window.Laravel.user) {
             this.name = window.Laravel.user.name
         }
-        this.$axios
-            .post('/graphql', {
-                query: `
-                    {
-                        website(id: ${this.$route.params.id}){
-                            name
-                            domain
-                            netlify_build_hook
-                            id
-                            created_at
-                            updated_at
-                        }
-                    }
-                    `,
-            })
-            .then((res) => {
-                this.website = res.data.data.website
+        this.$store
+            .dispatch('sites/getWebsiteById', this.$route.params.id)
+            .then((website) => {
+                this.website = website
             })
     },
     methods: {

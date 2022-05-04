@@ -47,7 +47,7 @@ type BlockType {
     name: String!
     file_name: String!
     component: String!
-    team_id: Number!
+    team_id: Number
     created_at: DateTime!
     updated_at: DateTime!
 }
@@ -159,5 +159,8 @@ type Mutation {
 
   createWebsite(name: String!, domain: String!, netlify_build_hook: String): Website! @create @guard
   updateWebsite(id: ID!, name: String, domain: String, netlify_build_hook: String): Website! @update @guard
-  deleteWebsite(id: [ID!]!): [Website!]! @delete
+  deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
+
+  createBlockType(name: String!, file_name: String!, component: String): Website! @create @guard
+
 }

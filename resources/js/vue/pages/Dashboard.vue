@@ -114,12 +114,12 @@
                                 </svg>
                             </router-link>
                             <WButtonsBase
-                                @click="$router.push('/sites/create')"
+                                @click="$router.push({ name: 'sites-create' })"
                             >
                                 Create new site
                             </WButtonsBase>
                         </div>
-                        <div class="h-96 overflow-auto pr-2">
+                        <div class="h-96 overflow-auto pr-2 minimal-scrollbar">
                             <TableRow
                                 v-for="(website, index) in websites"
                                 :key="index"

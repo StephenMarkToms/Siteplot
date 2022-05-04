@@ -5,11 +5,12 @@ import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
 import SitesIndex from '../pages/Sites/Index'
-import CreateSite from '../pages/Sites/Create'
-import EditSite from '../pages/Sites/Edit'
-import SiteSettings from '../pages/Sites/Settings'
-import DeleteSite from '../pages/Sites/Delete'
+import SitesCreate from '../pages/Sites/Create'
+import SitesEdit from '../pages/Sites/Edit'
+import SitesSettings from '../pages/Sites/Settings'
+import SitesDelete from '../pages/Sites/Delete'
 import BlocksIndex from '../pages/Blocks/Index'
+import BlocksCreate from '../pages/Blocks/Create'
 
 export const routes = [
     {
@@ -54,33 +55,33 @@ export const routes = [
         },
     },
     {
-        name: 'create-sites',
+        name: 'sites-create',
         path: '/sites/create',
-        component: CreateSite,
+        component: SitesCreate,
         meta: {
             title: 'Create Site',
         },
     },
     {
-        name: 'site-settings',
+        name: 'sites-settings',
         path: '/sites/settings/:id',
-        component: SiteSettings,
+        component: SitesSettings,
         meta: {
             title: 'Site Settings',
         },
     },
     {
-        name: 'edit-site',
+        name: 'sites-edit',
         path: '/sites/edit/:id',
-        component: EditSite,
+        component: SitesEdit,
         meta: {
             title: 'Edit Site',
         },
     },
     {
-        name: 'delete-site',
+        name: 'sites-delete',
         path: '/sites/delete/:id',
-        component: DeleteSite,
+        component: SitesDelete,
         meta: {
             title: 'Delete Site',
         },
@@ -91,6 +92,14 @@ export const routes = [
         component: BlocksIndex,
         meta: {
             title: 'Blocks',
+        },
+    },
+    {
+        name: 'blocks-create',
+        path: '/blocks/create',
+        component: BlocksCreate,
+        meta: {
+            title: 'Create Block',
         },
     },
 ]
