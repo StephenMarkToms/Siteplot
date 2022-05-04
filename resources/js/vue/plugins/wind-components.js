@@ -29,9 +29,9 @@ export default {
             buttons: {
                 base: {
                     blank: 'focus:outline-none',
-                    tab: 'flex items-center py-5 px-1 text-center border-b-2 font-medium text-sm leading-5 focus:outline-none text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300',
+                    tab: 'transition-all duration-300 flex items-center py-5 px-1 text-center border-b-2 font-medium text-sm leading-5  text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 focus:text-gray-700',
                     tabSelected:
-                        'flex py-5 px-1 text-center border-b-2 font-medium text-sm leading-5 focus:outline-none text-primary-600 border-primary-400',
+                        'transition-all duration-300 flex py-5 px-1 text-center border-b-2 font-medium text-sm leading-5  text-primary-500 border-primary-400',
                     grayActiveRounded:
                         'shadow-inner transition duration-300 focus:outline-none text-primary-300 ring-1 ring-transparent p-1 rounded-full',
                     grayRounded:

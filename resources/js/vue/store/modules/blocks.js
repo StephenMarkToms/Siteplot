@@ -58,6 +58,7 @@ const actions = {
                         block_type(id: ${id}){
                             name
                             file_name
+                            component
                             id
                             created_at
                             updated_at

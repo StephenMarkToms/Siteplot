@@ -8,24 +8,34 @@
                 <div
                     class="pt-3 px-5 ring-1 ring-gray-200 bg-gray-100 rounded-t-lg shadow-lg flex justify-between"
                 >
-                    <div>
+                    <div class="my-auto">
                         <div class="text-sm font-medium">{{ block.name }}</div>
                         <div class="text-xs text-gray-400">1.0.0</div>
                     </div>
                     <WTabsHorizontal
                         v-model="view"
-                        class="w-64"
-                        :tabs="['code', 'data', 'preview']"
+                        class="w-1/4 my-auto"
+                        :tabs="['meta', 'code', 'data', 'preview']"
                     />
-                </div>
-                <Viewer
-                    v-if="view === 'preview'"
-                    class="rounded-b-lg shadow-lg"
-                >
-                    <div>
-                        {{ block }}
+                    <div class="my-auto">
+                        <WButtonsBase class="w-32">Save</WButtonsBase>
                     </div>
-                </Viewer>
+                </div>
+                <div
+                    class="rounded-b-lg shadow-lg overflow-hidden bg-white py-8"
+                >
+                    <Viewer v-if="view === 'preview'">
+                        <div>
+                            {{ block }}
+                        </div>
+                    </Viewer>
+                    <div :class="['bg-white p-4', view !== 'meta' && 'hidden']">
+                        <BlockForm
+                            class="max-w-screen-md mx-auto"
+                            :block="{ ...block }"
+                        />
+                    </div>
+                </div>
             </div>
         </template>
     </ContainedLayout>
@@ -34,18 +44,20 @@
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import Viewer from '../../components/viewers/ResponsiveWeb.vue'
+import BlockForm from '../../components/siteplot/forms/BlockType.vue'
 
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
         Viewer,
+        BlockForm,
     },
     data() {
         return {
             block: null,
             submitting: false,
-            view: 'code',
+            view: 'meta',
         }
     },
     created() {
