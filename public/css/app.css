@@ -1230,6 +1230,9 @@ select {
 .font-semibold {
   font-weight: 600;
 }
+.lowercase {
+  text-transform: lowercase;
+}
 .italic {
   font-style: italic;
 }
@@ -3086,6 +3089,10 @@ select {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.lowercase {
+  text-transform: lowercase;
 }
 
 .italic {
