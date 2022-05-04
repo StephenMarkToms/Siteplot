@@ -198,7 +198,6 @@ export default {
                             password: this.password,
                         })
                         .then((response) => {
-                            console.log(response.data)
                             if (response.data.success) {
                                 this.$router.go('/dashboard')
                             } else {

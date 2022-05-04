@@ -6,9 +6,14 @@
         <template #modal>
             <Alert>
                 <template #header> Delete Site </template>
-                Are you sure you want to delete the
-                <span class="font-bold"> {{ selectedSite.name }}</span
-                >?
+                Please confirm that you wish to delete the
+                <span class="font-bold"> {{ selectedSite.name }}</span> site by
+                typing in the name below.
+                <Field
+                    v-model="deletePrompt"
+                    name="domain"
+                    class="mt-2 h-10 text-primary-700 appearance-none w-3/4 px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                />
                 <template #buttons>
                     <div class="justify-between flex">
                         <WButtonsBase
@@ -18,7 +23,12 @@
                         >
                             Cancel
                         </WButtonsBase>
-                        <WButtonsBase type="danger" class="max-w-max">
+                        <WButtonsBase
+                            v-if="deletePrompt === selectedSite.name"
+                            :type="'danger'"
+                            class="max-w-max"
+                            @click="deleteWebsite"
+                        >
                             Delete
                         </WButtonsBase>
                     </div>
@@ -62,7 +72,7 @@
                                     v-for="(website, index) in websites"
                                     :key="index"
                                     :website="website"
-                                    @delete="deleteSite"
+                                    @delete="promptDelete"
                                 />
                             </div>
                             <div v-else-if="websites" class="h-full flex">
@@ -133,11 +143,11 @@ export default {
             websites: null,
             loading: false,
             selectedSite: null,
+            deletePrompt: null,
         }
     },
     watch: {
         websiteName(newValue) {
-            console.log('new')
             this.loading = true
             let debounce = setTimeout(() => {
                 if (this.websiteName !== '') {
@@ -158,9 +168,20 @@ export default {
             this.websiteName = ''
             this.getWebsites()
         },
-        deleteSite(value) {
+        promptDelete(value) {
             this.$store.dispatch('modal/toggleModal')
             this.selectedSite = value
+            this.deletePrompt = null
+        },
+        async deleteWebsite(id) {
+            await this.$store
+                .dispatch('sites/deleteWebsite', {
+                    id: this.selectedSite.id,
+                })
+                .then((websites) => {
+                    this.$store.dispatch('modal/toggleModal')
+                    this.getWebsites()
+                })
         },
         async getWebsites() {
             await this.$store

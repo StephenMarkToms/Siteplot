@@ -172,7 +172,6 @@ export default {
                     `,
                 })
                 .then((res) => {
-                    console.log('here')
                     this.$router.push(
                         `/sites/view/${res.data.data.updateWebsite.id}`
                     )

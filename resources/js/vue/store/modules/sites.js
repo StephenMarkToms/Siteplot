@@ -23,8 +23,22 @@ const actions = {
                     `,
             })
             .then((result) => {
-                console.log(result.data.data.websites.data)
                 return result.data.data.websites.data
+            })
+    },
+    deleteWebsite({}, { id }) {
+        return axios
+            .post('graphql', {
+                query: `
+                    mutation {
+                        deleteWebsite(id: ${id}) {
+                            name
+                        }
+                    }
+                    `,
+            })
+            .then((result) => {
+                return result.data
             })
     },
 }
