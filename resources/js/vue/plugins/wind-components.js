@@ -29,6 +29,8 @@ export default {
             buttons: {
                 base: {
                     blank: 'focus:outline-none',
+                    grayActiveRounded:
+                        'shadow-inner transition duration-300 focus:outline-none text-primary-300 ring-1 ring-transparent p-1 rounded-full',
                     grayRounded:
                         'shadow-inner transition duration-300 text-gray-400 focus:outline-none hover:text-primary-300 ring-1 ring-transparent hover:ring-gray-300 hover:bg-gray-50 p-1 rounded-full',
                     grayInverted:
