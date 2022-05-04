@@ -7,7 +7,7 @@ import Dashboard from '../pages/Dashboard'
 import Sites from '../pages/Sites/Index'
 import CreateSite from '../pages/Sites/Create'
 import EditSite from '../pages/Sites/Edit'
-import ViewSite from '../pages/Sites/View'
+import SiteSettings from '../pages/Sites/Settings'
 import DeleteSite from '../pages/Sites/Delete'
 
 export const routes = [
@@ -61,11 +61,11 @@ export const routes = [
         },
     },
     {
-        name: 'view-site',
-        path: '/sites/view/:id',
-        component: ViewSite,
+        name: 'site-settings',
+        path: '/sites/settings/:id',
+        component: SiteSettings,
         meta: {
-            title: 'View Site',
+            title: 'Site Settings',
         },
     },
     {

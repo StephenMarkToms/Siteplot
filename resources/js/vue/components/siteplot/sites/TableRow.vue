@@ -1,7 +1,9 @@
 <template>
     <div
         class="flex space-x-6 rounded-lg cursor-pointer hover:bg-gray-100 p-2"
-        @click="$router.push(`/sites/view/${website.id}`)"
+        @click="
+            $router.push({ name: 'site-settings', params: { id: website.id } })
+        "
         @mouseenter="showActions = true"
         @mouseleave="showActions = false"
     >
@@ -16,7 +18,21 @@
                         <div
                             class="text-gray-400 hover:text-primary-500"
                             @click.stop="
-                                $router.push(`/sites/edit/${website.id}`)
+                                $router.push({
+                                    name: 'site-settings',
+                                    params: { id: website.id },
+                                })
+                            "
+                        >
+                            settings
+                        </div>
+                        <div
+                            class="text-gray-400 hover:text-primary-500"
+                            @click.stop="
+                                $router.push({
+                                    name: 'edit-site',
+                                    params: { id: website.id },
+                                })
                             "
                         >
                             edit

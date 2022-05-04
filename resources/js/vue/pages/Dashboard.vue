@@ -3,6 +3,38 @@
         <template #header>
             <PrimaryNav />
         </template>
+        <template #modal>
+            <Alert>
+                <template #header> Delete Site </template>
+                Please confirm that you wish to delete the
+                <span class="font-bold"> {{ selectedSite.name }}</span> site by
+                typing in the name below.
+                <Field
+                    v-model="deletePrompt"
+                    name="domain"
+                    class="mt-2 h-10 text-primary-700 appearance-none w-3/4 px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                />
+                <template #buttons>
+                    <div class="justify-between flex">
+                        <WButtonsBase
+                            type="grayInverted"
+                            class="max-w-max"
+                            @click="$store.dispatch('modal/toggleModal')"
+                        >
+                            Cancel
+                        </WButtonsBase>
+                        <WButtonsBase
+                            v-if="deletePrompt === selectedSite.name"
+                            :type="'danger'"
+                            class="max-w-max"
+                            @click="deleteWebsite"
+                        >
+                            Delete
+                        </WButtonsBase>
+                    </div>
+                </template>
+            </Alert>
+        </template>
         <template #content>
             <div class="space-y-2">
                 <div class="flex space-x-2">
@@ -88,26 +120,12 @@
                             </WButtonsBase>
                         </div>
                         <div class="h-96 overflow-auto pr-2">
-                            <div
+                            <TableRow
                                 v-for="(website, index) in websites"
                                 :key="index"
-                                class="flex space-x-6 rounded-lg cursor-pointer hover:bg-gray-100 p-2"
-                                @click="
-                                    $router.push(`/sites/view/${website.id}`)
-                                "
-                            >
-                                <div
-                                    class="w-24 h-20 rounded-lg bg-gray-200"
-                                ></div>
-                                <div class="my-auto">
-                                    <div class="font-bold">
-                                        {{ website.name }}
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        {{ website.domain }}
-                                    </div>
-                                </div>
-                            </div>
+                                :website="website"
+                                @delete="promptDelete"
+                            />
                         </div>
                     </div>
                     <div class="w-1/3 bg-white shadow p-5 rounded-lg">
@@ -126,16 +144,23 @@
 
 <script>
 import ContainedLayout from '../layouts/ContainedLayout.vue'
+import TableRow from '../components/siteplot/sites/TableRow.vue'
+import Alert from '../components/alerts/Modal.vue'
+
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
+        TableRow,
+        Alert,
     },
     data() {
         return {
             name: null,
             totalWebsites: null,
             websites: [],
+            selectedSite: null,
+            deletePrompt: null,
         }
     },
     created() {
@@ -145,12 +170,27 @@ export default {
         this.getWebsites()
     },
     methods: {
+        promptDelete(value) {
+            this.$store.dispatch('modal/toggleModal')
+            this.selectedSite = value
+            this.deletePrompt = null
+        },
+        async deleteWebsite(id) {
+            await this.$store
+                .dispatch('sites/deleteWebsite', {
+                    id: this.selectedSite.id,
+                })
+                .then((websites) => {
+                    this.$store.dispatch('modal/toggleModal')
+                    this.getWebsites()
+                })
+        },
         getWebsites() {
             this.$axios
                 .post('/graphql', {
                     query: `
                     {
-                        websites(first: 4) {
+                        websites(first: 6) {
                             data {
                                 id
                                 name
