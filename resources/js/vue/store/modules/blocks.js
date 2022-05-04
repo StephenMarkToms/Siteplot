@@ -1,44 +1,23 @@
 const state = {}
 const getters = {}
 const actions = {
-    searchWebsites({}, { name, amount }) {
-        return axios
-            .post('graphql', {
-                query: `
-                    {
-                        websites(first: ${amount}, where: { column: NAME, operator: LIKE, value: "%${name}%" }) {
-                            data{
-                                domain
-                                name
-                                id
-                                created_at
-                                updated_at
-                            }
-                            paginatorInfo {
-                                currentPage
-                                lastPage
-                            }
-                        }
-                    }
-                    `,
-            })
-            .then((result) => {
-                return result.data.data.websites.data
-            })
-    },
-    deleteWebsite({}, { id }) {
-        return axios
-            .post('graphql', {
+    async createBlockType({}, values) {
+        let query = JSON.stringify(values)
+            .replace(/[{}]/g, '')
+            .replace(/"([^"]+)":/g, '$1:')
+        return await axios
+            .post('/graphql', {
                 query: `
                     mutation {
-                        deleteWebsite(id: ${id}) {
-                            name
+                        createBlockType(${query}) {
+                            id
                         }
                     }
                     `,
             })
-            .then((result) => {
-                return result.data
+            .then((res) => {
+                console.log(res)
+                return res.data.data.createBlockType.id
             })
     },
 }

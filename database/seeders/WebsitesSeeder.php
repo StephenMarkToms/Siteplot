@@ -20,6 +20,8 @@ class WebsitesSeeder extends Seeder
             'domain' => 'www.suturacreative.com',
             'netlify_build_hook' => 3423,
             'team_id' => 1,
+            'created_at' => '2022-01-01 00:00:00',
+            'updated_at' => '2022-01-01 00:00:00'
         ]);
     }
 }

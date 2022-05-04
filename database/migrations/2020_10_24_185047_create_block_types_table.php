@@ -15,10 +15,10 @@ class CreateBlockTypesTable extends Migration
     {
         Schema::create('block_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('team_id');
+            $table->foreignId('team_id')->nullable();
             $table->text('name');
             $table->text('file_name');
-            $table->longText('component');
+            $table->longText('component')->nullable();
             $table->timestamps();
         });
     }
