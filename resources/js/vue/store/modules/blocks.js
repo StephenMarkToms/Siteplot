@@ -20,6 +20,33 @@ const actions = {
                 return res.data.data.createBlockType.id
             })
     },
+    searchBlocks({}, { name, amount, page }) {
+        return axios
+            .post('graphql', {
+                query: `
+                    {
+                        search_block_types(first: ${amount}, page: ${
+                    page ? page : '1'
+                }, where: { column: NAME, operator: LIKE, value: "%${name}%" }) {
+                            data{
+                                name
+                                id
+                                created_at
+                                updated_at
+                            }
+                            paginatorInfo {
+                                currentPage
+                                lastPage
+                                total
+                            }
+                        }
+                    }
+                    `,
+            })
+            .then((result) => {
+                return result.data.data.search_block_types.data
+            })
+    },
 }
 const mutations = {}
 

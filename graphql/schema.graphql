@@ -117,6 +117,7 @@ type Query {
 
     block_types: [BlockType!]! @paginate
     block_type(id: Int! @eq): BlockType @find
+    search_block_types(where: _ @whereConditions(columnsEnum: "BlockTypeColumn")): [BlockType!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
 
     collections: [Collection!]! @paginate
     collection(id: Int! @eq): Collection @find
@@ -147,6 +148,12 @@ type Query {
 enum WebsiteColumn {
   NAME @enum(value: "name")
   DOMAIN @enum(value: "domain")
+}
+
+"A custom description for this custom enum."
+enum BlockTypeColumn {
+  NAME @enum(value: "name")
+  DOMAIN @enum(value: "file_name")
 }
 
 type Mutation {

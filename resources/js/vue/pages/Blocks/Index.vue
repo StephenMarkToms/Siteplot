@@ -43,18 +43,16 @@
                             <div class="flex space-x-2">
                                 <div class="w-56">
                                     <Field
-                                        v-model="websiteName"
+                                        v-model="blockName"
                                         autocomplete="off"
                                         name="name"
                                         placeholder="Search"
                                         class="h-10 text-primary-700 appearance-none w-full px-3 py-2 border border-gray-300 rounded-md placeholder-primary-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                                        @input="
-                                            websiteName === '' && getWebsites()
-                                        "
+                                        @input="blockName === '' && getBlocks()"
                                     />
                                 </div>
                                 <WButtonsBase
-                                    v-if="websiteName !== ''"
+                                    v-if="blockName !== ''"
                                     @click="clearSearch()"
                                 >
                                     Clear
@@ -69,378 +67,17 @@
                         <div
                             class="overflow-auto pr-5 minimal-scrollbar max-h-[50rem] h-full"
                         >
-                            <div class="grid grid-cols-4 gap-6">
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-lg">
-                                    <div
-                                        class="h-36 bg-gray-200 rounded-t-lg"
-                                    ></div>
-                                    <div class="border-t px-4 py-2">
-                                        <div class="font-medium text-sm">
-                                            Radio Buttons
-                                            <span class="font-light">
-                                                v.1.0.1
-                                            </span>
-                                        </div>
-                                        <div class="text-xs">
-                                            A radio input.
-                                        </div>
-                                    </div>
-                                </div>
+                            <div
+                                v-if="blocks && blocks.length > 0"
+                                class="grid grid-cols-4 gap-6"
+                            >
+                                <BlockTile
+                                    v-for="(block, index) in blocks"
+                                    :key="index"
+                                    :block="block"
+                                />
                             </div>
-                            <div v-if="websites && websites.length > 0"></div>
-                            <div v-else-if="websites" class="h-full flex">
+                            <div v-else-if="blocks" class="h-full flex">
                                 <div class="text-center mx-auto my-auto">
                                     <svg
                                         class="mx-auto h-12 w-12 text-gray-400"
@@ -493,6 +130,7 @@
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import LoadingList from '../../components/loading/List.vue'
 import Alert from '../../components/alerts/Modal.vue'
+import BlockTile from '../../components/siteplot/blocks/BlockTile.vue'
 
 export default {
     name: 'Dashboard',
@@ -500,22 +138,23 @@ export default {
         ContainedLayout,
         LoadingList,
         Alert,
+        BlockTile,
     },
     data() {
         return {
-            websiteName: '',
-            websites: null,
+            blockName: '',
+            blocks: null,
             loading: false,
             selectedSite: null,
             deletePrompt: null,
         }
     },
     watch: {
-        websiteName(newValue) {
+        blockName(newValue) {
             this.loading = true
             let debounce = setTimeout(() => {
-                if (this.websiteName !== '') {
-                    this.getWebsites()
+                if (this.blockName !== '') {
+                    this.getBlocks()
                 }
                 this.loading = false
             }, 600)
@@ -525,12 +164,12 @@ export default {
         if (window.Laravel.user) {
             this.name = window.Laravel.user.name
         }
-        await this.getWebsites()
+        await this.getBlocks()
     },
     methods: {
         clearSearch() {
-            this.websiteName = ''
-            this.getWebsites()
+            this.blockName = ''
+            this.getBlocks()
         },
         promptDelete(value) {
             this.$store.dispatch('modal/toggleModal')
@@ -542,19 +181,19 @@ export default {
                 .dispatch('sites/deleteWebsite', {
                     id: this.selectedSite.id,
                 })
-                .then((websites) => {
+                .then((blocks) => {
                     this.$store.dispatch('modal/toggleModal')
-                    this.getWebsites()
+                    this.getBlocks()
                 })
         },
-        async getWebsites() {
+        async getBlocks() {
             await this.$store
-                .dispatch('sites/searchWebsites', {
-                    name: this.websiteName,
-                    amount: 6,
+                .dispatch('blocks/searchBlocks', {
+                    name: this.blockName,
+                    amount: 12,
                 })
-                .then((websites) => {
-                    this.websites = websites
+                .then((blocks) => {
+                    this.blocks = blocks
                 })
         },
     },
