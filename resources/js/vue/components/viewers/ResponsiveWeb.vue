@@ -51,3 +51,12 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    data: function () {
+        return {
+            mode: 'desktop',
+        }
+    },
+}
+</script>
