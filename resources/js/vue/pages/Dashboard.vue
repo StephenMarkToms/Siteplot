@@ -55,14 +55,14 @@
                             <div
                                 class="w-1/4 rounded-lg bg-gray-50 py-2 px-3 text-primary-500"
                             >
-                                <div class="text-sm">Bandwidth used</div>
-                                <div class="text-2xl">7 GB/400 GB</div>
+                                <div class="text-sm">Total Blocks</div>
+                                <div class="text-2xl">300/1000</div>
                             </div>
                             <div
                                 class="w-1/4 rounded-lg bg-gray-50 py-2 px-3 text-primary-500"
                             >
-                                <div class="text-sm">Bandwidth used</div>
-                                <div class="text-2xl">7 GB/400 GB</div>
+                                <div class="text-sm">Team Members</div>
+                                <div class="text-2xl">2/4</div>
                             </div>
                             <div
                                 class="w-1/4 rounded-lg bg-gray-50 py-2 px-3 text-primary-500"
@@ -116,7 +116,7 @@
                             <WButtonsBase
                                 @click="$router.push('/sites/create')"
                             >
-                                Create new
+                                Create new site
                             </WButtonsBase>
                         </div>
                         <div class="h-96 overflow-auto pr-2">

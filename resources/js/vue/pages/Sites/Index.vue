@@ -63,7 +63,7 @@
                             <WButtonsBase
                                 @click="$router.push('/sites/create')"
                             >
-                                Create new
+                                Create new site
                             </WButtonsBase>
                         </div>
                         <div class="h-96 overflow-auto pr-5 minimal-scrollbar">

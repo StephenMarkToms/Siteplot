@@ -4,11 +4,12 @@ import About from '../pages/About'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Dashboard from '../pages/Dashboard'
-import Sites from '../pages/Sites/Index'
+import SitesIndex from '../pages/Sites/Index'
 import CreateSite from '../pages/Sites/Create'
 import EditSite from '../pages/Sites/Edit'
 import SiteSettings from '../pages/Sites/Settings'
 import DeleteSite from '../pages/Sites/Delete'
+import BlocksIndex from '../pages/Blocks/Index'
 
 export const routes = [
     {
@@ -47,7 +48,7 @@ export const routes = [
     {
         name: 'sites',
         path: '/sites',
-        component: Sites,
+        component: SitesIndex,
         meta: {
             title: 'Sites',
         },
@@ -82,6 +83,14 @@ export const routes = [
         component: DeleteSite,
         meta: {
             title: 'Delete Site',
+        },
+    },
+    {
+        name: 'blocks',
+        path: '/blocks',
+        component: BlocksIndex,
+        meta: {
+            title: 'Blocks',
         },
     },
 ]
