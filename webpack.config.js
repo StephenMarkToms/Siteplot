@@ -4,7 +4,6 @@ module.exports = {
     resolve: {
         alias: {
             '@': path.resolve('resources/js'),
-            vue$: 'vue/dist/vue', // 'vue/dist/vue.common.js' for webpack 1
         },
     },
     module: {

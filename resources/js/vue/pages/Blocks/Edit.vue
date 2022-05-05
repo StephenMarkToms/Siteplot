@@ -38,6 +38,7 @@
                     <div v-if="view === 'code'" class="p-4">
                         <CodeEditor
                             v-model="code"
+                            z_index="0"
                             :languages="[
                                 ['html', 'HTML'],
                                 ['javascript', 'JS'],
