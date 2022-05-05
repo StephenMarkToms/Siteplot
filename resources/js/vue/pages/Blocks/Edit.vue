@@ -77,7 +77,7 @@ export default {
         return {
             block: null,
             submitting: false,
-            view: 'code',
+            view: 'preview',
             code: `<template>
 		<!-- That's right! You Tailwind is brought in natively for you already :) -->
     <div>
