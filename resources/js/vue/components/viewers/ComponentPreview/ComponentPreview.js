@@ -15,6 +15,11 @@ export default {
             required: false,
             default: false,
         },
+        centerComponent: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
     },
     data: function () {
         return {
@@ -44,6 +49,9 @@ export default {
             const tailwind = document.createElement('script')
             const body = this.$el.contentDocument.body
             const el = document.createElement('DIV') // we will mount or nested app to this element
+            if (this.centerComponent) {
+                el.classList.add('w-full', 'flex', 'h-full', 'justify-center')
+            }
             tailwind.setAttribute('src', 'https://cdn.tailwindcss.com')
             head.appendChild(tailwind)
             body.appendChild(el)
