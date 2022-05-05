@@ -30,7 +30,9 @@ export default {
         this.renderChildren()
     },
     beforeUnmount() {
-        this.iApp.unmount()
+        if (this.iApp) {
+            this.iApp.unmount()
+        }
     },
     methods: {
         renderChildren() {
