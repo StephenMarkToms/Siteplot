@@ -25,9 +25,7 @@
                     </WButtonsBase>
                 </div>
                 <Viewer class="rounded-b-lg shadow-lg">
-                    <div>
-                        {{ block }}
-                    </div>
+                    <ComponentPreview :value="block.component" />
                 </Viewer>
             </div>
         </template>
@@ -37,12 +35,14 @@
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import Viewer from '../../components/viewers/ResponsiveWeb.vue'
+import ComponentPreview from '../../components/viewers/ComponentPreview/ComponentPreview'
 
 export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
         Viewer,
+        ComponentPreview,
     },
     data() {
         return {

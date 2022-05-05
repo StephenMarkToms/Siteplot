@@ -8,21 +8,30 @@
                 <div
                     class="pt-3 px-5 ring-1 ring-gray-200 bg-gray-100 rounded-t-lg shadow-lg flex justify-between"
                 >
-                    <div class="my-auto">
-                        <div class="text-sm font-medium">
-                            {{ originalBlock.name }}
-                        </div>
-                        <div class="text-xs text-gray-400">1.0.0</div>
-                    </div>
                     <WTabsHorizontal
                         v-model="view"
                         class="w-1/4 my-auto"
                         :tabs="['meta', 'code', 'data', 'preview']"
                     />
-                    <div class="my-auto">
-                        <WButtonsBase class="w-32" @click="onSubmit">
-                            <div v-if="!submitting">Update</div>
-                            <div v-else>Updating...</div>
+                    <div class="my-auto flex space-x-2">
+                        <WButtonsBase
+                            v-if="
+                                block &&
+                                originalBlock &&
+                                !deepEqual(block, originalBlock)
+                            "
+                            class="w-32"
+                            @click="onSubmit"
+                        >
+                            <div v-if="!submitting">Save</div>
+                            <div v-else>Saving...</div>
+                        </WButtonsBase>
+                        <WButtonsBase
+                            class="w-32"
+                            type="primaryInverted"
+                            @click="$router.push({ name: 'blocks' })"
+                        >
+                            <div v-if="!submitting">Cancel</div>
                         </WButtonsBase>
                     </div>
                 </div>
@@ -83,14 +92,14 @@ export default {
             originalBlock: null,
             block: null,
             submitting: false,
-            view: 'preview',
+            view: 'meta',
         }
     },
-    created() {
+    async created() {
         if (window.Laravel.user) {
             this.name = window.Laravel.user.name
         }
-        this.$store
+        await this.$store
             .dispatch('blocks/getBlockTypeById', this.$route.params.id)
             .then((block) => {
                 this.block = block
@@ -126,6 +135,28 @@ export default {
         },
         isRequired(value) {
             return value ? true : 'This field is required'
+        },
+        isObject(object) {
+            return object != null && typeof object === 'object'
+        },
+        deepEqual(object1, object2) {
+            const keys1 = Object.keys(object1)
+            const keys2 = Object.keys(object2)
+            if (keys1.length !== keys2.length) {
+                return false
+            }
+            for (const key of keys1) {
+                const val1 = object1[key]
+                const val2 = object2[key]
+                const areObjects = this.isObject(val1) && this.isObject(val2)
+                if (
+                    (areObjects && !deepEqual(val1, val2)) ||
+                    (!areObjects && val1 !== val2)
+                ) {
+                    return false
+                }
+            }
+            return true
         },
     },
 }
