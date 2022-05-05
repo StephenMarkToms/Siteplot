@@ -5,6 +5,7 @@ import parser from './utils/parser'
 import compiler from './utils/compiler'
 
 export default {
+    name: 'ComponentPreview',
     props: {
         value: {
             type: String,
@@ -23,7 +24,7 @@ export default {
     },
     data: function () {
         return {
-            codeVM: null,
+            iApp: null,
             scope: {},
         }
     },
@@ -35,13 +36,41 @@ export default {
         },
     },
     mounted() {
-        this.$watch('value', this.renderCode, { immediate: true })
-
-        const result = parser(this.value)
-        const compiledCode = compiler(result, this.scope)
+        this.renderChildren()
     },
-    beforeUnmount() {},
+    beforeUnmount() {
+        this.iApp.unmount()
+    },
     methods: {
+        renderChildren() {
+            const children = this.$slots.default
+            const body = this.$el.contentDocument.body
+            const el = document.createElement('DIV') // we will mount or nested app to this element
+            body.appendChild(el)
+
+            try {
+                const result = parser(this.value)
+                const compiledCode = compiler(result, this.scope)
+
+                const PreviewComponent = compiledCode.result
+
+                // eslint-disable-next-line vue/one-component-per-file
+                const iApp = createApp({
+                    name: 'IApp',
+                    //freezing to prevent unnessessary Reactifiation of vNodes
+                    data() {
+                        return { children: Object.freeze(children) }
+                    },
+                    render: () => h(PreviewComponent),
+                })
+                iApp.mount(el)
+                this.iApp = iApp
+            } catch (e) {
+                /* istanbul ignore next */
+                this.$emit('error', e)
+                console.log('error', e)
+            }
+        },
         insertScope(style, scope) {
             const regex = /(^|\})\s*([^{]+)/g
             return style.trim().replace(regex, (m, g1, g2) => {
@@ -69,32 +98,11 @@ export default {
             this.codeEl = document.createElement('div')
             container.appendChild(this.codeEl)
             this.codeEl.setAttribute('id', 'target')
-
-            try {
-                const result = parser(this.value)
-                const compiledCode = compiler(result, this.scope)
-
-                const MyTestComponent = compiledCode.result
-
-                const app = createApp({
-                    render: () => h(MyTestComponent),
-                })
-
-                app.mount('#preview')
-            } catch (e) {
-                /* istanbul ignore next */
-                this.$emit('error', e)
-                console.log('error', e)
-            }
         },
     },
     render() {
-        return h(
-            'div',
-            {
-                id: 'preview',
-            },
-            [this.scopedStyle ? h('style', null, this.scopedStyle) : '']
-        )
+        return h('iframe', {
+            on: { load: this.renderChildren },
+        })
     },
 }
