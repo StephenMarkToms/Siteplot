@@ -102,11 +102,7 @@ export default {
         },
         mounted() {
           	//Call in GSAP animations similar to something like this!
-            const gsap = this.$gsap
-            gsap.from(this.$el, 5, {
-                alpha: 0,
-                ease: 'Power4.easeOut'
-            })
+            
         }
     }
 <\/script>`,

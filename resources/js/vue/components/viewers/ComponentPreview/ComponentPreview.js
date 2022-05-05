@@ -1,6 +1,6 @@
 import assign from './utils/assign' // eslint-disable-line
 import { h } from 'vue'
-import { createApp } from 'vue'
+import { createApp } from 'vue/dist/vue.esm-bundler'
 import parser from './utils/parser'
 import compiler from './utils/compiler'
 
@@ -9,11 +9,6 @@ export default {
         value: {
             type: String,
             required: true,
-        },
-        iframe: {
-            type: Boolean,
-            required: false,
-            default: true,
         },
         styles: {
             type: String,
@@ -41,18 +36,12 @@ export default {
     },
     mounted() {
         this.$watch('value', this.renderCode, { immediate: true })
-        if (this.iframe) {
-            this.$el.addEventListener('load', this.renderCode)
-        }
+
         const result = parser(this.value)
         const compiledCode = compiler(result, this.scope)
-        console.log(compiledCode)
+        console.log(compiledCode.result)
     },
-    beforeUnmount() {
-        if (this.iframe) {
-            this.$el.removeEventListener('load', this.renderCode)
-        }
-    },
+    beforeUnmount() {},
     methods: {
         insertScope(style, scope) {
             const regex = /(^|\})\s*([^{]+)/g
@@ -66,14 +55,6 @@ export default {
             return Array.from(links).concat(Array.from(styles))
         },
         renderCode() {
-            // Firefox needs the iframe to be loaded
-            if (
-                this.iframe &&
-                this.$el.contentDocument.readyState !== 'complete'
-            ) {
-                return
-            }
-
             const val = this.value
             const lastData =
                 this.keepData && this.codeVM && assign({}, this.codeVM.$data)
@@ -88,43 +69,19 @@ export default {
 
             this.codeEl = document.createElement('div')
             container.appendChild(this.codeEl)
-            container.setAttribute('id', 'target')
-
-            if (this.iframe) {
-                const head = this.$el.contentDocument.head
-                if (this.styleEl) {
-                    head.removeChild(this.styleEl)
-                    for (const key in this.styleNodes) {
-                        head.removeChild(this.styleNodes[key])
-                    }
-                }
-                this.styleEl = document.createElement('style')
-                this.styleEl.appendChild(document.createTextNode(this.styles))
-                this.styleNodes = []
-                const documentStyles = this.getDocumentStyle()
-                for (const key in documentStyles) {
-                    this.styleNodes[key] = documentStyles[key].cloneNode(true)
-                    head.appendChild(this.styleNodes[key])
-                }
-                head.appendChild(this.styleEl)
-            }
+            this.codeEl.setAttribute('id', 'target')
 
             try {
-                console.log(this.codeEl)
+                const result = parser(this.value)
+                const compiledCode = compiler(result, this.scope)
+
+                const MyTestComponent = compiledCode.result
+
                 const app = createApp({
-                    parent,
-                    ...val,
+                    render: () => h(MyTestComponent),
                 })
 
                 app.mount('#preview')
-                // const parent = this
-                // this.codeVM = new Vue({ parent, ...val }).$mount(this.codeEl)
-
-                if (lastData) {
-                    for (const key in lastData) {
-                        this.codeVM[key] = lastData[key]
-                    }
-                }
             } catch (e) {
                 /* istanbul ignore next */
                 this.$emit('error', e)
@@ -134,7 +91,7 @@ export default {
     },
     render() {
         return h(
-            this.iframe ? 'iframe' : 'div',
+            'div',
             {
                 id: 'preview',
             },
