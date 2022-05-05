@@ -31,7 +31,7 @@
                             type="primaryInverted"
                             @click="$router.push({ name: 'blocks' })"
                         >
-                            <div v-if="!submitting">Cancel</div>
+                            <div>Cancel</div>
                         </WButtonsBase>
                     </div>
                 </div>
