@@ -58,7 +58,7 @@
         </div>
         <div
             :class="[
-                'ring-1 rounded-lg ring-gray-200 p-4 transition-all duration-300 mx-auto',
+                'ring-1 rounded-lg ring-gray-200 transition-all duration-300 mx-auto',
                 mode === 'desktop' && 'max-w-screen-lg',
                 mode === 'laptop' && 'max-w-screen-md',
                 mode === 'mobile' && 'max-w-screen-sm',

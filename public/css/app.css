@@ -817,6 +817,12 @@ select {
 .min-h-screen {
   min-height: 100vh;
 }
+.min-h-\[100em\] {
+  min-height: 100em;
+}
+.min-h-\[30em\] {
+  min-height: 30em;
+}
 .w-3\/4 {
   width: 75%;
 }
@@ -887,6 +893,9 @@ select {
 }
 .max-w-3xl {
   max-width: 48rem;
+}
+.max-w-xl {
+  max-width: 36rem;
 }
 .flex-shrink-0 {
   flex-shrink: 0;
@@ -1289,6 +1298,10 @@ select {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
 .font-bold {
   font-weight: 700;
 }
@@ -1404,6 +1417,10 @@ select {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -1761,6 +1778,11 @@ select {
     padding-right: 1rem;
   }
 
+  .sm\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
   .sm\:pb-4 {
     padding-bottom: 1rem;
   }
@@ -1785,6 +1807,10 @@ select {
 
   .sm\:leading-5 {
     line-height: 1.25rem;
+  }
+
+  .sm\:tracking-tight {
+    letter-spacing: -0.025em;
   }
 }
 @media (min-width: 768px) {
@@ -1825,6 +1851,11 @@ select {
   .lg\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
 /*
@@ -2711,6 +2742,14 @@ select {
   min-height: 100vh;
 }
 
+.min-h-\[100em\] {
+  min-height: 100em;
+}
+
+.min-h-\[30em\] {
+  min-height: 30em;
+}
+
 .w-3\/4 {
   width: 75%;
 }
@@ -2803,6 +2842,10 @@ select {
 
 .max-w-3xl {
   max-width: 48rem;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .flex-shrink-0 {
@@ -3315,6 +3358,11 @@ select {
   line-height: 1rem;
 }
 
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -3461,6 +3509,11 @@ select {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
 .antialiased {
@@ -3829,6 +3882,11 @@ select {
     padding-right: 1rem;
   }
 
+  .sm\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
   .sm\:pb-4 {
     padding-bottom: 1rem;
   }
@@ -3853,6 +3911,10 @@ select {
 
   .sm\:leading-5 {
     line-height: 1.25rem;
+  }
+
+  .sm\:tracking-tight {
+    letter-spacing: -0.025em;
   }
 }
 
@@ -3895,6 +3957,11 @@ select {
   .lg\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .lg\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
 

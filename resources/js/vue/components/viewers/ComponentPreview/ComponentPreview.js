@@ -1,4 +1,3 @@
-import assign from './utils/assign' // eslint-disable-line
 import { h } from 'vue'
 import { createApp } from 'vue/dist/vue.esm-bundler'
 import parser from './utils/parser'
@@ -11,11 +10,6 @@ export default {
             type: String,
             required: true,
         },
-        styles: {
-            type: String,
-            required: false,
-            default: null,
-        },
         keepData: {
             type: Boolean,
             required: false,
@@ -26,16 +20,13 @@ export default {
         return {
             iApp: null,
             scope: {},
+            compiledCode: null,
         }
     },
-    computed: {
-        scopedStyle() {
-            return this.styles
-                ? insertScope(this.styles, `.${this.className}`)
-                : ''
-        },
-    },
     mounted() {
+        const result = parser(this.value)
+        const compiledCode = compiler(result, this.scope)
+        this.compiledCode = compiledCode
         this.renderChildren()
     },
     beforeUnmount() {
@@ -44,65 +35,57 @@ export default {
     methods: {
         renderChildren() {
             const children = this.$slots.default
+            const style = document.createElement('style')
+            const head = this.$el.contentDocument.head
+            const tailwind = document.createElement('script')
             const body = this.$el.contentDocument.body
             const el = document.createElement('DIV') // we will mount or nested app to this element
+            tailwind.setAttribute('src', 'https://cdn.tailwindcss.com')
+            head.appendChild(tailwind)
             body.appendChild(el)
 
+            this.styleNodes = []
+            const documentStyles = this.getDocumentStyle()
+            for (const key in documentStyles) {
+                this.styleNodes[key] = documentStyles[key].cloneNode(true)
+                head.appendChild(this.styleNodes[key])
+            }
+            head.appendChild(style)
+
             try {
-                const result = parser(this.value)
-                const compiledCode = compiler(result, this.scope)
+                setTimeout(() => {
+                    const result = parser(this.value)
+                    const compiledCode = compiler(result, this.scope)
 
-                const PreviewComponent = compiledCode.result
+                    const PreviewComponent = compiledCode.result
 
-                // eslint-disable-next-line vue/one-component-per-file
-                const iApp = createApp({
-                    name: 'IApp',
-                    //freezing to prevent unnessessary Reactifiation of vNodes
-                    data() {
-                        return { children: Object.freeze(children) }
-                    },
-                    render: () => h(PreviewComponent),
-                })
-                iApp.mount(el)
-                this.iApp = iApp
+                    // eslint-disable-next-line vue/one-component-per-file
+                    const iApp = createApp({
+                        name: 'IApp',
+                        //freezing to prevent unnessessary Reactifiation of vNodes
+                        data() {
+                            return { children: Object.freeze(children) }
+                        },
+                        render: () => h(PreviewComponent),
+                    })
+                    iApp.mount(el)
+                    this.iApp = iApp
+                }, 1000)
             } catch (e) {
                 /* istanbul ignore next */
                 this.$emit('error', e)
                 console.log('error', e)
             }
         },
-        insertScope(style, scope) {
-            const regex = /(^|\})\s*([^{]+)/g
-            return style.trim().replace(regex, (m, g1, g2) => {
-                return g1 ? `${g1} ${scope} ${g2}` : `${scope} ${g2}`
-            })
-        },
         getDocumentStyle() {
             const links = document.querySelectorAll('link[rel="stylesheet"]')
             const styles = document.querySelectorAll('style')
             return Array.from(links).concat(Array.from(styles))
         },
-        renderCode() {
-            const val = this.value
-            const lastData =
-                this.keepData && this.codeVM && assign({}, this.codeVM.$data)
-            const container = this.iframe
-                ? this.$el.contentDocument.body
-                : this.$el
-
-            if (this.codeVM) {
-                this.codeVM.$destroy()
-                container.removeChild(this.codeVM.$el)
-            }
-
-            this.codeEl = document.createElement('div')
-            container.appendChild(this.codeEl)
-            this.codeEl.setAttribute('id', 'target')
-        },
     },
     render() {
         return h('iframe', {
-            on: { load: this.renderChildren },
+            class: ['w-full', 'min-h-[30em]'],
         })
     },
 }
