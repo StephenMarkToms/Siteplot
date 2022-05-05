@@ -39,7 +39,6 @@ export default {
 
         const result = parser(this.value)
         const compiledCode = compiler(result, this.scope)
-        console.log(compiledCode.result)
     },
     beforeUnmount() {},
     methods: {
