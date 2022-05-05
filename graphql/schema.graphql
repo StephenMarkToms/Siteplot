@@ -169,5 +169,6 @@ type Mutation {
   deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
 
   createBlockType(name: String!, file_name: String!, team_id: ID, component: String): BlockType! @create @guard
+  updateBlockType(id: Int!, name: String!, file_name: String!, component: String): BlockType! @update @guard
 
 }

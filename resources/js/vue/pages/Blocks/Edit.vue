@@ -4,12 +4,14 @@
             <PrimaryNav />
         </template>
         <template #content>
-            <div v-if="block">
+            <div v-if="block && originalBlock">
                 <div
                     class="pt-3 px-5 ring-1 ring-gray-200 bg-gray-100 rounded-t-lg shadow-lg flex justify-between"
                 >
                     <div class="my-auto">
-                        <div class="text-sm font-medium">{{ block.name }}</div>
+                        <div class="text-sm font-medium">
+                            {{ originalBlock.name }}
+                        </div>
                         <div class="text-xs text-gray-400">1.0.0</div>
                     </div>
                     <WTabsHorizontal
@@ -18,7 +20,10 @@
                         :tabs="['meta', 'code', 'data', 'preview']"
                     />
                     <div class="my-auto">
-                        <WButtonsBase class="w-32">Save</WButtonsBase>
+                        <WButtonsBase class="w-32" @click="onSubmit">
+                            <div v-if="!submitting">Update</div>
+                            <div v-else>Updating...</div>
+                        </WButtonsBase>
                     </div>
                 </div>
                 <div
@@ -26,18 +31,18 @@
                 >
                     <Viewer v-if="view === 'preview'">
                         <div>
-                            <ComponentPreview :value="code" />
+                            <ComponentPreview :value="block.component" />
                         </div>
                     </Viewer>
                     <div :class="['bg-white p-4', view !== 'meta' && 'hidden']">
                         <BlockForm
                             class="max-w-screen-md mx-auto"
-                            :block="{ ...block }"
+                            :block="block"
                         />
                     </div>
                     <div v-if="view === 'code'" class="p-4">
                         <CodeEditor
-                            v-model="code"
+                            v-model="block.component"
                             z_index="0"
                             :languages="[
                                 ['html', 'HTML'],
@@ -75,42 +80,10 @@ export default {
     },
     data() {
         return {
+            originalBlock: null,
             block: null,
             submitting: false,
             view: 'preview',
-            code: `<template>
-		<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="bg-white">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h2 class="text-base font-semibold text-indigo-600 tracking-wide uppercase">Pricing</h2>
-      <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">Take control of your team.</p>
-      <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">Start building for free, then add a site plan to go live. Account plans unlock additional features.</p>
-    </div>
-  </div>
-</div>
-
-</template>
-
-<script>
-    module.exports = {
-        data() {
-            return {
-                widgetData: null
-            }
-        },
-        mounted() {
-          	//Call in GSAP animations similar to something like this!
-            
-        }
-    }
-<\/script>
-<style>
-    .body{
-        background-color: red;
-    }
-<\/style>
-`,
         }
     },
     created() {
@@ -121,9 +94,36 @@ export default {
             .dispatch('blocks/getBlockTypeById', this.$route.params.id)
             .then((block) => {
                 this.block = block
+                this.originalBlock = { ...block }
             })
     },
     methods: {
+        async onSubmit(values) {
+            this.submitting = true
+            await this.$axios
+                .post('/graphql', {
+                    query: `mutation updateBlockType($id: Int!, $name: String!, $file_name: String!, $component: String!) {
+                                updateBlockType(id: $id, name: $name, file_name: $file_name, component: $component){
+                                    id
+                                    name
+                                    file_name
+                                    component
+                                }
+                            }`,
+                    variables: {
+                        id: parseInt(this.block.id),
+                        name: this.block.name,
+                        file_name: this.block.file_name,
+                        component: this.block.component,
+                    },
+                })
+                .then((res) => {
+                    console.log(res)
+                    this.$router.push({
+                        name: 'blocks',
+                    })
+                })
+        },
         isRequired(value) {
             return value ? true : 'This field is required'
         },

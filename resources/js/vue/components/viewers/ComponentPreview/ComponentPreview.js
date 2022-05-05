@@ -24,10 +24,12 @@ export default {
         }
     },
     mounted() {
-        const result = parser(this.value)
-        const compiledCode = compiler(result, this.scope)
-        this.compiledCode = compiledCode
-        this.renderChildren()
+        if (this.value) {
+            const result = parser(this.value)
+            const compiledCode = compiler(result, this.scope)
+            this.compiledCode = compiledCode
+            this.renderChildren()
+        }
     },
     beforeUnmount() {
         if (this.iApp) {
