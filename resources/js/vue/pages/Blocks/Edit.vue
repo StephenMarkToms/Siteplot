@@ -35,6 +35,20 @@
                             :block="{ ...block }"
                         />
                     </div>
+                    <div v-if="view === 'code'" class="p-4">
+                        <CodeEditor
+                            v-model="code"
+                            :languages="[
+                                ['html', 'HTML'],
+                                ['javascript', 'JS'],
+                                ['css', 'CSS'],
+                            ]"
+                            :wrap_code="true"
+                            :language_selector="true"
+                            theme="light"
+                            width="100%"
+                        />
+                    </div>
                 </div>
             </div>
         </template>
@@ -42,6 +56,7 @@
 </template>
 
 <script>
+import CodeEditor from 'simple-code-editor'
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import Viewer from '../../components/viewers/ResponsiveWeb.vue'
 import BlockForm from '../../components/siteplot/forms/BlockType.vue'
@@ -52,12 +67,45 @@ export default {
         ContainedLayout,
         Viewer,
         BlockForm,
+        CodeEditor,
     },
     data() {
         return {
             block: null,
             submitting: false,
-            view: 'meta',
+            view: 'code',
+            code: `<template>
+		<!-- That's right! You Tailwind is brought in natively for you already :) -->
+    <div>
+      	<div class="text-2xl text-center font-bold text-indigo-500">  
+      		My New Block!
+  			</div>
+        <br>
+      	<div class="text-center">
+        		<!-- All data from the Content tab will appear in the widgetData Object -->
+            {{ widgetData }}
+        </div>
+    </div>
+
+</template>
+
+<script>
+    module.exports = {
+        data() {
+            return {
+                widgetData: null
+            }
+        },
+        mounted() {
+          	//Call in GSAP animations similar to something like this!
+            const gsap = this.$gsap
+            gsap.from(this.$el, 5, {
+                alpha: 0,
+                ease: 'Power4.easeOut'
+            })
+        }
+    }
+<\/script>`,
         }
     },
     created() {

@@ -29,7 +29,7 @@ export default {
             buttons: {
                 base: {
                     blank: 'focus:outline-none',
-                    tab: 'transition-all duration-300 flex items-center py-5 px-1 text-center border-b-2 font-medium text-sm leading-5  text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 focus:text-gray-700',
+                    tab: 'transition-all duration-300 flex items-center py-5 px-1 text-center border-b-2 text-sm leading-5  text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 focus:text-gray-700',
                     tabSelected:
                         'transition-all duration-300 flex py-5 px-1 text-center border-b-2 font-medium text-sm leading-5  text-primary-500 border-primary-400',
                     grayActiveRounded:

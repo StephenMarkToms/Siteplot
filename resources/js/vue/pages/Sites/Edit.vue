@@ -172,9 +172,10 @@ export default {
                     `,
                 })
                 .then((res) => {
-                    this.$router.push(
-                        `/sites/view/${res.data.data.updateWebsite.id}`
-                    )
+                    this.$router.push({
+                        name: 'sites-settings',
+                        params: { id: res.data.data.updateWebsite.id },
+                    })
                 })
         },
     },
