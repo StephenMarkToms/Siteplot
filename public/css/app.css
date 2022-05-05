@@ -676,12 +676,6 @@ select {
 .z-50 {
   z-index: 50;
 }
-.z-0 {
-  z-index: 0;
-}
-.-z-10 {
-  z-index: -10;
-}
 .z-10 {
   z-index: 10;
 }
@@ -2528,14 +2522,6 @@ select {
 
 .z-50 {
   z-index: 50;
-}
-
-.z-0 {
-  z-index: 0;
-}
-
-.-z-10 {
-  z-index: -10;
 }
 
 .z-10 {

@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import ComponentPreview from '../../components/viewers/ComponentPreview/ComponentPreview.vue'
+import ComponentPreview from '../../components/viewers/ComponentPreview/ComponentPreview'
 import CodeEditor from 'simple-code-editor'
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import Viewer from '../../components/viewers/ResponsiveWeb.vue'

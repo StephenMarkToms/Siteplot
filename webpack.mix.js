@@ -1,4 +1,5 @@
 const mix = require('laravel-mix')
+const config = require('./webpack.config')
 const tailwindcss = require('tailwindcss')
 
 require('laravel-mix-eslint')
