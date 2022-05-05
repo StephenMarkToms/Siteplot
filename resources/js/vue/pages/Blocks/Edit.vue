@@ -26,7 +26,7 @@
                 >
                     <Viewer v-if="view === 'preview'">
                         <div>
-                            {{ block }}
+                            <ComponentPreview :value="code" />
                         </div>
                     </Viewer>
                     <div :class="['bg-white p-4', view !== 'meta' && 'hidden']">
@@ -43,6 +43,7 @@
                                 ['javascript', 'JS'],
                                 ['css', 'CSS'],
                             ]"
+                            :autofocus="true"
                             :wrap_code="true"
                             :language_selector="true"
                             theme="light"
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+import ComponentPreview from '../../components/viewers/ComponentPreview/ComponentPreview.vue'
 import CodeEditor from 'simple-code-editor'
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import Viewer from '../../components/viewers/ResponsiveWeb.vue'
@@ -68,6 +70,7 @@ export default {
         Viewer,
         BlockForm,
         CodeEditor,
+        ComponentPreview,
     },
     data() {
         return {

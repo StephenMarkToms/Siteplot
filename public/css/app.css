@@ -859,6 +859,9 @@ select {
 .w-24 {
   width: 6rem;
 }
+.w-64 {
+  width: 16rem;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -2762,6 +2765,10 @@ select {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .max-w-6xl {
