@@ -13,7 +13,7 @@
                         <div class="text-xs text-gray-400">1.0.0</div>
                     </div>
                     <WButtonsBase
-                        type="blank"
+                        class="w-32"
                         @click="
                             $router.push({
                                 name: 'blocks-edit',
@@ -21,7 +21,7 @@
                             })
                         "
                     >
-                        <div class="text-sm text-gray-600 my-auto">edit</div>
+                        Edit
                     </WButtonsBase>
                 </div>
                 <Viewer class="rounded-b-lg shadow-lg">
