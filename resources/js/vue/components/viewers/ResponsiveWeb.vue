@@ -115,7 +115,7 @@ export default {
             this.render = false
             setTimeout(() => {
                 this.render = true
-            }, 1200)
+            }, 500)
         },
     },
 }

@@ -53,7 +53,10 @@ export default {
             if (this.centerComponent) {
                 el.classList.add('w-full', 'flex', 'h-full', 'justify-center')
             }
+
             tailwind.setAttribute('src', 'https://cdn.tailwindcss.com')
+            tailwind.type = 'text/javascript'
+
             head.appendChild(tailwind)
             body.appendChild(el)
 
@@ -65,32 +68,30 @@ export default {
             }
             head.appendChild(style)
 
-            try {
-                const result = parser(this.value)
-                const compiledCode = compiler(result, this.scope)
+            setTimeout(() => {
+                try {
+                    const result = parser(this.value)
+                    const compiledCode = compiler(result, this.scope)
 
-                const PreviewComponent = compiledCode.result
+                    const PreviewComponent = compiledCode.result
 
-                // eslint-disable-next-line vue/one-component-per-file
-                const iApp = createApp({
-                    name: 'IApp',
-                    //freezing to prevent unnessessary Reactifiation of vNodes
-                    data() {
-                        // return { children: Object.freeze(children) }
-                    },
-                    render: () => h(PreviewComponent),
-                })
-                iApp.mount(el)
-                iApp.config.errorHandler = (err, instance, info) => {
-                    // handle error, e.g. report to a service
-                    this.$emit('handleError', { err, instance, info })
+                    // eslint-disable-next-line vue/one-component-per-file
+                    const iApp = createApp({
+                        name: 'IApp',
+                        render: () => h(PreviewComponent),
+                    })
+                    iApp.mount(el)
+                    iApp.config.errorHandler = (err, instance, info) => {
+                        // handle error, e.g. report to a service
+                        this.$emit('handleError', { err, instance, info })
+                    }
+                    this.iApp = iApp
+                } catch (e) {
+                    /* istanbul ignore next */
+                    this.$emit('handleError', e)
+                    console.log('handleError', e)
                 }
-                this.iApp = iApp
-            } catch (e) {
-                /* istanbul ignore next */
-                this.$emit('handleError', e)
-                console.log('handleError', e)
-            }
+            }, 100)
         },
         getDocumentStyle() {
             const links = document.querySelectorAll('link[rel="stylesheet"]')
