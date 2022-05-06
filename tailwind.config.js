@@ -44,6 +44,15 @@ module.exports = {
                     700: '#48232A',
                 },
             },
+            animation: {
+                fadeIn: 'fadeIn 1s ease',
+            },
+            keyframes: () => ({
+                fadeIn: {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+            }),
         },
     },
     variants: {

@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                             <div v-else>
-                                <LoadingList />
+                                <LoadingTiles />
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
 
 <script>
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
-import LoadingList from '../../components/loading/List.vue'
+import LoadingTiles from '../../components/loading/Tiles.vue'
 import Alert from '../../components/alerts/Modal.vue'
 import BlockTile from '../../components/siteplot/blocks/BlockTile.vue'
 
@@ -142,7 +142,7 @@ export default {
     name: 'Dashboard',
     components: {
         ContainedLayout,
-        LoadingList,
+        LoadingTiles,
         Alert,
         BlockTile,
     },
