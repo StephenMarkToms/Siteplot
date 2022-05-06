@@ -5,6 +5,7 @@ import compiler from './utils/compiler'
 
 export default {
     name: 'ComponentPreview',
+    emits: ['handleError'],
     props: {
         value: {
             type: String,
@@ -65,28 +66,30 @@ export default {
             head.appendChild(style)
 
             try {
-                setTimeout(() => {
-                    const result = parser(this.value)
-                    const compiledCode = compiler(result, this.scope)
+                const result = parser(this.value)
+                const compiledCode = compiler(result, this.scope)
 
-                    const PreviewComponent = compiledCode.result
+                const PreviewComponent = compiledCode.result
 
-                    // eslint-disable-next-line vue/one-component-per-file
-                    const iApp = createApp({
-                        name: 'IApp',
-                        //freezing to prevent unnessessary Reactifiation of vNodes
-                        data() {
-                            return { children: Object.freeze(children) }
-                        },
-                        render: () => h(PreviewComponent),
-                    })
-                    iApp.mount(el)
-                    this.iApp = iApp
-                }, 1000)
+                // eslint-disable-next-line vue/one-component-per-file
+                const iApp = createApp({
+                    name: 'IApp',
+                    //freezing to prevent unnessessary Reactifiation of vNodes
+                    data() {
+                        // return { children: Object.freeze(children) }
+                    },
+                    render: () => h(PreviewComponent),
+                })
+                iApp.mount(el)
+                iApp.config.errorHandler = (err, instance, info) => {
+                    // handle error, e.g. report to a service
+                    this.$emit('handleError', { err, instance, info })
+                }
+                this.iApp = iApp
             } catch (e) {
                 /* istanbul ignore next */
-                this.$emit('error', e)
-                console.log('error', e)
+                this.$emit('handleError', e)
+                console.log('handleError', e)
             }
         },
         getDocumentStyle() {

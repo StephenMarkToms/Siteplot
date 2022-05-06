@@ -40,7 +40,7 @@
                 >
                     <Viewer v-if="view === 'preview'">
                         <div>
-                            <ComponentPreview :value="block.component" />
+                            <ComponentDebugger :value="block.component" />
                         </div>
                     </Viewer>
                     <div :class="['bg-white p-4', view !== 'meta' && 'hidden']">
@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import ComponentPreview from '../../components/viewers/ComponentPreview/ComponentPreview'
+import ComponentDebugger from '../../components/viewers/ComponentDebugger.vue'
 import CodeEditor from 'simple-code-editor'
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import Viewer from '../../components/viewers/ResponsiveWeb.vue'
@@ -85,14 +85,14 @@ export default {
         Viewer,
         BlockForm,
         CodeEditor,
-        ComponentPreview,
+        ComponentDebugger,
     },
     data() {
         return {
             originalBlock: null,
             block: null,
             submitting: false,
-            view: 'meta',
+            view: 'preview',
         }
     },
     async created() {
