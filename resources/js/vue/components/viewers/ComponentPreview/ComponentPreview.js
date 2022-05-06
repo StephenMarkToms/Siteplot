@@ -5,7 +5,7 @@ import compiler from './utils/compiler'
 
 export default {
     name: 'ComponentPreview',
-    emits: ['handleError'],
+    emits: ['handleError', 'handleLog'],
     props: {
         value: {
             type: String,
@@ -43,6 +43,33 @@ export default {
         }
     },
     methods: {
+        enableLogging() {
+            var cl, ce, cw
+            const self = this
+            if (window.console && console.log) {
+                cl = console.log
+                console.log = function () {
+                    self.$emit('handleLog', arguments)
+                    cl.apply(this, arguments)
+                }
+            }
+
+            // if (window.console && console.warn) {
+            //     cw = console.warn
+            //     console.warn = function () {
+            //         MyWarnFunction(arguments)
+            //         cw.apply(this, arguments)
+            //     }
+            // }
+
+            // if (window.console && console.error) {
+            //     ce = console.error
+            //     console.error = function () {
+            //         MyErrorFunction(arguments)
+            //         ce.apply(this, arguments)
+            //     }
+            // }
+        },
         renderChildren() {
             const children = this.$slots.default
             const style = document.createElement('style')
@@ -68,6 +95,8 @@ export default {
             }
             head.appendChild(style)
 
+            this.enableLogging()
+
             setTimeout(() => {
                 try {
                     const result = parser(this.value)
@@ -88,8 +117,11 @@ export default {
                     this.iApp = iApp
                 } catch (e) {
                     /* istanbul ignore next */
-                    this.$emit('handleError', e)
-                    console.log('handleError', e)
+                    this.$emit('handleError', {
+                        err: 'Root Error',
+                        instance: 'Root',
+                        info: e,
+                    })
                 }
             }, 100)
         },

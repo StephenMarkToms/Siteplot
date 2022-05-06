@@ -1,6 +1,14 @@
 <template>
     <div>
-        <ComponentPreview :value="value" @handleError="handleError" />
+        <ComponentPreview
+            :value="value"
+            @handleError="handleError"
+            @handleLog="handleLog"
+        />
+        <div>
+            <div>Console</div>
+            <pre v-html="log"></pre>
+        </div>
         <div v-if="error">
             <div class="rounded-md bg-red-50 p-4">
                 <div class="flex">
@@ -55,11 +63,15 @@ export default {
     data() {
         return {
             error: null,
+            logs: [],
         }
     },
     methods: {
         handleError(error) {
             this.error = error
+        },
+        handleLog(log) {
+            this.logs.push(log[0])
         },
     },
 }
