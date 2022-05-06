@@ -1,70 +1,104 @@
 <template>
     <div class="bg-white p-4">
-        <div class="w-32 mx-auto mb-5 flex space-x-3">
-            <WButtonsBase
-                :type="mode === 'desktop' ? 'grayActiveRounded' : 'grayRounded'"
-                @click="mode = 'desktop'"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
+        <div class="flex justify-between px-2 mb-5">
+            <div class="w-1/3"></div>
+            <div class="w-1/3 my-auto flex justify-center space-x-3">
+                <WButtonsBase
+                    :type="
+                        mode === 'desktop' ? 'grayActiveRounded' : 'grayRounded'
+                    "
+                    @click="mode = 'desktop'"
                 >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                </svg>
-            </WButtonsBase>
-            <WButtonsBase
-                :type="mode === 'laptop' ? 'grayActiveRounded' : 'grayRounded'"
-                @click="mode = 'laptop'"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 640 512"
-                    class="h-5 w-5"
-                    fill="currentColor"
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                    </svg>
+                </WButtonsBase>
+                <WButtonsBase
+                    :type="
+                        mode === 'laptop' ? 'grayActiveRounded' : 'grayRounded'
+                    "
+                    @click="mode = 'laptop'"
                 >
-                    <path
-                        d="M128 96h384v256h64v-272c0-26.38-21.62-48-48-48h-416c-26.38 0-48 21.62-48 48V352h64V96zM624 383.1h-608c-8.75 0-16 7.25-16 16v16c0 35.25 28.75 64 64 64h512c35.25 0 64-28.75 64-64v-16C640 391.2 632.8 383.1 624 383.1z"
-                    />
-                </svg>
-            </WButtonsBase>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 512"
+                        class="h-5 w-5"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M128 96h384v256h64v-272c0-26.38-21.62-48-48-48h-416c-26.38 0-48 21.62-48 48V352h64V96zM624 383.1h-608c-8.75 0-16 7.25-16 16v16c0 35.25 28.75 64 64 64h512c35.25 0 64-28.75 64-64v-16C640 391.2 632.8 383.1 624 383.1z"
+                        />
+                    </svg>
+                </WButtonsBase>
 
-            <WButtonsBase
-                :type="mode === 'mobile' ? 'grayActiveRounded' : 'grayRounded'"
-                @click="mode = 'mobile'"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
+                <WButtonsBase
+                    :type="
+                        mode === 'mobile' ? 'grayActiveRounded' : 'grayRounded'
+                    "
+                    @click="mode = 'mobile'"
                 >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                    />
-                </svg>
-            </WButtonsBase>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        />
+                    </svg>
+                </WButtonsBase>
+            </div>
+            <div class="w-1/3 flex justify-end">
+                <WButtonsBase type="grayRounded" @click="reRender()">
+                    <svg
+                        v-if="render"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        />
+                    </svg>
+                    <WLoadingSpinner v-else class="my-auto" />
+                </WButtonsBase>
+            </div>
         </div>
         <div
             :class="[
                 'ring-1 rounded-lg ring-gray-200 transition-all duration-300 mx-auto',
-                mode === 'desktop' && 'max-w-screen-lg',
+                mode === 'desktop' && 'max-w-screen-xl',
                 mode === 'laptop' && 'max-w-screen-md',
                 mode === 'mobile' && 'max-w-screen-sm',
             ]"
         >
-            <slot />
+            <div v-if="render">
+                <slot />
+            </div>
+            <div v-else class="min-h-[30em] flex justify-center">
+                <div class="my-auto text-gray-500 text-sm">Rendering...</div>
+            </div>
         </div>
     </div>
 </template>
@@ -72,8 +106,17 @@
 export default {
     data: function () {
         return {
+            render: true,
             mode: 'desktop',
         }
+    },
+    methods: {
+        reRender() {
+            this.render = false
+            setTimeout(() => {
+                this.render = true
+            }, 1200)
+        },
     },
 }
 </script>
