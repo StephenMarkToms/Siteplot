@@ -151,7 +151,8 @@ type Query {
     widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
 
-    repositories: [Repository!]! @paginate
+    repositories(where: _ @whereConditions(columnsEnum: "RepositoryColumn")): [Repository!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
+
 }
 
 "A custom description for this custom enum."
@@ -164,6 +165,11 @@ enum WebsiteColumn {
 enum BlockTypeColumn {
   NAME @enum(value: "name")
   DOMAIN @enum(value: "file_name")
+}
+
+enum RepositoryColumn {
+  NAME @enum(value: "name")
+  PATH @enum(value: "path")
 }
 
 type Mutation {

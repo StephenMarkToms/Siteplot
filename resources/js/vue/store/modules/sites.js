@@ -5,7 +5,7 @@ const getters = {}
 const actions = {
     searchWebsites({}, { name, amount }) {
         return axios
-            .post('graphql', {
+            .post('/graphql', {
                 query: `
                     {
                         websites(first: ${amount}, where: { column: NAME, operator: LIKE, value: "%${name}%" }) {
