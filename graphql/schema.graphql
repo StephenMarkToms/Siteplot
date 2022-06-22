@@ -50,6 +50,7 @@ type BlockType {
     team_id: ID
     created_at: DateTime!
     updated_at: DateTime!
+    repositories: Repository! @belongsToMany
 }
 
 type Collection {
@@ -109,6 +110,13 @@ type WidgetType {
     data_type: DataType! @belongsTo
 }
 
+type Repository {
+    id: ID!
+    name: String!
+    path: String
+    personal_access_token: String!
+}
+
 type Query {
     asset_entries: [AssetEntry!]! @paginate
 
@@ -142,6 +150,8 @@ type Query {
 
     widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
+
+    repositories: [Repository!]! @paginate
 }
 
 "A custom description for this custom enum."
@@ -168,7 +178,7 @@ type Mutation {
   updateWebsite(id: ID!, name: String, domain: String, netlify_build_hook: String): Website! @update @guard
   deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
 
-  createBlockType(name: String!, file_name: String!, team_id: ID, component: String): BlockType! @create @guard
-  updateBlockType(id: Int!, name: String!, file_name: String!, component: String): BlockType! @update @guard
-
+  createBlockType(name: String!, file_name: String!, team_id: ID, component: String, repository_id: ID): BlockType! @create @guard
+  updateBlockType(id: ID!, name: String!, file_name: String!, component: String, repository_id: ID): BlockType! @update @guard
+  deleteBlockType(id: [ID!]!): [BlockType!]! @delete @guard
 }

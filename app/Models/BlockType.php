@@ -18,5 +18,9 @@ class BlockType extends Model
     {
         return $this->belongsToMany('App\Models\WidgetType', 'block_type_widget_type', 'block_type_id', 'widget_type_id')->orderBy('order');
     }
-    
+
+    public function repositories()
+    {
+        return $this->belongsToMany('App\Models\Repository', 'block_type_repository', 'block_type_id', 'repository_id')->orderBy('order');
+    }
 }
