@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             WidgetTypesSeeder::class,
             BlockTypesSeeder::class,
             BlockTypeWidgetTypeSeeder::class,
+            RepositorySeeder::class,
         ]);
     }
 }
