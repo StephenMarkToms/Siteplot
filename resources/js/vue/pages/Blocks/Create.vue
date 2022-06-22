@@ -52,23 +52,10 @@ export default {
         ContainedLayout,
         BlockForm,
     },
-    data() {
-        return {
-            repositories: null,
-        }
-    },
     async created() {
         if (window.Laravel.user) {
             this.name = window.Laravel.user.name
         }
-        await this.$store
-            .dispatch('repositories/searchRepositories', {
-                name: '',
-                amount: 6,
-            })
-            .then((repositories) => {
-                this.repositories = repositories
-            })
     },
     methods: {
         async submit(values) {

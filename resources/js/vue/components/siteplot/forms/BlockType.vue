@@ -26,6 +26,22 @@
                 />
                 <ErrorMessage name="file_name" class="text-red-600 text-sm" />
             </div>
+            <div v-if="repositories && repositories.length > 0" class="w-full">
+                <label class="block text-sm font-medium text-gray-700">
+                    Repository
+                </label>
+                <Multiselect
+                    v-model="formData.repositories"
+                    :options="repositoryOptions"
+                    mode="multiple"
+                    :searchable="true"
+                    :close-on-select="false"
+                />
+                <ErrorMessage
+                    name="repository_id"
+                    class="text-red-600 text-sm"
+                />
+            </div>
         </div>
         <WButtonsBase v-if="!block" class="w-36 ml-auto mt-3">
             <div v-if="!submitting">Create</div>
@@ -34,7 +50,12 @@
     </Form>
 </template>
 <script>
+import Multiselect from '@vueform/multiselect'
+
 export default {
+    components: {
+        Multiselect,
+    },
     props: {
         block: {
             type: Object,
@@ -50,10 +71,21 @@ export default {
             formData: {
                 name: null,
                 file_name: null,
+                repositories: null,
             },
+            repositories: null,
+            repositorySearch: '',
         }
     },
     computed: {
+        repositoryOptions() {
+            return this.repositories.map((el) => {
+                return {
+                    label: el.name,
+                    value: Number(el.id),
+                }
+            })
+        },
         fileName() {
             var WHITE_SPACES = [
                 ' ',
@@ -246,10 +278,18 @@ export default {
             return null
         },
     },
-    created() {
+    async created() {
         if (this.block) {
             this.formData = this.block
         }
+        await this.$store
+            .dispatch('repositories/searchRepositories', {
+                name: this.repositorySearch,
+                amount: 6,
+            })
+            .then((repositories) => {
+                this.repositories = repositories
+            })
     },
     methods: {
         isRequired(value) {
@@ -257,8 +297,15 @@ export default {
         },
         onSubmit(values) {
             this.submitting = true
+            if (this.formData.repositories) {
+                this.$emit('onSubmit', {
+                    ...values,
+                    repositories: this.formData.repositories,
+                })
+            }
             this.$emit('onSubmit', values)
         },
     },
 }
 </script>
+<style src="@vueform/multiselect/themes/default.css"></style>

@@ -184,7 +184,7 @@ type Mutation {
   updateWebsite(id: ID!, name: String, domain: String, netlify_build_hook: String): Website! @update @guard
   deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
 
-  createBlockType(name: String!, file_name: String!, team_id: ID, component: String, repository_id: ID): BlockType! @create @guard
-  updateBlockType(id: ID!, name: String!, file_name: String!, component: String, repository_id: ID): BlockType! @update @guard
+  createBlockType(name: String!, file_name: String!, team_id: ID, component: String, repositories: [ID]): BlockType! @create @guard
+  updateBlockType(id: ID!, name: String!, file_name: String!, component: String, repositories: [ID]): BlockType! @update @guard
   deleteBlockType(id: [ID!]!): [BlockType!]! @delete @guard
 }

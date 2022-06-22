@@ -39,6 +39,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.9.2",
+        "@vueform/multiselect": "^2.4.2",
         "babel-eslint": "^10.1.0",
         "dayjs": "^1.11.1",
         "popper.js": "^1.16.1",
