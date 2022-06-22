@@ -21,6 +21,6 @@ class BlockType extends Model
 
     public function repositories()
     {
-        return $this->belongsToMany('App\Models\Repository', 'block_type_repository', 'block_type_id', 'repository_id')->orderBy('order');
+        return $this->belongsToMany('App\Models\Repository', 'block_type_repository', 'block_type_id', 'repository_id')->orderBy('id');
     }
 }

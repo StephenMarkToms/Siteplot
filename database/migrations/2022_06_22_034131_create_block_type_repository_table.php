@@ -15,7 +15,7 @@ class CreateBlockTypeRepositoryTable extends Migration
     {
         Schema::create('block_type_repository', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('block_entry_id');
+            $table->unsignedBigInteger('block_type_id');
             $table->unsignedBigInteger('repository_id');
             $table->timestamps();
         });

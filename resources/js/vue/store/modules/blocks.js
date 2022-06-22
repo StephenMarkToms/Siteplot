@@ -7,12 +7,20 @@ const actions = {
         let query = JSON.stringify(values)
             .replace(/[{}]/g, '')
             .replace(/"([^"]+)":/g, '$1:')
+
+        // mutation {
+        //     createBlockType(${query}) {
+        //         id
+        //     }
+        // }
         return await axios
             .post('/graphql', {
                 query: `
-                    mutation {
-                        createBlockType(${query}) {
-                            id
+                    
+                    createBlockType(input: { name: "TestBlock", file_name: "testBlock.vue", repositories: { sync: [1] } }) {
+                        id
+                        repositories {
+                            name
                         }
                     }
                     `,
@@ -33,6 +41,9 @@ const actions = {
                             data{
                                 name
                                 id
+                                repositories{
+                                    name
+                                }
                                 created_at
                                 updated_at
                             }
@@ -59,6 +70,7 @@ const actions = {
                             name
                             file_name
                             component
+                            repositories
                             id
                             created_at
                             updated_at
