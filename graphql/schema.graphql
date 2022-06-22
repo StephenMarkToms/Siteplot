@@ -114,7 +114,8 @@ type Repository {
     id: ID!
     name: String!
     path: String
-    personal_access_token: String!
+    personal_access_token: String
+    block_types: BlockType @belongsToMany
 }
 
 type Query {
@@ -184,8 +185,32 @@ type Mutation {
   updateWebsite(id: ID!, name: String, domain: String, netlify_build_hook: String): Website! @update @guard
   deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
 
-  createBlockType(name: String!, file_name: String!, team_id: ID, component: String, repositories: [ID]): BlockType! @create @guard
 
-  updateBlockType(id: ID!, name: String!, file_name: String!, component: String, repositories: [ID]): BlockType! @update @guard
-  deleteBlockType(id: [ID!]!): [BlockType!]! @delete @guard
+#   updateBlockType(id: ID!, name: String!, file_name: String!, component: String, repositories: [ID]): BlockType! @update @guard
+#   deleteBlockType(id: [ID!]!): [BlockType!]! @delete @guard
+  createBlockType(input: CreateBlockTypeInput! @spread): BlockType @create
 }
+
+input CreateBlockTypeInput {
+    name: String!
+    file_name: String!
+    component: String
+    repositories: CreateRepositoryBelongsToMany
+}
+
+input CreateRepositoryBelongsToMany {
+  create: [CreateRepositoryInput!]
+  upsert: [UpsertRepositoryInput!]
+  connect: [ID!]
+  sync: [ID!]
+}
+
+input CreateRepositoryInput {
+  name: String!
+}
+
+input UpsertRepositoryInput {
+  id: ID!
+  name: String!
+}
+

@@ -7,23 +7,25 @@ const actions = {
         let query = JSON.stringify(values)
             .replace(/[{}]/g, '')
             .replace(/"([^"]+)":/g, '$1:')
-
-        // mutation {
-        //     createBlockType(${query}) {
-        //         id
-        //     }
-        // }
         return await axios
             .post('/graphql', {
                 query: `
-                    
-                    createBlockType(input: { name: "TestBlock", file_name: "testBlock.vue", repositories: { sync: [1] } }) {
+                mutation {
+                    createBlockType(
+                        input: {
+                            name: "testBlock"
+                            file_name: "test.vue"
+                            repositories: {
+                                connect: [1]
+                            }
+                        }
+                    ) {
                         id
                         repositories {
                             name
                         }
                     }
-                    `,
+                }`,
             })
             .then((res) => {
                 console.log(res)

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class BlockType extends Model
 {
@@ -19,7 +20,7 @@ class BlockType extends Model
         return $this->belongsToMany('App\Models\WidgetType', 'block_type_widget_type', 'block_type_id', 'widget_type_id')->orderBy('order');
     }
 
-    public function repositories()
+    public function repositories(): BelongsToMany
     {
         return $this->belongsToMany('App\Models\Repository', 'block_type_repository', 'block_type_id', 'repository_id')->orderBy('id');
     }
