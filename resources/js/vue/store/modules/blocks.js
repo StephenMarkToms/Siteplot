@@ -79,8 +79,10 @@ const actions = {
                             name
                             file_name
                             component
-                            repositories
                             id
+                            repositories{
+                                id
+                            }
                             created_at
                             updated_at
                         }
