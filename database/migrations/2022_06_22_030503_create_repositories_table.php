@@ -17,7 +17,7 @@ class CreateRepositoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('path')->nullable();
-            $table->string('personal_access_token');
+            $table->string('personal_access_token')->nullable();
             $table->foreignId('team_id')->nullable();
             $table->timestamps();
         });

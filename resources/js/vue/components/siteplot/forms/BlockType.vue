@@ -300,9 +300,8 @@ export default {
             if (this.formData.repositories) {
                 this.$emit('onSubmit', {
                     ...values,
-                    // repositories: this.formData.repositories,
                     repositories: {
-                        sync: [1],
+                        sync: this.formData.repositories,
                     },
                 })
             }

@@ -4,26 +4,33 @@ const state = {}
 const getters = {}
 const actions = {
     async createBlockType({}, values) {
-        let query = JSON.stringify(values)
+        const parsedValues = { ...values }
+
+        let repositories = null
+
+        if (parsedValues.repositories) {
+            repositories = parsedValues.repositories
+            delete parsedValues.repositories
+        }
+
+        let query = JSON.stringify(parsedValues)
             .replace(/[{}]/g, '')
             .replace(/"([^"]+)":/g, '$1:')
         return await axios
             .post('/graphql', {
                 query: `
                 mutation {
-                    createBlockType(
-                        input: {
-                            name: "testBlock"
-                            file_name: "test.vue"
-                            repositories: {
-                                connect: [1]
-                            }
-                        }
-                    ) {
+                    createBlockType(input: {${
+                        repositories
+                            ? query +
+                              `, repositories:` +
+                              JSON.stringify(repositories).replace(
+                                  /"([^"]+)":/g,
+                                  '$1:'
+                              )
+                            : query
+                    }}) {
                         id
-                        repositories {
-                            name
-                        }
                     }
                 }`,
             })
