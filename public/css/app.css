@@ -827,6 +827,9 @@ select {
 .h-20 {
   height: 5rem;
 }
+.h-4 {
+  height: 1rem;
+}
 .max-h-\[50rem\] {
   max-height: 50rem;
 }
@@ -886,6 +889,9 @@ select {
 }
 .w-10 {
   width: 2.5rem;
+}
+.w-4 {
+  width: 1rem;
 }
 .min-w-full {
   min-width: 100%;
@@ -2833,6 +2839,10 @@ select {
   height: 5rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .max-h-\[50rem\] {
   max-height: 50rem;
 }
@@ -2911,6 +2921,10 @@ select {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .min-w-full {
