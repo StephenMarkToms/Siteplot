@@ -35,9 +35,7 @@
                         </WButtonsBase>
                     </div>
                 </div>
-                <div
-                    class="rounded-b-lg shadow-lg overflow-hidden bg-white py-8"
-                >
+                <div class="rounded-b-lg shadow-lg bg-white py-8">
                     <Viewer v-if="view === 'preview'">
                         <div>
                             <ComponentDebugger :value="block.component" />
