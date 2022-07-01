@@ -286,19 +286,29 @@ export default {
             this.submitting = true
             await this.$axios
                 .post('/graphql', {
-                    query: `mutation updateBlockType($id: Int!, $name: String!, $file_name: String!, $component: String!) {
-                                updateBlockType(id: $id, name: $name, file_name: $file_name, component: $component){
+                    query: `mutation updateBlockType($input: UpdateBlockTypeInput!) {
+                                updateBlockType(input: $input){
                                     id
                                     name
-                                    file_name
-                                    component
+                                    repositories {
+                                        id
+                                    }
                                 }
                             }`,
                     variables: {
-                        id: parseInt(this.block.id),
-                        name: this.block.name,
-                        file_name: this.block.file_name,
-                        component: this.block.component,
+                        input: {
+                            id: parseInt(this.block.id),
+                            name: this.block.name,
+                            file_name: this.block.file_name,
+                            component: this.block.component,
+                            repositories: {
+                                sync: this.block.repositories.map(function (
+                                    repository
+                                ) {
+                                    return parseInt(repository.id)
+                                }),
+                            },
+                        },
                     },
                 })
                 .then((res) => {

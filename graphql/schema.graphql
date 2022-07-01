@@ -185,10 +185,9 @@ type Mutation {
   updateWebsite(id: ID!, name: String, domain: String, netlify_build_hook: String): Website! @update @guard
   deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
 
+  createBlockType(input: CreateBlockTypeInput! @spread): BlockType @create @guard
+  updateBlockType(input: UpdateBlockTypeInput! @spread): BlockType @update
 
-#   updateBlockType(id: ID!, name: String!, file_name: String!, component: String, repositories: [ID]): BlockType! @update @guard
-#   deleteBlockType(id: [ID!]!): [BlockType!]! @delete @guard
-  createBlockType(input: CreateBlockTypeInput! @spread): BlockType @create
 }
 
 input CreateBlockTypeInput {
@@ -214,3 +213,18 @@ input UpsertRepositoryInput {
   name: String!
 }
 
+input UpdateBlockTypeInput {
+  id: ID!
+  name: String
+  file_name: String
+  component: String
+  repositories: CreateRepositoryBelongsToMany
+}
+
+input UpdateBlockTypeBelongsToMany {
+  connect: ID
+  update: UpdateBlockTypeInput!
+  disconnect: Boolean
+  delete: Boolean
+  sync: [ID!]
+}
