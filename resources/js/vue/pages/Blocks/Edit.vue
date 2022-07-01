@@ -278,6 +278,11 @@ export default {
             .dispatch('blocks/getBlockTypeById', this.$route.params.id)
             .then((block) => {
                 this.block = block
+                this.block.repositories = this.block.repositories.map(function (
+                    repository
+                ) {
+                    return parseInt(repository.id)
+                })
                 this.originalBlock = { ...block }
             })
     },
@@ -302,11 +307,7 @@ export default {
                             file_name: this.block.file_name,
                             component: this.block.component,
                             repositories: {
-                                sync: this.block.repositories.map(function (
-                                    repository
-                                ) {
-                                    return parseInt(repository.id)
-                                }),
+                                sync: this.block.repositories,
                             },
                         },
                     },
