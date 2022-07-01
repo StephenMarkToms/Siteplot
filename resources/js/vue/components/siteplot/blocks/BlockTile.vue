@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-xs">A radio input.</div>
+            <!-- <div class="text-xs">A radio input.</div> -->
         </div>
     </div>
     <div

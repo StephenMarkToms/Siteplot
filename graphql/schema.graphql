@@ -186,7 +186,7 @@ type Mutation {
   deleteWebsite(id: [ID!]!): [Website!]! @delete @guard
 
   createBlockType(input: CreateBlockTypeInput! @spread): BlockType @create @guard
-  updateBlockType(input: UpdateBlockTypeInput! @spread): BlockType @update
+  updateBlockType(input: UpdateBlockTypeInput! @spread): BlockType @update @guard
 
 }
 

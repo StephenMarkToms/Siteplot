@@ -278,6 +278,11 @@ export default {
             return null
         },
     },
+    watch: {
+        fileName(newVal) {
+            this.formData.file_name = newVal
+        },
+    },
     async created() {
         if (this.block) {
             this.formData = this.block

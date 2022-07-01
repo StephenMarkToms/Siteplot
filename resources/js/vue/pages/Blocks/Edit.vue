@@ -11,7 +11,7 @@
                     <WTabsHorizontal
                         v-model="view"
                         class="w-1/4 my-auto"
-                        :tabs="['meta', 'code', 'data', 'preview']"
+                        :tabs="['meta', 'code', 'preview']"
                     />
                     <div class="my-auto flex space-x-2">
                         <WButtonsBase
@@ -244,7 +244,7 @@ export default {
             originalBlock: null,
             block: null,
             submitting: false,
-            view: 'data',
+            view: 'meta',
             drag: false,
             blockData: [
                 { name: 'hidden', label: 'Hide', usage: 'content', id: 0 },
@@ -287,6 +287,7 @@ export default {
     methods: {
         async onSubmit(values) {
             this.submitting = true
+            console.log(values)
             await this.$axios
                 .post('/graphql', {
                     query: `mutation updateBlockType($input: UpdateBlockTypeInput!) {
@@ -311,7 +312,6 @@ export default {
                     },
                 })
                 .then((res) => {
-                    console.log(res)
                     this.$router.push({
                         name: 'blocks',
                     })
