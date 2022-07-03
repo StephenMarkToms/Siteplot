@@ -18,6 +18,17 @@ class BlockTypeObserver
         //
     }
 
+    public function makeGitHubCommit(array $data, String $url, String $token)
+    {
+        $response = Http::withHeaders([
+                    "Authorization" => $token,
+                ])->withBody(
+                    json_encode($data),
+                    'application/json'
+                )->put($url);
+        return $response;
+    }
+
     /**
      * Handle the BlockType "updated" event.
      *
@@ -26,8 +37,6 @@ class BlockTypeObserver
      */
     public function updated(BlockType $blockType)
     {
-        $url = 'https://api.github.com/repos/' . $blockType->repositories[0]->path . '/contents/components/' . $blockType->file_name;
-
         $data = [
             "message" => "Updating File",
             "committer" => [
@@ -37,12 +46,16 @@ class BlockTypeObserver
             "content" => base64_encode($blockType->component)
         ];
 
-        $response = Http::withHeaders([
-            'Authorization' => $blockType->repositories[0]->personal_access_token,
-        ])->withBody(
-            json_encode($data),
-            'application/json'
-        )->put($url);
+        $requests = [];
+
+        if (count($blockType->repositories) > 0) {
+            for ($x = 0; $x < count($blockType->repositories); $x++) {
+                $url = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->file_name;
+                $token = $blockType->repositories[$x]->personal_access_token;
+                
+                array_push($requests, $this->makeGitHubCommit($data, $url, $token));
+            }
+        }
     }
 
     /**
