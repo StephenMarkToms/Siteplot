@@ -18,7 +18,7 @@ class BlockTypeObserver
         //
     }
 
-    public function makeGitHubCommit(array $data, String $url, String $token)
+    public function CreateFile(array $data, String $url, String $token)
     {
         $response = Http::withHeaders([
                     "Authorization" => $token,
@@ -37,6 +37,12 @@ class BlockTypeObserver
      */
     public function updated(BlockType $blockType)
     {
+        dd($blockType->getChanges(), $blockType->getOriginal());
+
+        // Check changes and see if filename has changed
+        // If file name has changed delete the old file
+        // Proceed to create the new file
+
         $data = [
             "message" => "Updating File",
             "committer" => [
@@ -46,14 +52,17 @@ class BlockTypeObserver
             "content" => base64_encode($blockType->component)
         ];
 
-        $requests = [];
 
         if (count($blockType->repositories) > 0) {
             for ($x = 0; $x < count($blockType->repositories); $x++) {
                 $url = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->file_name;
                 $token = $blockType->repositories[$x]->personal_access_token;
                 
-                array_push($requests, $this->makeGitHubCommit($data, $url, $token));
+                // Try to get file from github
+                // If file exist, update with sha
+                // If file doesn't exist create a new one
+
+                $this->CreateFile($data, $url, $token);
             }
         }
     }
