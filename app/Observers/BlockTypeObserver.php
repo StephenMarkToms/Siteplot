@@ -37,9 +37,14 @@ class BlockTypeObserver
      */
     public function updated(BlockType $blockType)
     {
-        dd($blockType->getChanges(), $blockType->getOriginal());
+        // dd($blockType->getChanges(), $blockType->getOriginal());
 
         // Check changes and see if filename has changed
+        if (array_key_exists('file_name', $blockType->getChanges())) {
+            dd('filename changed', $blockType->getChanges());
+        } else {
+            dd('no file name changes', $blockType->getChanges());
+        }
         // If file name has changed delete the old file
         // Proceed to create the new file
 
