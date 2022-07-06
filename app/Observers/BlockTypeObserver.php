@@ -59,9 +59,12 @@ class BlockTypeObserver
         $newFileUrl = $repoUrl . $newFileName;
 
         $sha = $this->GetFile($oldFileUrl, $token)->sha;
-        $this->DeleteFile($oldFileUrl, $sha, "Moving File to: " . $newFileName, $token);
 
-        $url = $repoUrl . '/contents/components/' . $newFileName;
+        if (!is_null($sha)) {
+            $this->DeleteFile($oldFileUrl, $sha, "Moving File to: " . $newFileName, $token);
+        }
+
+        $url = $repoUrl . $newFileName;
         $this->CreateFile($data, $url, $token);
     }
 
@@ -86,10 +89,19 @@ class BlockTypeObserver
         if (count($blockType->repositories) > 0) {
             for ($x = 0; $x < count($blockType->repositories); $x++) {
                 $token = $blockType->repositories[$x]->personal_access_token;
-                // Check changes and see if filename has changed
-                if (array_key_exists('file_name', $blockType->getChanges())) {
-                    $repoUrl = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/';
-                    $this->ReplaceFile($repoUrl, $data, $blockType->getOriginal()['file_name'], $blockType->file_name, $token);
+                
+                $getFile = $this->GetFile('https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->getOriginal()['file_name'], $token);
+                $fileExists = isset($getFile->sha);
+
+                //Check if the file exists
+                if ($fileExists) {
+                    // Check changes and see if filename has changed
+                    if (array_key_exists('file_name', $blockType->getChanges())) {
+                        $repoUrl = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/';
+                        $this->ReplaceFile($repoUrl, $data, $blockType->getOriginal()['file_name'], $blockType->file_name, $token);
+                    } else {
+                        //update file
+                    }
                 } else {
                     // If file doesn't exist create a new one
                     $url = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->file_name;
