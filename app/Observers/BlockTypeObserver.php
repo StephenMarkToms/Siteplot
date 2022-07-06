@@ -15,7 +15,6 @@ class BlockTypeObserver
      */
     public function created(BlockType $blockType)
     {
-        //
     }
 
     public function CreateFile(array $data, String $url, String $token)

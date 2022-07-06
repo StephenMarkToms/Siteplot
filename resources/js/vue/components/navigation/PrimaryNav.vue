@@ -54,6 +54,18 @@
                             Blocks
                         </router-link>
                     </div>
+                    <div class="lg:ml-6 lg:flex lg:space-x-8">
+                        <router-link
+                            :to="{ name: 'repositories' }"
+                            :class="
+                                $route.name === 'repositories'
+                                    ? 'nav-link border-gray-300'
+                                    : 'nav-link border-transparent'
+                            "
+                        >
+                            Repositories
+                        </router-link>
+                    </div>
                 </div>
                 <div class="lg:ml-4 lg:flex lg:items-center">
                     <!-- Profile dropdown -->

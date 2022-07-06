@@ -3,7 +3,7 @@ import router from '../../router'
 const state = {}
 const getters = {}
 const actions = {
-    searchRepositories({}, { name, amount }) {
+    searchRepositories({}, { name, amount, page }) {
         return axios
             .post('/graphql', {
                 query: `

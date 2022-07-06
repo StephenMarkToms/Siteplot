@@ -154,7 +154,7 @@ type Query {
     widget_type(id: Int! @eq): WidgetType @find
 
     repositories(where: _ @whereConditions(columnsEnum: "RepositoryColumn")): [Repository!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
-
+    
 }
 
 "A custom description for this custom enum."

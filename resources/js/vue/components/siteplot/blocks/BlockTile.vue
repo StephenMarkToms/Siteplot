@@ -9,7 +9,6 @@
             })
         "
     >
-        <div class="h-36 bg-gray-200 rounded-t-lg"></div>
         <div class="border-t px-4 py-2">
             <div class="font-medium text-sm flex space-x-2 justify-between">
                 <div class="truncate">
@@ -46,7 +45,6 @@
         v-else
         class="rounded-lg shadow-lg ring-1 ring-transparent transition duration-300 opacity-75"
     >
-        <div class="h-36 bg-gray-300 rounded-t-lg"></div>
         <div class="border-t px-4 py-2">
             <div class="font-medium text-sm flex space-x-2 justify-between">
                 <div class="w-24 bg-gray-300 h-3"></div>
