@@ -16,9 +16,14 @@ class RepositorySeeder extends Seeder
     public function run()
     {
         DB::table('repositories')->insert([
-            'name' => 'Siteplot Repo',
+            'name' => 'Primary Components',
             'personal_access_token' => 'token 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',
-            'path' => 'siteplot/Siteplot-Components',
+            'path' => 'siteplot/PrimaryComponents',
+        ]);
+        DB::table('repositories')->insert([
+            'name' => 'Secondary Components',
+            'personal_access_token' => 'token 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',
+            'path' => 'siteplot/SecondaryComponents',
         ]);
     }
 }

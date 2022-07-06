@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             WebsitesSeeder::class,
             DataTypesSeeder::class,
             WidgetTypesSeeder::class,
-            BlockTypesSeeder::class,
+            // BlockTypesSeeder::class,
             BlockTypeWidgetTypeSeeder::class,
             RepositorySeeder::class,
         ]);
