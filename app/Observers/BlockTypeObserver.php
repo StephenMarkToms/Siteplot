@@ -101,6 +101,9 @@ class BlockTypeObserver
                         $this->ReplaceFile($repoUrl, $data, $blockType->getOriginal()['file_name'], $blockType->file_name, $token);
                     } else {
                         //update file
+                        $url = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->file_name;
+                        $data['sha'] = $getFile->sha;
+                        $this->CreateFile($data, $url, $token);
                     }
                 } else {
                     // If file doesn't exist create a new one
