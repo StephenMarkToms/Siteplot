@@ -13,6 +13,7 @@ class BlockType extends Model
         'file_name',
         'component',
         'team_id',
+        'version',
     ];
 
     public function widget_types()

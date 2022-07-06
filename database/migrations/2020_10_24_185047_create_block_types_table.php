@@ -18,6 +18,7 @@ class CreateBlockTypesTable extends Migration
             $table->foreignId('team_id')->nullable();
             $table->text('name');
             $table->text('file_name');
+            $table->bigInteger('version');
             $table->longText('component')->nullable();
             $table->timestamps();
         });

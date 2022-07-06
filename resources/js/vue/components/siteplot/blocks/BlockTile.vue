@@ -37,7 +37,9 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="text-xs">A radio input.</div> -->
+            <div class="text-xs">
+                Version: {{ block.version === 0 ? 'new' : block.version }}
+            </div>
         </div>
     </div>
     <div

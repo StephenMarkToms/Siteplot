@@ -72,6 +72,7 @@ export default {
                 name: null,
                 file_name: null,
                 repositories: null,
+                version: null,
             },
             repositories: null,
             repositorySearch: '',
@@ -272,7 +273,9 @@ export default {
             }
 
             if (this.formData.name) {
-                return camelCase(this.formData.name) + '.vue'
+                let fileName = camelCase(this.formData.name) + '.vue'
+                fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1)
+                return fileName
             }
 
             return null

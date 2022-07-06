@@ -6,6 +6,8 @@ const actions = {
     async createBlockType({}, values) {
         const parsedValues = { ...values }
 
+        parsedValues.version = 0
+
         let repositories = null
 
         if (parsedValues.repositories) {
@@ -53,6 +55,7 @@ const actions = {
                                 repositories{
                                     name
                                 }
+                                version
                                 created_at
                                 updated_at
                             }
@@ -80,6 +83,7 @@ const actions = {
                             file_name
                             component
                             id
+                            version
                             repositories{
                                 id
                             }

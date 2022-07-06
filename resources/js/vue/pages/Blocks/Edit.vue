@@ -308,6 +308,7 @@ export default {
                             repositories: {
                                 sync: this.block.repositories,
                             },
+                            version: this.block.version + 1,
                         },
                     },
                 })

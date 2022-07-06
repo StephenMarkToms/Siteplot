@@ -44,6 +44,7 @@ type BlockEntry {
 
 type BlockType {
     id: ID!
+    version: Int!
     name: String!
     file_name: String!
     component: String
@@ -194,6 +195,7 @@ input CreateBlockTypeInput {
     name: String!
     file_name: String!
     component: String
+    version: Int!
     repositories: CreateRepositoryBelongsToMany
 }
 
@@ -216,6 +218,7 @@ input UpsertRepositoryInput {
 input UpdateBlockTypeInput {
   id: ID!
   name: String
+  version: Int!
   file_name: String
   component: String
   repositories: CreateRepositoryBelongsToMany
