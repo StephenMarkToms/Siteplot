@@ -29,6 +29,42 @@ class BlockTypeObserver
         return $response;
     }
 
+    public function GetFile(String $url, String $token)
+    {
+        $response = Http::withHeaders([
+                    "Authorization" => $token,
+                ])->get($url);
+        return json_decode($response->body());
+    }
+
+    public function DeleteFile(String $fileUrl, String $sha, String $message, String $token)
+    {
+        $data = [
+            "message" => $message,
+            "sha" => $sha
+        ];
+
+        $response = Http::withHeaders([
+            "Authorization" => $token,
+        ])->withBody(
+            json_encode($data),
+            'application/json'
+        )->delete($fileUrl);
+        return $response;
+    }
+
+    public function ReplaceFile(String $repoUrl, array $data, String $oldFileName, String $newFileName, String $token)
+    {
+        $oldFileUrl = $repoUrl . $oldFileName;
+        $newFileUrl = $repoUrl . $newFileName;
+
+        $sha = $this->GetFile($oldFileUrl, $token)->sha;
+        $this->DeleteFile($oldFileUrl, $sha, "Moving File to: " . $newFileName, $token);
+
+        $url = $repoUrl . '/contents/components/' . $newFileName;
+        $this->CreateFile($data, $url, $token);
+    }
+
     /**
      * Handle the BlockType "updated" event.
      *
@@ -37,19 +73,8 @@ class BlockTypeObserver
      */
     public function updated(BlockType $blockType)
     {
-        // dd($blockType->getChanges(), $blockType->getOriginal());
-
-        // Check changes and see if filename has changed
-        if (array_key_exists('file_name', $blockType->getChanges())) {
-            dd('filename changed', $blockType->getChanges());
-        } else {
-            dd('no file name changes', $blockType->getChanges());
-        }
-        // If file name has changed delete the old file
-        // Proceed to create the new file
-
         $data = [
-            "message" => "Updating File",
+            "message" => "Syncing File",
             "committer" => [
                 "name" => "Siteplot Bot",
                 "email" => "s.mark.toms+siteplot@gmail.com"
@@ -60,14 +85,16 @@ class BlockTypeObserver
 
         if (count($blockType->repositories) > 0) {
             for ($x = 0; $x < count($blockType->repositories); $x++) {
-                $url = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->file_name;
                 $token = $blockType->repositories[$x]->personal_access_token;
-                
-                // Try to get file from github
-                // If file exist, update with sha
-                // If file doesn't exist create a new one
-
-                $this->CreateFile($data, $url, $token);
+                // Check changes and see if filename has changed
+                if (array_key_exists('file_name', $blockType->getChanges())) {
+                    $repoUrl = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/';
+                    $this->ReplaceFile($repoUrl, $data, $blockType->getOriginal()['file_name'], $blockType->file_name, $token);
+                } else {
+                    // If file doesn't exist create a new one
+                    $url = 'https://api.github.com/repos/' . $blockType->repositories[$x]->path . '/contents/components/' . $blockType->file_name;
+                    $this->CreateFile($data, $url, $token);
+                }
             }
         }
     }

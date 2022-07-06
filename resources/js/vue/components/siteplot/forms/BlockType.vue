@@ -302,15 +302,17 @@ export default {
         },
         onSubmit(values) {
             this.submitting = true
-            if (this.formData.repositories) {
-                this.$emit('onSubmit', {
+            let dataValues = { ...values }
+            if (this.formData.repositories && this.submitting) {
+                dataValues = {
                     ...values,
                     repositories: {
                         sync: this.formData.repositories,
                     },
-                })
+                }
             }
-            this.$emit('onSubmit', values)
+            this.$emit('onSubmit', dataValues)
+            this.submitting = false
         },
     },
 }
