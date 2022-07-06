@@ -117,6 +117,8 @@ type Repository {
     path: String
     personal_access_token: String
     block_types: BlockType @belongsToMany
+    created_at: DateTime!
+    updated_at: DateTime!
 }
 
 type Query {
@@ -153,6 +155,7 @@ type Query {
     widget_types: [WidgetType!]! @paginate
     widget_type(id: Int! @eq): WidgetType @find
 
+    repository(id: ID @eq): Repository @find
     repositories(where: _ @whereConditions(columnsEnum: "RepositoryColumn")): [Repository!]! @paginate @orderBy(column: "updated_at", direction: DESC) @guard
     
 }
@@ -188,6 +191,9 @@ type Mutation {
 
   createBlockType(input: CreateBlockTypeInput! @spread): BlockType @create @guard
   updateBlockType(input: UpdateBlockTypeInput! @spread): BlockType @update @guard
+
+  createRepository(name: String!, path: String!, personal_access_token: String): Repository! @create @guard
+  updateRepository(id: ID!, name: String!, path: String!, personal_access_token: String): Repository! @update @guard
 
 }
 

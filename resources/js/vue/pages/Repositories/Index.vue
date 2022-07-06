@@ -82,10 +82,10 @@
                                 v-if="repositories && repositories.length > 0"
                                 class="grid grid-cols-4 gap-6 p-3"
                             >
-                                <BlockTile
-                                    v-for="(block, index) in repositories"
+                                <RepositoryTile
+                                    v-for="(repository, index) in repositories"
                                     :key="index"
-                                    :block="block"
+                                    :repository="repository"
                                 />
                             </div>
                             <div v-else-if="repositories" class="flex">
@@ -143,7 +143,7 @@
 import ContainedLayout from '../../layouts/ContainedLayout.vue'
 import LoadingTiles from '../../components/loading/Tiles.vue'
 import Alert from '../../components/alerts/Modal.vue'
-import BlockTile from '../../components/siteplot/blocks/BlockTile.vue'
+import RepositoryTile from '../../components/siteplot/repositories/RepositoryTile.vue'
 
 export default {
     name: 'Dashboard',
@@ -151,7 +151,7 @@ export default {
         ContainedLayout,
         LoadingTiles,
         Alert,
-        BlockTile,
+        RepositoryTile,
     },
     data() {
         return {

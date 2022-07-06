@@ -16,6 +16,7 @@ import BlocksView from '../pages/Blocks/View'
 import BlocksEdit from '../pages/Blocks/Edit'
 import RepositoriesCreate from '../pages/Repositories/Create'
 import RepositoriesIndex from '../pages/Repositories/Index'
+import RepositoriesEdit from '../pages/Repositories/Edit'
 
 export const routes = [
     {
@@ -155,6 +156,14 @@ export const routes = [
         component: RepositoriesCreate,
         meta: {
             title: 'Create Repository',
+        },
+    },
+    {
+        name: 'repositories-edit',
+        path: '/repositories/edit/:id',
+        component: RepositoriesEdit,
+        meta: {
+            title: 'Edit Repository',
         },
     },
 ]
