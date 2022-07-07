@@ -18,7 +18,7 @@
                             />
                         </svg>
                     </div>
-                    <div class="lg:ml-6 lg:flex lg:space-x-8">
+                    <!-- <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
                             :to="{ name: 'dashboard' }"
                             :class="
@@ -41,7 +41,7 @@
                         >
                             Sites
                         </router-link>
-                    </div>
+                    </div> -->
                     <div class="lg:ml-6 lg:flex lg:space-x-8">
                         <router-link
                             :to="{ name: 'blocks' }"
