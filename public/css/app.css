@@ -639,9 +639,6 @@ select {
   white-space: nowrap;
   border-width: 0;
 }
-.visible {
-  visibility: visible;
-}
 .fixed {
   position: fixed;
 }
@@ -817,9 +814,6 @@ select {
 }
 .h-8 {
   height: 2rem;
-}
-.h-36 {
-  height: 9rem;
 }
 .h-4 {
   height: 1rem;
@@ -2598,10 +2592,6 @@ select {
   border-width: 0;
 }
 
-.visible {
-  visibility: visible;
-}
-
 .fixed {
   position: fixed;
 }
@@ -2832,10 +2822,6 @@ select {
 
 .h-8 {
   height: 2rem;
-}
-
-.h-36 {
-  height: 9rem;
 }
 
 .h-4 {
