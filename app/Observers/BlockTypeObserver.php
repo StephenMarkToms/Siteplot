@@ -67,6 +67,11 @@ class BlockTypeObserver
         $this->CreateFile($data, $url, $token);
     }
 
+    public function pivotSynced(BlockType $blockType)
+    {
+        dd(($blockType->getOriginal()));
+    }
+
     /**
      * Handle the BlockType "updated" event.
      *

@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use GeneaLabs\LaravelPivotEvents\Traits\PivotEventTrait;
 
 class BlockType extends Model
 {
+    use PivotEventTrait;
+    
     protected $fillable = [
         'name',
         'file_name',
