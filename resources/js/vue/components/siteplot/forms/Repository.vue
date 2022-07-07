@@ -14,8 +14,10 @@
                 <ErrorMessage name="name" class="text-red-600 text-sm" />
             </div>
             <div v-if="repository" class="w-full">
-                <label class="block text-sm font-medium text-gray-700">
-                    Path*
+                <label
+                    class="block text-sm font-medium text-gray-700 flex space-x-2 justify-between"
+                >
+                    <div>Path*</div>
                 </label>
                 <Field
                     v-model="formData.path"
