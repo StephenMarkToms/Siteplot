@@ -10,7 +10,9 @@
                 >
                     <div>
                         <div class="text-sm font-medium">{{ block.name }}</div>
-                        <div class="text-xs text-gray-400">1.0.0</div>
+                        <div class="text-xs text-gray-400">
+                            Version: {{ block.version }}
+                        </div>
                     </div>
                     <WButtonsBase
                         class="w-32"

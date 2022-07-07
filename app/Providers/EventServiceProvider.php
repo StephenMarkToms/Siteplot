@@ -7,7 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Observers\BlockTypeObserver;
+use App\Observers\RepositoryObserver;
 use App\Models\BlockType;
+use App\Models\Repository;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -30,5 +32,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         BlockType::observe(BlockTypeObserver::class);
+        Repository::observe(RepositoryObserver::class);
     }
 }

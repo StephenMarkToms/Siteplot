@@ -29,7 +29,10 @@
                     <div class="mt-3 w-full bg-white shadow p-5 rounded-lg">
                         <div class="flex justify-between border-b -2 pb-2 mb-4">
                             <div class="text-2xl font-medium secondary-600">
-                                Create a new Repository!
+                                Editing:
+                                <span class="text-gray-500 italic">{{
+                                    repository.name
+                                }}</span>
                             </div>
                         </div>
                         <div>

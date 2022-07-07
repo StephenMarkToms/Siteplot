@@ -25,7 +25,7 @@ directive @whereConditions(
 
 type AssetEntry {
     id: ID!
-    path: String!
+    path: String
     website: Website! @belongsTo
     created_at: DateTime!
     updated_at: DateTime!
@@ -192,7 +192,7 @@ type Mutation {
   createBlockType(input: CreateBlockTypeInput! @spread): BlockType @create @guard
   updateBlockType(input: UpdateBlockTypeInput! @spread): BlockType @update @guard
 
-  createRepository(name: String!, path: String!, personal_access_token: String): Repository! @create @guard
+  createRepository(name: String!, personal_access_token: String): Repository! @create @guard
   updateRepository(id: ID!, name: String!, path: String!, personal_access_token: String): Repository! @update @guard
 
 }

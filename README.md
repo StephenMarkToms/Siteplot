@@ -1,4 +1,4 @@
-![Well](documentation/logo.jpg)
+![Siteplot](documentation/logo.jpg)
 
 ## Project Setup
 
