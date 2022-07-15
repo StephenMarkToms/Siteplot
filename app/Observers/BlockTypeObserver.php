@@ -69,7 +69,7 @@ class BlockTypeObserver
 
     public function pivotSynced(BlockType $blockType)
     {
-        dd(($blockType->getOriginal()));
+        // dd($blockType);
     }
 
     /**
